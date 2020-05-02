@@ -1,0 +1,244 @@
+<h1>Network Information</h1>
+
+<p></p>
+
+<app-progress class="centered" *ngIf="!info"></app-progress>
+
+<div *ngIf="info">
+
+  <h2>Blockchain</h2>
+
+  <p>This information is read from the configuration file for the current chain.</p>
+
+  <div class="grid-label-value">
+    <div>
+      <span>Name</span>
+      <span>{{info.name}}</span>
+    </div>
+    <div>
+      <span>Description</span>
+      <span>{{info.description}}</span>
+    </div>
+    <div>
+      <span>Website</span>
+      <span>{{info.url}}</span>
+    </div>
+    <div>
+      <span>Symbol</span>
+      <span>{{info.symbol}}</span>
+    </div>
+    <div>
+      <span>Blockheight</span>
+      <span>{{info.blockHeight}}</span>
+    </div>
+  </div>
+
+  <h2>Network</h2>
+
+  <p>This information is retrieve directly from the indexing node.</p>
+
+  <div *ngIf="node?.error">
+    <span class="muted">Error from node:</span> {{node.error}}<br>
+  </div>
+
+  <div *ngIf="!node?.error">
+
+    <div class="grid-label-value">
+      <div>
+        <span>Chain</span>
+        <span>{{node.blockchain.chain}}</span>
+      </div>
+      <div>
+        <span>Sync Progress</span>
+        <span>{{node.progress}} (Indexed/Chain Tip - Remaining)</span>
+      </div>
+      <div>
+        <span>Transactions in pool (mempool)</span>
+        <span>{{node.transactionsInPool}}</span>
+      </div>
+      <div>
+        <span>Average Block Persist In Seconds</span>
+        <span>{{node.avgBlockPersistInSeconds}}</span>
+      </div>
+      <div>
+        <span>Average Block Size Kb</span>
+        <span>{{node.avgBlockSizeKb}}</span>
+      </div>
+      <div>
+        <span>Best Block Hash</span>
+        <span>{{blockchain.bestBlockHash}}</span>
+      </div>
+      <div>
+        <span>Difficulty</span>
+        <span>{{blockchain.difficulty}}</span>
+      </div>
+      <div>
+        <span>Is Initial Block Download</span>
+        <span>{{blockchain.isInitialBlockDownload}}</span>
+      </div>
+      <div>
+        <span>Is Pruned</span>
+        <span>{{blockchain.isPruned}}</span>
+      </div>
+      <div>
+        <span>Version</span>
+        <span>{{network.version}}</span>
+      </div>
+      <div>
+        <span>Sub Version</span>
+        <span>{{network.subVersion}}</span>
+      </div>
+      <div>
+        <span>Protocol Version</span>
+        <span>{{network.protocolVersion}}</span>
+      </div>
+      <div>
+        <span>Connections</span>
+        <span>{{network.connections}}</span>
+      </div>
+      <div>
+        <span>Relay Fee</span>
+        <span>{{network.relayFee}}</span>
+      </div>
+      <div>
+        <span>Incremental Fee</span>
+        <span>{{network.incrementalFee}}</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>Nodes seen last 24 hours</h2>
+
+  <app-progress class="centered" *ngIf="!peers"></app-progress>
+
+  <div class="grid-label-value" *ngIf="peers">
+    <div *ngFor="let item of peers">
+      <span>{{item.version}} ({{item.peers.length}})</span>
+      <span>
+        <ng-template ngFor let-item [ngForOf]="item.peers">
+          {{item.addr}}<br>
+        </ng-template>
+      </span>
+    </div>
+  </div>
+
+  <h2>Configuration (Consensus)</h2>
+
+  <p>This information is read from the network definition of the current chain. This might differ to the configuration
+    of the indexing node.</p>
+
+
+  <div class="grid-label-value">
+    <div>
+      <span>Default Port</span>
+      <span>{{configuration.defaultPort}}</span>
+    </div>
+    <div>
+      <span>Default RPC Port</span>
+      <span>{{configuration.defaultRPCPort}}</span>
+    </div>
+    <div>
+      <span>Default API Port</span>
+      <span>{{configuration.defaultAPIPort}}</span>
+    </div>
+    <div>
+      <span>Default Web Socket Port</span>
+      <span>{{configuration.defaultSignalRPort}}</span>
+    </div>
+    <div>
+      <span>Fallback Fee</span>
+      <span>{{configuration.fallbackFee}}</span>
+    </div>
+    <div>
+      <span>Minimum Relay Tx Fee</span>
+      <span>{{configuration.minRelayTxFee}}</span>
+    </div>
+    <div>
+      <span>Minimum Tx Fee</span>
+      <span>{{configuration.minTxFee}}</span>
+    </div>
+    <div>
+      <span>Network Type</span>
+      <span>{{configuration.networkType}}</span>
+    </div>
+    <div>
+      <span>Name</span>
+      <span>{{configuration.name}}</span>
+    </div>
+    <div>
+      <span>Seed Nodes</span>
+      <span>
+        <ul>
+          <li *ngFor="let seed of configuration.seedNodes">
+            {{seed}}
+          </li>
+        </ul>
+      </span>
+    </div>
+    <div>
+      <span>DNS Seeds</span>
+      <span>
+        <ul>
+          <li *ngFor="let seed of configuration.dnsSeeds">
+            {{seed}}
+          </li>
+        </ul>
+      </span>
+    </div>
+    <div>
+      <span>Default Max Inbound Connections</span>
+      <span>{{configuration.defaultMaxInboundConnections}}</span>
+    </div>
+    <div>
+      <span>Default Max Outbound Connections</span>
+      <span>{{configuration.defaultMaxOutboundConnections}}</span>
+    </div>
+    <div>
+      <span>Genesis Date</span>
+      <span>{{configuration.genesisDate}}</span>
+    </div>
+    <div>
+      <span>Genesis Hash</span>
+      <span class="breakable">{{configuration.genesisHash}}</span>
+    </div>
+    <div>
+      <span>Coin Type</span>
+      <span>{{consensus.coinType}}</span>
+    </div>
+    <div>
+      <span>Coinbase Maturity</span>
+      <span>{{consensus.coinbaseMaturity}}</span>
+    </div>
+    <div>
+      <span>Is Proof-Of-Stake</span>
+      <span>{{consensus.isProofOfStake}}</span>
+    </div>
+    <div>
+      <span>Maximum Money</span>
+      <span>{{consensus.maxMoney}}</span>
+    </div>
+    <div>
+      <span>Last POW Block</span>
+      <span>{{consensus.lastPOWBlock}}</span>
+    </div>
+    <div>
+      <span>Premine Reward</span>
+      <span>{{consensus.premineReward}}</span>
+    </div>
+    <div>
+      <span>Proof-Of-Stake Reward</span>
+      <span>{{consensus.proofOfStakeReward}}</span>
+    </div>
+    <div>
+      <span>Proof-Of-Work Reward</span>
+      <span>{{consensus.proofOfWorkReward}}</span>
+    </div>
+    <div>
+      <span>Target Spacing</span>
+      <span>{{consensus.targetSpacing}}</span>
+    </div>
+
+  </div>
+
+
+</div>

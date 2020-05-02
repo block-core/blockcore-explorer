@@ -1,0 +1,28 @@
+{
+  "name": "blockcoreexplorer",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": {
+    "name": "Blockcore",
+    "email": "post@blockcore.net",
+    "url": "https://www.blockcore.net"
+  },
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/block-core/blockcore-explorer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/block-core/blockcore-explorer/issues"
+  },
+  "homepage": "https://github.com/block-core/blockcore-explorer#readme",
+  "scripts": {
+    "version": "node -p \"require('./package.json').version\"",
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+  },
+  "private": true,
+  "dependencies": {
+    "conventional-changelog-cli": "2.0.31"
+  },
+  "devDependencies": {}
+}

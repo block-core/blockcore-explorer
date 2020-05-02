@@ -1,0 +1,135 @@
+<i class="fas fa-search input-icon"></i>
+<input class="input-search box" type="search" placeholder="Search for address, transaction or block.">
+
+<div class="box">
+   <div *ngIf="block">
+      <div class="grid-hash">
+         <div>
+            <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
+            <span class="grid-hash-middle breakable">{{block.blockHash}}</span>
+            <span class="grid-hash-right">
+               <div class="grid-double">
+                  <div *ngIf="block.blockIndex > 1">
+                     <a [routerLink]="['../', block.blockIndex - 1]">
+                        <i class="fas fa-cube"></i><br>
+                        <span class="grid-hash-block-index">{{block.blockIndex - 1}}</span>
+                     </a>
+                  </div>
+                  <div class="muted">
+                     <i class="fas fa-cube"></i><br>
+                     <span class="grid-hash-block-index">{{block.blockIndex}}</span>
+                  </div>
+                  <div *ngIf="block.blockIndex !== lastBlockHeight">
+                     <a [routerLink]="['../', block.blockIndex + 1]">
+                        <i class="fas fa-cube"></i><br>
+                        <span class="grid-hash-block-index">{{block.blockIndex + 1}}</span>
+                     </a>
+                  </div>
+               </div>
+            </span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="box">
+
+   <a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
+         *ngIf="detailsVisible">Hide</span>
+      details</a>
+
+   <h3>Details</h3>
+
+   <app-progress class="centered" *ngIf="!block"></app-progress>
+
+   <div class="grid-label-value" *ngIf="block">
+      <div>
+         <span>Age</span>
+         <span>{{block.blockTime | ago}}</span>
+      </div>
+      <div>
+         <span>Date</span>
+         <span>{{block.blockTime | timestamp}}</span>
+      </div>
+      <div>
+         <span>Height</span>
+         <span>{{block.blockIndex}}</span>
+      </div>
+      <div>
+         <span>Confirmations</span>
+         <span>{{block.confirmations}}</span>
+      </div>
+      <div>
+         <span>Size</span>
+         <span>{{block.blockSize | size}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Unit Timestamp</span>
+         <span>{{block.blockTime}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Difficulty</span>
+         <span>{{block.difficulty}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Bits</span>
+         <span>{{block.bits}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Nonce</span>
+         <span>{{block.nonce}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Merkle Root</span>
+         <span class="breakable">{{block.merkleroot}}</span>
+      </div>
+
+      <div *ngIf="detailsVisible && block.posFlags !== 'proof-of-stake'">
+         <span>chainWork</span>
+         <span class="breakable">{{block.chainWork}}</span>
+      </div>
+
+      <div *ngIf="detailsVisible && block.posFlags === 'proof-of-stake'">
+         <span>Proof-of-Stake BlockSignature</span>
+         <span class="breakable">{{block.posBlockSignature}}</span>
+      </div>
+      <div *ngIf="detailsVisible && block.posFlags === 'proof-of-stake'">
+         <span>Proof-of-Stake BlockTrust</span>
+         <span class="breakable">{{block.posBlockTrust}}</span>
+      </div>
+      <div *ngIf="detailsVisible && block.posFlags === 'proof-of-stake'">
+         <span>Proof-of-Stake ChainTrust</span>
+         <span class="breakable">{{block.posChainTrust}}</span>
+      </div>
+      <div *ngIf="detailsVisible && block.posFlags === 'proof-of-stake'">
+         <span>Proof-of-Stake HashProof</span>
+         <span class="breakable">{{block.posHashProof}}</span>
+      </div>
+      <div *ngIf="detailsVisible && block.posFlags === 'proof-of-stake'">
+         <span>Proof-of-Stake Modifierv2</span>
+         <span class="breakable">{{block.posModifierv2}}</span>
+      </div>
+
+   </div>
+
+</div>
+
+<div class="box" *ngIf="block">
+   <h3>Transactions ({{block.transactionCount}})</h3>
+
+   <div class="grid grid-odd-line" *ngIf="block">
+      <div class="grid-header">
+         <span>Transaction ID</span>
+         <span></span>
+         <span></span>
+         <span></span>
+      </div>
+      <div *ngFor="let item of block.transactions">
+         <span class="breakable left"><a [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
+         <span></span>
+         <span class="right"></span>
+         <span class="right"></span>
+      </div>
+   </div>
+
+</div>

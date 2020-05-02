@@ -1,0 +1,14 @@
+<footer>
+   <div class="footer-left">
+      {{setup.Explorer?.Setup.Footer}}
+   </div>
+   <div class="footer-right icon-links">
+      <a *ngFor="let link of setup.Explorer?.Setup.Links" [href]="link.url"><i class="{{link.icon}}"></i></a>
+   </div>
+   <div class="footer-toggle">
+      <div class="mode-toggle">
+         <input type="checkbox" id="switch" name="mode" [(ngModel)]="darkMode">
+         <label for="switch"></label>
+      </div>
+   </div>
+</footer>

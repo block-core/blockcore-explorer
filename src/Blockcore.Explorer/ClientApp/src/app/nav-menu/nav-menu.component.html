@@ -1,0 +1,35 @@
+<header class="header dropdown">
+  <a class="header-logo" [routerLink]="['/']"><img class="header-image" [src]="setup.Chain?.Icon"></a>
+  <a class="header-title" [routerLink]="['/']">{{setup.Chain?.Name}}<br>Explorer</a>
+
+  <div class="dropdown-content chains">
+    <ul>
+      <li class="chain-item" *ngFor="let chain of setup.chains">
+        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img
+            src="https://chains.blockcore.net/assets/{{chain.symbol}}/icon.png"></a>
+        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<nav class="menu">
+  <ul *ngIf="setup.current != 'BLOCKCORE'">
+    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)">
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="[setup.current]">Ticker</a>.
+    </li>
+    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Explorer)">
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer']">Explorer</a>.
+    </li>
+    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Network)">
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'network']">Network</a>.
+    </li>
+    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.API)">
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'api']">API</a>.
+    </li>
+    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.About)">
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'about']">About</a>.
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,14 @@
+version: "3.7"
+
+services:
+
+  explorer:
+    container_name: city-explorer
+    image: blockcoreexplorer:latest
+    environment:
+      - VIRTUAL_HOST=city.explorer.blockcore.net
+      - chain=CITY
+    command: ["dotnet", "Blockcore.Explorer.dll", "--chain=CITY"]
+    restart: always
+    ports: 
+        - "9911:9911"
