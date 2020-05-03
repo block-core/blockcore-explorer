@@ -84,7 +84,7 @@ export class ApiService {
    }
 
    async loadSetups() {
-      return this.download('https://chains.blockcore.net/chains/CHAINS.json');
+      return this.download('https://chains.blockcore.net/CHAINS.json');
    }
 
    async getInfo() {
