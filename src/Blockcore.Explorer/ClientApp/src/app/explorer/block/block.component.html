@@ -1,5 +1,4 @@
-<i class="fas fa-search input-icon"></i>
-<input class="input-search box" type="search" placeholder="Search for address, transaction or block.">
+<app-search></app-search>
 
 <div class="box">
    <div *ngIf="block">
@@ -41,8 +40,13 @@
    <h3>Details</h3>
 
    <app-progress class="centered" *ngIf="!block"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
 
    <div class="grid-label-value" *ngIf="block">
+      <div>
+         <span>Height</span>
+         <span>{{block.blockIndex}}</span>
+      </div>
       <div>
          <span>Age</span>
          <span>{{block.blockTime | ago}}</span>
@@ -50,10 +54,6 @@
       <div>
          <span>Date</span>
          <span>{{block.blockTime | timestamp}}</span>
-      </div>
-      <div>
-         <span>Height</span>
-         <span>{{block.blockIndex}}</span>
       </div>
       <div>
          <span>Confirmations</span>
@@ -117,6 +117,10 @@
 <div class="box" *ngIf="block">
    <h3>Transactions ({{block.transactionCount}})</h3>
 
+   <!-- <div *ngFor="let item of block.transactions">
+      <a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a>
+   </div> -->
+
    <div class="grid grid-odd-line" *ngIf="block">
       <div class="grid-header">
          <span>Transaction ID</span>
@@ -125,10 +129,10 @@
          <span></span>
       </div>
       <div *ngFor="let item of block.transactions">
-         <span class="breakable left"><a [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
+         <span><a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
          <span></span>
-         <span class="right"></span>
-         <span class="right"></span>
+         <span></span>
+         <span></span>
       </div>
    </div>
 

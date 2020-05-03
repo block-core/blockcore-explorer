@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
@@ -23,6 +22,10 @@ import { TickerComponent } from './ticker/ticker.component';
 import { LoadingResolverService } from './shared/loading.resolver';
 import { TransactionComponent } from './explorer/transaction/transaction.component';
 import { AmountPipe } from './shared/amount';
+import { SearchComponent } from './search/search.component';
+import { ErrorComponent } from './error/error.component';
+import { YesPipe } from './shared/yes.pipe';
+import { AddressComponent } from './explorer/address/address.component';
 
 const routes: Routes = [
   {
@@ -52,6 +55,11 @@ const routes: Routes = [
   },
   {
     path: ':chain/explorer/transaction/:transaction', component: TransactionComponent, resolve: {
+      chain: LoadingResolverService
+    }
+  },
+  {
+    path: ':chain/explorer/address/:address', component: AddressComponent, resolve: {
       chain: LoadingResolverService
     }
   },
@@ -92,6 +100,10 @@ const routes: Routes = [
     AmountPipe,
     TickerComponent,
     TransactionComponent,
+    SearchComponent,
+    ErrorComponent,
+    YesPipe,
+    AddressComponent
   ],
   imports: [
     BrowserModule,

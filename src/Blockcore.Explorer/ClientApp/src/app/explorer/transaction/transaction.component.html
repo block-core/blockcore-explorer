@@ -1,5 +1,4 @@
-<i class="fas fa-search input-icon"></i>
-<input class="input-search box" type="search" placeholder="Search for address, transaction or block.">
+<app-search></app-search>
 
 <div class="box">
    <div *ngIf="transaction">
@@ -34,6 +33,10 @@
 
 <div class="box">
 
+   <a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
+         *ngIf="detailsVisible">Hide</span>
+      details</a>
+
    <h3>Transaction Details</h3>
 
    <app-progress class="centered" *ngIf="!transaction"></app-progress>
@@ -55,24 +58,84 @@
          <span>Confirmations</span>
          <span>{{transaction.confirmations}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.isCoinbase">
+         <span>Type</span>
          <span>CoinBase</span>
-         <span>{{transaction.isCoinbase}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.isCoinstake">
+         <span>Type</span>
          <span>CoinStake</span>
-         <span>{{transaction.isCoinstake}}</span>
       </div>
-   </div>
+      <div *ngIf="detailsVisible">
+         <span>Unit Timestamp</span>
+         <span>{{transaction.timestamp}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>LockTime</span>
+         <span>{{transaction.lockTime}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Replace by Fee</span>
+         <span>{{transaction.rbf | yes}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Version</span>
+         <span>{{transaction.version}}</span>
+      </div>
 
+   </div>
 </div>
 
-
 <div class="grid-double" *ngIf="transaction">
+   <div class="grid-double-left shadow">
+      <h3>Inputs ({{transaction.inputs.length}})</h3>
+
+      <div class="grid-list-inputs" *ngFor="let item of transaction.inputs">
+
+         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a 
+               [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output"><i
+                  class="fas fa-arrow-left"></i></a></div>
+         <div *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">
+            <i title="Coinbase" class="fas fa-hammer"></i>
+            <!-- <i title="Coinbase" class="fas fa-plus"></i>
+            <i class="fab fa-codepen"></i>
+            <i class="fas fa-cubes"></i>
+            <i class="fas fa-cube"></i>
+            <i class="fas fa-dice"></i>
+            <i class="fas fa-dice-five"></i>
+            
+            <i class="fas fa-money-bill"></i>
+            <i class="far fa-money-bill-alt"></i>
+            <i class="far fa-star"></i>
+            <i class="fas fa-star"></i> -->
+            <!-- <i class="fas fa-random"></i> -->
+         </div>
+         <div class="left number"> {{item.inputIndex}}</div>
+         <div class="left" *ngIf="item.inputAddress != null"><a class="address"
+               [routerLink]="['address', item.inputAddress]">{{item.inputAddress}}</a></div>
+         <div class="left" *ngIf="item.inputAddress == null">Can't parse input address</div>
+      </div>
+
+   </div>
+   <div class="grid-double-right shadow">
+      <h3>Outputs ({{transaction.outputs.length}})</h3>
+
+      <div class="grid-list-outputs" *ngFor="let item of transaction.outputs">
+         <div class="left number"> {{item.index}}</div>
+         <div class="left" *ngIf="item.address != null"><a class="address" [routerLink]="['../../address', item.address]">{{item.address}}</a></div>
+         <div class="left" *ngIf="item.address == null">Can't parse output address</div>
+         <div>{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
+         <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></div>
+         <div *ngIf="item.spentInTransaction == null"></div>
+      </div>
+
+   </div>
+</div>
+
+<!-- <div class="grid-double" *ngIf="transaction">
    <div class="box smaller">
       <h3>Inputs ({{transaction.inputs.length}})</h3>
 
-      <!-- Refactor this into a proper responsive layout and don't use table. -->
       <table>
          <tr>
             <th></th>
@@ -96,7 +159,6 @@
    <div class="box smaller">
       <h3>Outputs ({{transaction.outputs.length}})</h3>
 
-      <!-- Refactor this into a proper responsive layout and don't use table. -->
       <table>
          <tr>
             <th></th>
@@ -108,8 +170,6 @@
             <td class="number"> {{item.index}}</td>
             <td class="left" *ngIf="item.address != null"><a [routerLink]="['address', item.address]">{{item.address}}</a></td>
             <td class="left" *ngIf="item.address == null">Can't parse output address</td>
-
-            <!-- <td>{{item.outputType}}</td> -->
             <td>{{item.balance | amount}}</td>
             <td *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></td>
             <td *ngIf="item.spentInTransaction == null"></td>
@@ -117,4 +177,4 @@
       </table>
 
    </div>
-</div>
+</div> -->

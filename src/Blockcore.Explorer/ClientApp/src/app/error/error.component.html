@@ -1,0 +1,7 @@
+<div *ngIf="error" class="error">
+  {{message}} <i (click)="detailsVisible = !detailsVisible" class="fas fa-info-circle clickable" title="Show error details"></i>
+</div>
+<div class="error-details" *ngIf="detailsVisible">
+  <div *ngIf="details">{{details}}</div>
+  <div *ngIf="stack" class="error-details-stack">{{stack}}</div>
+</div>

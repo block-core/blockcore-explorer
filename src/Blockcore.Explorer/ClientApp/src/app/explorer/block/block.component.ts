@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiComponent } from 'src/app/api/api.component';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService, HttpError } from 'src/app/services/api.service';
 import { SetupService } from 'src/app/services/setup.service';
 
 @Component({
@@ -28,6 +28,7 @@ export class BlockComponent implements OnInit, OnDestroy {
   detailsVisible = false;
   lastBlockHeight: number;
   subscription: any;
+  error: Error;
 
   constructor(
     private api: ApiService,
@@ -39,11 +40,17 @@ export class BlockComponent implements OnInit, OnDestroy {
       const id: any = params.get('block');
       // LONG_MAX: 9223372036854775807
 
-      if (id.length < 20) {
-        this.block = await this.api.getBlockByHeight(id);
-      } else {
-        this.block = await this.api.getBlockByHash(id);
+      try {
+        if (id.length < 20) {
+          this.block = await this.api.getBlockByHeight(id);
+        } else {
+          this.block = await this.api.getBlockByHash(id);
+        }
+      } catch (e) {
+        this.error = e;
       }
+
+      console.log(this.block);
 
       // TODO: When refactoring and implementing better state management,
       // the tip should always be easily accessible, as oppose to doing this:
