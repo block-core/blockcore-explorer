@@ -5,7 +5,7 @@
       <div class="grid-hash">
          <div>
             <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
-            <span class="grid-hash-middle breakable">{{address.address}}</span>
+            <span class="grid-hash-middle breakable">{{address}}</span>
             <span class="grid-hash-right">
                <div class="grid-double">
                   <!-- <div *ngIf="block.blockIndex > 1">
@@ -33,40 +33,67 @@
 
 <div class="box">
 
-   <a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
+   <!-- <a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
          *ngIf="detailsVisible">Hide</span>
-      details</a>
+      details</a> -->
 
-   <h3>Transaction Details</h3>
+   <h3>Address</h3>
 
-   <app-progress class="centered" *ngIf="!address"></app-progress>
+   <app-progress class="centered" *ngIf="!balance"></app-progress>
 
-   <div class="grid-label-value" *ngIf="address">
+   <div class="grid-label-value" *ngIf="balance">
       <div>
          <span>Balance</span>
-         <span>{{address.balance | amount}}</span>
+         <span>{{balance.available | amount}}</span>
       </div>
       <div>
          <span>Total Received</span>
-         <span>{{address.totalReceived | amount}}</span>
+         <span>{{balance.received | amount}}</span>
       </div>
       <div>
          <span>Total Sent</span>
-         <span>{{address.totalSent | amount}}</span>
+         <span>{{balance.sent | amount}}</span>
       </div>
       <div>
          <span>Unconfirmed Balance</span>
-         <span>{{address.unconfirmedBalance | amount}}</span>
+         <span>{{balance.unconfirmed | amount}}</span>
       </div>
    </div>
 </div>
 
-<div class="box" *ngIf="address">
-   <h3>Transactions ({{address.transactions.length}})</h3>
+<div class="box">
+   <h3>Transactions ({{total}})</h3>
 
-   <!-- <div *ngFor="let item of block.transactions">
-      <a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a>
-   </div> -->
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="transactions">
+      <div class="grid-list-transactions">
+         <span>Date</span>
+         <span>Transaction ID</span>
+         <span>Confirmations</span>
+         <span>Inputs</span>
+         <span>Outputs</span>
+         <span>Amount</span>
+      </div>
+
+      <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid-list-transactions" *ngFor="let item of transactions">
+            <span>{{item.timestamp | timestamp | date:'dd/MM/yyyy hh:mm'}}</span>
+            <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
+            <span>{{item.confirmations}}</span>
+            <span>{{item.inputs.length}}</span>
+            <span>{{item.outputs.length}}</span>
+            <span>{{amount(item.outputs) | amount}} {{setup.Chain.Symbol}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
+
+<!-- <div class="box" *ngIf="address">
+   <h3>Transactions ({{address.transactions.length}})</h3>
 
    <div class="grid grid-odd-line" *ngIf="address">
       <div class="grid-header">
@@ -83,7 +110,7 @@
       </div>
    </div>
 
-</div>
+</div> -->
 
 <!-- <div class="grid-double" *ngIf="transaction">
    <div class="grid-double-left shadow">

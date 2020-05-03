@@ -8,22 +8,6 @@
             <span class="grid-hash-middle breakable">{{transaction.transactionId}}</span>
             <span class="grid-hash-right">
                <div class="grid-double">
-                  <!-- <div *ngIf="block.blockIndex > 1">
-                     <a [routerLink]="['../', block.blockIndex - 1]">
-                        <i class="fas fa-cube"></i><br>
-                        <span class="grid-hash-block-index">{{block.blockIndex - 1}}</span>
-                     </a>
-                  </div>
-                  <div class="muted">
-                     <i class="fas fa-cube"></i><br>
-                     <span class="grid-hash-block-index">{{block.blockIndex}}</span>
-                  </div>
-                  <div *ngIf="block.blockIndex !== lastBlockHeight">
-                     <a [routerLink]="['../', block.blockIndex + 1]">
-                        <i class="fas fa-cube"></i><br>
-                        <span class="grid-hash-block-index">{{block.blockIndex + 1}}</span>
-                     </a>
-                  </div> -->
                </div>
             </span>
          </div>
@@ -97,22 +81,10 @@
                   class="fas fa-arrow-left"></i></a></div>
          <div *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">
             <i title="Coinbase" class="fas fa-hammer"></i>
-            <!-- <i title="Coinbase" class="fas fa-plus"></i>
-            <i class="fab fa-codepen"></i>
-            <i class="fas fa-cubes"></i>
-            <i class="fas fa-cube"></i>
-            <i class="fas fa-dice"></i>
-            <i class="fas fa-dice-five"></i>
-            
-            <i class="fas fa-money-bill"></i>
-            <i class="far fa-money-bill-alt"></i>
-            <i class="far fa-star"></i>
-            <i class="fas fa-star"></i> -->
-            <!-- <i class="fas fa-random"></i> -->
          </div>
          <div class="left number"> {{item.inputIndex}}</div>
          <div class="left" *ngIf="item.inputAddress != null"><a class="address"
-               [routerLink]="['address', item.inputAddress]">{{item.inputAddress}}</a></div>
+               [routerLink]="['../../address', item.inputAddress]">{{item.inputAddress}}</a></div>
          <div class="left" *ngIf="item.inputAddress == null">Can't parse input address</div>
       </div>
 
@@ -131,50 +103,3 @@
 
    </div>
 </div>
-
-<!-- <div class="grid-double" *ngIf="transaction">
-   <div class="box smaller">
-      <h3>Inputs ({{transaction.inputs.length}})</h3>
-
-      <table>
-         <tr>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th>Amount</th>
-         </tr>
-         <tr *ngFor="let item of transaction.inputs">
-            <td *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output"><i class="fas fa-arrow-left"></i></a></td>
-            <td *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">New coins</td>
-            <td class="number"> {{item.inputIndex}}</td>
-            <td class="left" *ngIf="item.inputAddress != null"><a [routerLink]="['address', item.inputAddress]">{{item.inputAddress}}</a></td>
-            <td class="left" *ngIf="item.inputAddress == null">Can't parse input address</td>
-            <td></td>
-            <td></td>
-         </tr>
-      </table>
-
-   </div>
-   <div class="box smaller">
-      <h3>Outputs ({{transaction.outputs.length}})</h3>
-
-      <table>
-         <tr>
-            <th></th>
-            <th></th>
-            <th>Amount</th>
-            <th></th>
-         </tr>
-         <tr *ngFor="let item of transaction.outputs">
-            <td class="number"> {{item.index}}</td>
-            <td class="left" *ngIf="item.address != null"><a [routerLink]="['address', item.address]">{{item.address}}</a></td>
-            <td class="left" *ngIf="item.address == null">Can't parse output address</td>
-            <td>{{item.balance | amount}}</td>
-            <td *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></td>
-            <td *ngIf="item.spentInTransaction == null"></td>
-         </tr>
-      </table>
-
-   </div>
-</div> -->

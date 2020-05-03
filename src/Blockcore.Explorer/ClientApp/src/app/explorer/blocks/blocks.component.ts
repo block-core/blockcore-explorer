@@ -27,6 +27,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
   limit = 20;
   loading = false;
   subscription: any;
+  total: any;
 
   @HostListener('scroll', ['$event'])
   scrollHandler(event) {
@@ -39,7 +40,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
-      await this.updateBlocks('/api/query/block?transactions=false&limit=' + this.limit);
+      await this.updateBlocks('/api/query/block?limit=' + this.limit);
     });
   }
 
@@ -50,16 +51,23 @@ export class BlocksComponent implements OnInit, OnDestroy {
   }
 
   async updateBlocks(url) {
+
+    console.log('url: ', url);
+
+    if (!url) {
+      return;
+    }
+
     const baseUrl = this.api.baseUrl.replace('/api', '');
     // For the block scrolling (using link http header), we must manually set full URL.
     const response = await this.api.request(baseUrl + url);
 
-    const linkHeader = response.headers.get('link');
-    const links1 = linkHeader.split(', <');
-    const links2 = links1[2].split('>; ');
-    const link = links2[0];
+    this.total = response.headers.get('Pagination-Total');
+    const linkHeader = response.headers.get('Link');
+    const links = this.api.parseLinkHeader(linkHeader);
 
-    this.link = link;
+    // This will be set to undefined/null when no more previous links is available.
+    this.link = links.previous;
 
     // When the offset is not set (0), we should reverse the order of items.
     const list = await response.json();

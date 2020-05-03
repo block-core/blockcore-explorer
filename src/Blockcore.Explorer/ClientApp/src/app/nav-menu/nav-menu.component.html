@@ -5,8 +5,7 @@
   <div class="dropdown-content chains">
     <ul>
       <li class="chain-item" *ngFor="let chain of setup.chains">
-        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img
-            src="https://chains.blockcore.net/assets/{{chain.symbol}}/icon.png"></a>
+        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [src]="chain.icon"></a>
         <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
       </li>
     </ul>

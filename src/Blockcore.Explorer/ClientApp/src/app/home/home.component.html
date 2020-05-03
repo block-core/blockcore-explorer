@@ -3,8 +3,7 @@
 <div class="chains-home">
    <ul>
      <li class="chain-home-item" *ngFor="let chain of setup.chains">
-       <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]"><img
-           src="https://chains.blockcore.net/assets/{{chain.symbol}}/icon.png"></a>
+       <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [src]="chain.icon"></a>
        <a class="chain-home-link link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
      </li>
    </ul>

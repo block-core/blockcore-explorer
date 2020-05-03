@@ -42,7 +42,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
 
   async updateBlocks() {
     try {
-      const list = await this.api.getBlocks(0, 5, false);
+      const list = await this.api.getBlocks(0, 5);
 
       // When the offset is not set (0), we should reverse the order of items.
       list.sort((b, a) => {
@@ -58,6 +58,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
       });
 
       this.blocks = list;
+      this.errorBlocks = null;
     } catch (error) {
       this.errorBlocks = error;
     }
@@ -76,6 +77,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
       this.network = this.node.network;
       this.configuration = this.info.configuration;
       this.consensus = this.configuration.consensus;
+      this.errorInfo = null;
     } catch (error) {
       this.errorInfo = error;
     }

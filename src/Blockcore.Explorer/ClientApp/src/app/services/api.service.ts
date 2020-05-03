@@ -92,23 +92,23 @@ export class ApiService {
    }
 
    async getLastBlock(transactions: boolean = true) {
-      return this.downloadRelative('/query/block/latest?transactions=' + transactions);
+      return this.downloadRelative('/query/block/latest');
    }
 
-   async getBlocks(offset: number, limit: number, transactions: boolean = true) {
-      return this.downloadRelative('/query/block?offset=' + offset + '&limit=' + limit + '&transactions=' + transactions);
+   async getBlocks(offset: number, limit: number) {
+      return this.downloadRelative('/query/block?offset=' + offset + '&limit=' + limit);
    }
 
-   async getBlocksRequest(offset: number, limit: number, transactions: boolean = true) {
-      return this.downloadRelative('/query/block?offset=' + offset + '&limit=' + limit + '&transactions=' + transactions);
+   async getBlocksRequest(offset: number, limit: number) {
+      return this.downloadRelative('/query/block?offset=' + offset + '&limit=' + limit);
    }
 
-   async getBlockByHeight(index: number, transactions: boolean = true) {
-      return this.downloadRelative('/query/block/index/' + index + '?transactions=' + transactions);
+   async getBlockByHeight(index: number) {
+      return this.downloadRelative('/query/block/index/' + index);
    }
 
-   async getBlockByHash(hash: string, transactions: boolean = true) {
-      return this.downloadRelative('/query/block/' + hash + '?transactions=' + transactions);
+   async getBlockByHash(hash: string) {
+      return this.downloadRelative('/query/block/' + hash);
    }
 
    async getTransaction(hash: string) {
@@ -122,5 +122,19 @@ export class ApiService {
 
    async getPeers(date: Date) {
       return this.downloadRelative('/stats/peers/' + date.toISOString());
+   }
+
+   parseLinkHeader(linkHeader: string) {
+      const sections = linkHeader.split(', ');
+      //const links: Record<string, string> = { };
+      const links = {first: null, last: null, previous: null, next: null};
+
+      sections.forEach(section => {
+         const key = section.substring(section.indexOf('rel="') + 5).replace('"', '');
+         const value = section.substring(section.indexOf('<') + 1, section.indexOf('>'));
+         links[key] = value;
+      });
+
+      return links;
    }
 }

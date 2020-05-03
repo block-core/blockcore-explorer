@@ -718,7 +718,7 @@ footer {
   //grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
-.grid-hash div {
+.grid-hash > div {
   display: contents;
 }
 
@@ -731,6 +731,7 @@ footer {
 }
 
 .number {
+  font-size: 0.9em;
   font-family: Roboto Mono, monospace;
 }
 
@@ -739,6 +740,18 @@ footer {
 
 .grid-hash-block-index {
   font-size: 0.8em;
+}
+
+.grid-hash-navigation {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0px 0.2em;
+}
+
+.address-transactions-scrollable
+{
+  min-height: 100px !important;
+  max-height: 160px !important;
 }
 
 .grid-double {
@@ -791,6 +804,14 @@ footer {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.grid-list-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.grid-list-6 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
 .grid-list-inputs,
 .grid-list-outputs {
   font-size: 0.75em;
@@ -805,6 +826,14 @@ footer {
 
 .grid-list-outputs {
   grid-template-columns: 18px minmax(0, 1fr) auto 18px;
+}
+
+.grid-list-transactions {
+  font-size: 0.75em;
+  margin: 1em;
+  display: grid;
+  gap: 0.3em;
+  grid-template-columns: 140px minmax(0, 1fr) auto 60px 60px auto;
 }
 
 .address {

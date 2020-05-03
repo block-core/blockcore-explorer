@@ -7,7 +7,7 @@
             <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
             <span class="grid-hash-middle breakable">{{block.blockHash}}</span>
             <span class="grid-hash-right">
-               <div class="grid-double">
+               <div class="grid-hash-navigation">
                   <div *ngIf="block.blockIndex > 1">
                      <a [routerLink]="['../', block.blockIndex - 1]">
                         <i class="fas fa-cube"></i><br>
@@ -23,6 +23,10 @@
                         <i class="fas fa-cube"></i><br>
                         <span class="grid-hash-block-index">{{block.blockIndex + 1}}</span>
                      </a>
+                  </div>
+                  <div *ngIf="block.blockIndex === lastBlockHeight">
+                        <i class="fas fa-hammer"></i><br>
+                        <span class="grid-hash-block-index">...</span>
                   </div>
                </div>
             </span>
@@ -114,25 +118,23 @@
 
 </div>
 
-<div class="box" *ngIf="block">
-   <h3>Transactions ({{block.transactionCount}})</h3>
 
-   <!-- <div *ngFor="let item of block.transactions">
-      <a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a>
-   </div> -->
+<div class="box">
+   <h3>Transactions ({{total}})</h3>
 
-   <div class="grid grid-odd-line" *ngIf="block">
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="transactions">
       <div class="grid-header">
          <span>Transaction ID</span>
-         <span></span>
-         <span></span>
-         <span></span>
       </div>
-      <div *ngFor="let item of block.transactions">
-         <span><a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
-         <span></span>
-         <span></span>
-         <span></span>
+
+      <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid grid-odd-line" *ngFor="let item of transactions">
+            <span><a class="nonbreakable" [routerLink]="['../../transaction', item.transactionHash]">{{item.transactionHash}}</a></span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
       </div>
    </div>
 
