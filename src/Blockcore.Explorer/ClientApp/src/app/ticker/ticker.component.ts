@@ -13,6 +13,7 @@ export class TickerComponent implements OnInit, OnDestroy {
 
   subscription: any;
   ticker: any = {};
+  error: any;
 
   constructor(
     private api: ApiService,
@@ -27,32 +28,40 @@ export class TickerComponent implements OnInit, OnDestroy {
   navigator = (obj, path) => path.split('.').reduce((a, b) => a && a[b], obj);
 
   async updateTicker() {
-    const url = this.setup.Explorer?.Ticker?.ApiUrl;
 
-    if (!url) {
-      this.ticker = {};
-      return;
+    try {
+      this.error = null;
+      const url = this.setup.Explorer?.Ticker?.ApiUrl;
+
+      if (!url) {
+        this.ticker = {};
+        return;
+      }
+
+      const request = await this.api.download(url);
+
+      const changePercentage = this.navigator(request, this.setup.Explorer.Ticker.PercentagePath);
+      let changeType = 'neutral';
+
+      if (changePercentage < 0) {
+        changeType = 'negative';
+      }
+
+      if (changePercentage > 0) {
+        changeType = 'positive';
+      }
+
+      this.ticker = {
+        btc: this.navigator(request, this.setup.Explorer.Ticker.PricePathBTC),
+        usd: this.navigator(request, this.setup.Explorer.Ticker.PricePathUSD),
+        changePercentage,
+        changeType
+      };
     }
-
-    const request = await this.api.download(url);
-
-    const changePercentage = this.navigator(request, this.setup.Explorer.Ticker.PercentagePath);
-    let changeType = 'neutral';
-
-    if (changePercentage < 0) {
-      changeType = 'negative';
+    catch (err) {
+      this.ticker = { btc: null, usd: null, changePercentage: null, changeType: null };
+      this.error = err;
     }
-
-    if (changePercentage > 0) {
-      changeType = 'positive';
-    }
-
-    this.ticker = {
-      btc: this.navigator(request, this.setup.Explorer.Ticker.PricePathBTC),
-      usd: this.navigator(request, this.setup.Explorer.Ticker.PricePathUSD),
-      changePercentage,
-      changeType
-    };
   }
 
   async ngOnInit() {

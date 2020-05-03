@@ -5,6 +5,6 @@
 <p>
   If you'd like to call this API directly, you can read the documentation for here:
 </p>
-<p>
-  <a class="link" href="https://city.indexer.blockcore.net/docs/">https://city.indexer.blockcore.net/docs/</a>
+<p *ngIf="setup.Explorer?.Indexer?.DocUrl">
+  <a class="link" [href]="setup.Explorer.Indexer.DocUrl">{{setup.Explorer.Indexer.DocUrl}}</a>
 </p>

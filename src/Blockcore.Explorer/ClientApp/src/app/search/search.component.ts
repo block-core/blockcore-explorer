@@ -29,9 +29,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   inputType(value) {
     // LONG_MAX: 9223372036854775807
-    if (this.searchTerm < 20) {
+    if (value.length < 20) {
       return 'index';
-    } else if (this.searchTerm > 30 && this.searchTerm < 40) {
+    } else if (value.length > 30 && value.length < 54) {
       return 'address';
     } else {
       return 'hash';
@@ -56,7 +56,7 @@ export class SearchComponent implements OnInit, OnDestroy {
         break;
       }
       case 'address': {
-
+        this.router.navigate([this.setup.current, 'explorer', 'address', text]);
         break;
       }
       case 'hash': {

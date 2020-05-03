@@ -4,7 +4,7 @@
       {{ticker.btc.toFixed(8)}} <i class="fab fa-btc"></i> <span *ngIf="ticker.changePercentage" class="{{ticker.changeType}}">{{ticker.changePercentage}}%</span>
    </h2>
    <h3 *ngIf="ticker.usd">${{ticker.usd.toFixed(3)}}</h3>
-
+   <app-error class="centered" [error]="error"></app-error>
 </div>
 
 <div class="widget">

@@ -23,7 +23,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   errorInfo: string;
   subscription: any;
 
-  constructor(private api: ApiService, private setup: SetupService) {
+  constructor(private api: ApiService, public setup: SetupService) {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
       await this.updateInfo();
       await this.updateBlocks();
