@@ -30,10 +30,10 @@ jobs:
       - name: Build the Docker container image
         run: docker build -f "./src/Blockcore.Explorer/Dockerfile.Release" -t blockcore/explorer:latest -t blockcore/explorer:${{ github.event.release.tag_name }} --label "unstable=true" "."
 
-      # - name: Login and Push to Docker Registry
-      #   run: |
-      #     docker login -u "sondreb" -p "${{secrets.DockerHubSecret}}"
-      #     docker push blockcore/explorer
+      - name: Login and Push to Docker Registry
+        run: |
+          docker login -u "sondreb" -p "${{secrets.DockerHubSecret}}"
+          docker push blockcore/explorer
 
       # - name: Login and Push to GitHub Docker Registry
       #   run: |
