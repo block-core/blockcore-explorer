@@ -78,7 +78,8 @@ export class ApiService {
          this.baseUrl = this.baseUrl.substring(0, this.baseUrl.length - 1);
       }
 
-      this.baseUrl = 'http://localhost:9910/api';
+      // TODO: Uncomment when debugging locally.
+      // this.baseUrl = 'http://localhost:9910/api';
 
       return setup;
    }
