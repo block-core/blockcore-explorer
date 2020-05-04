@@ -1,5 +1,7 @@
 ## <small>0.1.4 (2020-05-04)</small>
 
+* Add support for logo color filter ([7050c08](https://github.com/block-core/blockcore-explorer/commit/7050c08))
+* Clean up package-lock.json ([47b00c9](https://github.com/block-core/blockcore-explorer/commit/47b00c9))
 * Enable compression on response ([84cca50](https://github.com/block-core/blockcore-explorer/commit/84cca50)), closes [#6](https://github.com/block-core/blockcore-explorer/issues/6)
 * Remove setting of body on release updates ([46a36ac](https://github.com/block-core/blockcore-explorer/commit/46a36ac))
 * Responsive layout improvement for mobile devices ([39acc24](https://github.com/block-core/blockcore-explorer/commit/39acc24))
