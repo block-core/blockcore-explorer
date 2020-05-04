@@ -1,10 +1,19 @@
-# Blockcore Explorer | Cross-Chain Multi-Chain Block Explorer
-
-[1]: https://github.com/block-core/blockcore-explorer/actions
-[2]: https://github.com/block-core/blockcore-explorer/workflows/Build%20and%20Release%20Binaries/badge.svg
-[3]: https://github.com/block-core/blockcore-explorer/workflows/Build%20and%20Release%20Docker%20Image/badge.svg
-
-[![Build Status][2]][1] [![Release Status][3]][1]
+<p align="center">
+  <p align="center">
+    <img src="https://avatars3.githubusercontent.com/u/53176002?s=200&v=4" height="100" alt="Blockcore" />
+  </p>
+  <h3 align="center">
+    About Blockcore Explorer
+  </h3>
+  <p align="center">
+    Cross-Chain Multi-Chain Block Explorer
+  </p>
+  <p align="center">
+      <a href="https://github.com/block-core/blockcore/actions"><img src="https://github.com/block-core/blockcore-explorer/workflows/Build%20and%20Release%20Binaries/badge.svg" /></a>
+      <a href="https://github.com/block-core/blockcore/actions"><img src="https://github.com/block-core/blockcore-explorer/workflows/Build%20and%20Release%20Docker%20Image/badge.svg" /></a>
+  </p>
+  <p align="center"><em>"This explorer is ... amazing man. So fast (by far the fastest for me) and complete" - buta</em></p>
+</p>
 
 ## Introduction
 
