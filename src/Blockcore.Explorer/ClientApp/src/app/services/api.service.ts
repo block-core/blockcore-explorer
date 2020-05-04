@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../environments/environment';
 
 export class HttpError extends Error {
    code: number;
@@ -31,7 +32,7 @@ export class ApiService {
    baseUrl: string;
 
    constructor(
-      private http: HttpClient,
+      private http: HttpClient
    ) {
 
    }
@@ -78,8 +79,9 @@ export class ApiService {
          this.baseUrl = this.baseUrl.substring(0, this.baseUrl.length - 1);
       }
 
-      // TODO: Uncomment when debugging locally.
-      // this.baseUrl = 'http://localhost:9910/api';
+      if (environment.useLocalIndexer) {
+         this.baseUrl = 'http://localhost:9910/api';
+      }
 
       return setup;
    }
@@ -128,7 +130,7 @@ export class ApiService {
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
       //const links: Record<string, string> = { };
-      const links = {first: null, last: null, previous: null, next: null};
+      const links = { first: null, last: null, previous: null, next: null };
 
       sections.forEach(section => {
          const key = section.substring(section.indexOf('rel="') + 5).replace('"', '');
