@@ -43,7 +43,7 @@ export class NetworkComponent implements OnInit, OnDestroy {
     this.blockchain = this.node.blockchain;
     this.network = this.node.network;
     this.configuration = this.info.configuration;
-    this.consensus = this.configuration.consensus;
+    this.consensus = this.configuration?.consensus;
 
     this.peers = await this.getPeers();
   }

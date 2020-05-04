@@ -76,7 +76,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
       this.blockchain = this.node.blockchain;
       this.network = this.node.network;
       this.configuration = this.info.configuration;
-      this.consensus = this.configuration.consensus;
+      this.consensus = this.configuration?.consensus;
       this.errorInfo = null;
     } catch (error) {
       this.errorInfo = error;

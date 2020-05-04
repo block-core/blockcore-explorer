@@ -122,13 +122,13 @@
     </div>
   </div>
 
-  <h2>Configuration (Consensus)</h2>
+  <h2 *ngIf="configuration">Configuration (Consensus)</h2>
 
-  <p>This information is read from the network definition of the current chain. This might differ to the configuration
+  <p *ngIf="configuration">This information is read from the network definition of the current chain. This might differ to the configuration
     of the indexing node.</p>
 
 
-  <div class="grid-label-value">
+  <div *ngIf="configuration" class="grid-label-value">
     <div>
       <span>Default Port</span>
       <span>{{configuration.defaultPort}}</span>
