@@ -5,7 +5,7 @@
   <div class="dropdown-content chains">
     <ul>
       <li class="chain-item" *ngFor="let chain of setup.chains">
-        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img  [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>
+        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>
         <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
       </li>
     </ul>
