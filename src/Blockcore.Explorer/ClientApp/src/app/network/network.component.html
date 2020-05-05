@@ -21,7 +21,7 @@
     </div>
     <div>
       <span>Website</span>
-      <span>{{info.url}}</span>
+      <span class="breakable">{{info.url}}</span>
     </div>
     <div>
       <span>Symbol</span>
@@ -66,11 +66,11 @@
       </div>
       <div>
         <span>Best Block Hash</span>
-        <span>{{blockchain.bestBlockHash}}</span>
+        <span class="breakable">{{blockchain.bestBlockHash}}</span>
       </div>
       <div>
         <span>Difficulty</span>
-        <span>{{blockchain.difficulty}}</span>
+        <span class="breakable">{{blockchain.difficulty}}</span>
       </div>
       <div>
         <span>Is Initial Block Download</span>
@@ -167,22 +167,18 @@
     </div>
     <div>
       <span>Seed Nodes</span>
-      <span>
-        <ul>
-          <li *ngFor="let seed of configuration.seedNodes">
+      <span class="small-little">
+          <div *ngFor="let seed of configuration.seedNodes">
             {{seed}}
-          </li>
-        </ul>
+          </div><br>
       </span>
     </div>
     <div>
       <span>DNS Seeds</span>
-      <span>
-        <ul>
-          <li *ngFor="let seed of configuration.dnsSeeds">
+      <span class="small-little">
+          <div *ngFor="let seed of configuration.dnsSeeds">
             {{seed}}
-          </li>
-        </ul>
+          </div><br>
       </span>
     </div>
     <div>
@@ -215,7 +211,7 @@
     </div>
     <div>
       <span>Maximum Money</span>
-      <span>{{consensus.maxMoney}}</span>
+      <span class="breakable">{{consensus.maxMoney}}</span>
     </div>
     <div>
       <span>Last POW Block</span>

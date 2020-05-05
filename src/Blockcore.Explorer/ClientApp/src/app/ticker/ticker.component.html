@@ -10,7 +10,6 @@
 <div class="widget">
    <p>
       <a class="link" [routerLink]="['explorer']">Go to explorer</a>
-      <a *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)" [href]="setup.Explorer?.Ticker?.WebUrl"
-         class="link">Price details</a>
+      <a *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)" [href]="setup.Explorer?.Ticker?.WebUrl" class="link">Price details</a>
    </p>
 </div>

@@ -1007,6 +1007,10 @@ pre {
   background: #555;
 }
 
+.show-small {
+  display: none;
+}
+
 // .grid-label {
 //   grid-area: grid-label;
 // }
@@ -1153,6 +1157,10 @@ pre {
     font-size: 18px;
   }
 
+  .margin {
+    margin: 0.6em;
+  }
+
   nav.menu li {
     float: none;
     margin-bottom: 0.3em;
@@ -1160,6 +1168,14 @@ pre {
 
   .hide-small {
     display: none;
+  }
+
+  .show-small {
+    display: inline-block;
+  }
+
+  .small-little {
+    font-size: 0.7em;
   }
 
   .content-centered-top {

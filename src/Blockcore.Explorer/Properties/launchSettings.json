@@ -1,27 +1,48 @@
 {
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:11791",
-      "sslPort": 0
-    }
-  },
-  "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+   "profiles": {
+      "BLOCKCORE (MULTI)": {
+         "commandName": "Project",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "CITY": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=CITY",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "XLR": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=XLR",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "XDS": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=XDS",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
+      "x42": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=X42",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
       }
-    },
-    "Blockcore.Website": {
-      "commandName": "Project",
-      "launchBrowser": true,
-      "applicationUrl": "http://localhost:9911",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    }
-  }
+   }
 }

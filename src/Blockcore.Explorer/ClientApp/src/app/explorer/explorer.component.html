@@ -19,12 +19,14 @@
       <div class="grid-header">
          <span>Height</span>
          <span>Age</span>
-         <span>Transactions</span>
-         <span>Size (kB)</span>
+         <span class="right hide-small">Transactions</span>
+         <span class="right show-small">TXs</span>
+         <span class="right">Size (kB)</span>
       </div>
       <div *ngFor="let item of blocks">
          <span><a [routerLink]="['block', item.blockIndex]">{{item.blockIndex}}</a></span>
-         <span>{{item.blockTime | ago}}</span>
+         <span class="hide-small">{{item.blockTime | ago}}</span>
+         <span class="show-small">{{item.blockTime | timestamp | date:'hh:mm'}}</span>
          <span class="right">{{item.transactionCount}}</span>
          <span class="right">{{item.blockSize | size}}</span>
       </div>
@@ -51,7 +53,7 @@
 
       <div class="grid-label-value">
          <div>
-            <span>Transactions in pool (mempool)</span>
+            <span>Transactions in pool</span>
             <span>{{node.transactionsInPool}}</span>
          </div>
          <div>

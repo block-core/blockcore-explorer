@@ -4,6 +4,7 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
+using System.Security.Cryptography;
 using Microsoft.Extensions.Configuration;
 
 namespace Blockcore
@@ -57,6 +58,13 @@ namespace Blockcore
             .Where(arg => arg.StartsWith("--chain", ignoreCase: true, CultureInfo.InvariantCulture))
             .Select(arg => arg.Replace("--chain=", string.Empty, ignoreCase: true, CultureInfo.InvariantCulture))
             .FirstOrDefault();
+
+         var settings = new Dictionary<string, string>
+           {
+               {"chain", chain}
+           };
+
+         builder.AddInMemoryCollection(settings);
 
          if (string.IsNullOrWhiteSpace(chain))
          {

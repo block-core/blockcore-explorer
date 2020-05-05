@@ -2,7 +2,7 @@
   <a class="header-logo" [routerLink]="['/']"><img class="header-image" [ngClass]="{'mode-aware': setup.Chain?.IconFilter}" [src]="setup.Chain?.Icon"></a>
   <a class="header-title" [routerLink]="['/']">{{setup.Chain?.Name}}<br>Explorer</a>
 
-  <div class="dropdown-content chains">
+  <div *ngIf="setup.multiChain" class="dropdown-content chains">
     <ul>
       <li class="chain-item" *ngFor="let chain of setup.chains">
         <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>

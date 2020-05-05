@@ -55,9 +55,10 @@ namespace Blockcore.Website
 
          app.UseEndpoints(endpoints =>
          {
-            endpoints.MapControllerRoute(
-                name: "default",
-                pattern: "{controller}/{action=Index}/{id?}");
+            endpoints.MapControllers();
+            //endpoints.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{controller}/{action=Index}/{id?}");
          });
 
          app.UseSpa(spa =>

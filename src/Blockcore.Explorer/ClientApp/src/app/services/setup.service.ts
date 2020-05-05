@@ -18,6 +18,8 @@ export class SetupService {
    Indexer: any;
    Explorer: any;
 
+   multiChain: boolean;
+
    // Both SubjectBehavior and Behavior, depending on consumer.
    // The "currentChainSubject$" will return current value as soon as subscribed.
    private readonly currentChainSubjectBehavior = new BehaviorSubject<string>('BLOCKCORE');
