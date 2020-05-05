@@ -1,3 +1,16 @@
+## <small>0.1.5 (2020-05-05)</small>
+
+* Add screenshots to README ([39f18d0](https://github.com/block-core/blockcore-explorer/commit/39f18d0))
+* Add support for local indexer during debug and development ([69bba5d](https://github.com/block-core/blockcore-explorer/commit/69bba5d))
+* Add support for single-chain instance ([4cc988b](https://github.com/block-core/blockcore-explorer/commit/4cc988b))
+* Fix action links and header for Explorer README ([89d0c3e](https://github.com/block-core/blockcore-explorer/commit/89d0c3e))
+* Fix handling of missing configuration information in the Network and Explorer ([01e299a](https://github.com/block-core/blockcore-explorer/commit/01e299a))
+* Make the home screen dark mode aware for chain logos ([1716817](https://github.com/block-core/blockcore-explorer/commit/1716817)), closes [#7](https://github.com/block-core/blockcore-explorer/issues/7)
+* Update CHANGELOG and version ([68393fe](https://github.com/block-core/blockcore-explorer/commit/68393fe))
+* Update README header for Blockcore Explorer ([74d749c](https://github.com/block-core/blockcore-explorer/commit/74d749c))
+
+
+
 ## <small>0.1.4 (2020-05-04)</small>
 
 * Add support for logo color filter ([7050c08](https://github.com/block-core/blockcore-explorer/commit/7050c08))
