@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: */explorer/
+Disallow: */explorer/*
+Disallow: /explorer/*

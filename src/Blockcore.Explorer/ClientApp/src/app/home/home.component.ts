@@ -12,7 +12,7 @@ export class HomeComponent {
   constructor(public setup: SetupService, private router: Router) {
     // When we are not in multichain mode, redirect to chain-home.
     if (!setup.multiChain) {
-      router.navigate(['/' + setup.current]);
+      router.navigate(['/' + setup.current.toLowerCase()]);
     }
   }
 }

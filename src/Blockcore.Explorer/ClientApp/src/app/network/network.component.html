@@ -62,7 +62,7 @@
       </div>
       <div>
         <span>Average Block Size Kb</span>
-        <span>{{node.avgBlockSizeKb}}</span>
+        <span>{{node.avgBlockSizeKb | size}}</span>
       </div>
       <div>
         <span>Best Block Hash</span>
@@ -74,11 +74,11 @@
       </div>
       <div>
         <span>Is Initial Block Download</span>
-        <span>{{blockchain.isInitialBlockDownload}}</span>
+        <span>{{blockchain.isInitialBlockDownload | yes}}</span>
       </div>
       <div>
         <span>Is Pruned</span>
-        <span>{{blockchain.isPruned}}</span>
+        <span>{{blockchain.isPruned | yes}}</span>
       </div>
       <div>
         <span>Version</span>
@@ -207,7 +207,7 @@
     </div>
     <div>
       <span>Is Proof-Of-Stake</span>
-      <span>{{consensus.isProofOfStake}}</span>
+      <span>{{consensus.isProofOfStake | yes}}</span>
     </div>
     <div>
       <span>Maximum Money</span>

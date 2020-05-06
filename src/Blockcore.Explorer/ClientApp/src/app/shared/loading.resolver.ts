@@ -18,11 +18,24 @@ export class LoadingResolverService implements Resolve<any> {
    ) { }
    async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Observable<any> | Observable<never>> {
 
-      // Fetch the configure explorer chain to see if we should run in single or multi-chain mode.
-      const explorerChainRequest = await this.api.request('/api/explorer/chain');
-      const explorerChain = await explorerChainRequest.text();
+      let explorerChain = this.setup.current;
+      this.setup.multiChain = true;
 
-      this.setup.multiChain = (explorerChain === 'BLOCKCORE');
+      if (!this.setup.initialized) {
+         try {
+            this.setup.initialized = true;
+
+            // Fetch the configure explorer chain to see if we should run in single or multi-chain mode.
+            const explorerChainRequest = await this.api.request('/api/explorer/chain');
+
+            if (explorerChainRequest.status === 200) {
+               explorerChain = await explorerChainRequest.text();
+               this.setup.multiChain = (explorerChain === 'BLOCKCORE');
+            }
+
+         } catch {
+         }
+      }
 
       if (this.setup.multiChain) {
          // TODO: Figure out a better way to get path fragments pre-parsed into an array.

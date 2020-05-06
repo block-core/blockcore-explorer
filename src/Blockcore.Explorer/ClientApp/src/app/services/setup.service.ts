@@ -19,6 +19,7 @@ export class SetupService {
    Explorer: any;
 
    multiChain: boolean;
+   initialized = false;
 
    // Both SubjectBehavior and Behavior, depending on consumer.
    // The "currentChainSubject$" will return current value as soon as subscribed.
