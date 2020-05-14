@@ -68,12 +68,13 @@ a:hover {
   position: absolute;
   content: "";
   height: 0.2em;
-  bottom: 0.2em;
+  bottom: 0.16em;
   margin: 0 auto;
   left: 0;
   right: 0;
   width: 100%;
-  background: RGBA(243, 182, 35, 0.72);
+  /* background: RGBA(243, 182, 35,1);*/
+  background: var(--accent);
 }
 
 .loading-text {

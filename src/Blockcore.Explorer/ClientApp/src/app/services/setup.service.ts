@@ -5,7 +5,6 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-
 @Injectable({
    providedIn: 'root'
 })
@@ -44,10 +43,6 @@ export class SetupService {
       private router: Router
    ) {
 
-      // this.getChains();
-      // this.setChain('blockcore');
-      // await this.setChain('BLOCKCORE');
-
    }
 
    async getChains() {
@@ -79,6 +74,10 @@ export class SetupService {
 
       // Update the chain subject, which should trigger consumers to do some processing.
       this.current = chain;
+
+      if (this.Chain?.Color) {
+         document.documentElement.style.setProperty('--accent', this.Chain?.Color);
+      }
 
       return null;
    }
