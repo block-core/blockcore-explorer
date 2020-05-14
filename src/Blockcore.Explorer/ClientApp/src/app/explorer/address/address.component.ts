@@ -88,22 +88,10 @@ export class AddressComponent implements OnInit, OnDestroy {
     const links = this.api.parseLinkHeader(linkHeader);
 
     // This will be set to undefined/null when no more next links is available.
-    this.link = links['next'];
+    this.link = links['previous'];
 
     // When the offset is not set (0), we should reverse the order of items.
     const list = await response.json();
-
-    // list.sort((b, a) => {
-    //   if (a.blockIndex === b.blockIndex) {
-    //     return 0;
-    //   }
-    //   if (a.blockIndex < b.blockIndex) {
-    //     return -1;
-    //   }
-    //   if (a.blockIndex > b.blockIndex) {
-    //     return 1;
-    //   }
-    // });
 
     if (!this.transactions) {
       this.transactions = [];

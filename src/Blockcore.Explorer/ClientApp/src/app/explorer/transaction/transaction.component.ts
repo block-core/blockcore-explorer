@@ -28,6 +28,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
   detailsVisible = false;
   lastBlockHeight: number;
   subscription: any;
+  error: Error;
 
   constructor(
     private api: ApiService,
@@ -39,7 +40,14 @@ export class TransactionComponent implements OnInit, OnDestroy {
       const id: any = params.get('transaction');
       console.log('Transaction ID:', id);
 
-      this.transaction = await this.api.getTransaction(id);
+      try {
+        this.transaction = await this.api.getTransaction(id);
+
+        this.error = null;
+      } catch (e) {
+        this.error = e;
+      }
+
       console.log(this.transaction);
     });
   }

@@ -21,9 +21,10 @@
          *ngIf="detailsVisible">Hide</span>
       details</a>
 
-   <h3>Transaction Details</h3>
+   <h3><i class="fas fa-receipt"></i>&nbsp;&nbsp;Transaction Details</h3>
 
    <app-progress class="centered" *ngIf="!transaction"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
 
    <div class="grid-label-value" *ngIf="transaction">
       <div>

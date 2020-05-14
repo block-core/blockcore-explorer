@@ -57,8 +57,8 @@
             <span>{{node.transactionsInPool}}</span>
          </div>
          <div>
-            <span>Average Block Size Kb</span>
-            <span>{{(node.avgBlockSizeKb / 1024).toFixed(2)}}</span>
+            <span>Average Block Size</span>
+            <span>{{node.avgBlockSizeKb | size}}</span>
          </div>
          <div>
             <span>Difficulty</span>

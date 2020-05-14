@@ -75,6 +75,9 @@ export class SetupService {
       // Update the chain subject, which should trigger consumers to do some processing.
       this.current = chain;
 
+      console.log(this.Chain);
+      console.log(this.Chain.Color);
+
       if (this.Chain?.Color) {
          document.documentElement.style.setProperty('--accent', this.Chain?.Color);
       }
