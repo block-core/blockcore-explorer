@@ -22,7 +22,8 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
-              "src/assets"
+              "src/assets",
+              "src/chain.json"
             ],
             "styles": [
               "src/styles.scss"
@@ -84,7 +85,8 @@
             ],
             "scripts": [],
             "assets": [
-              "src/assets"
+              "src/assets",
+              "src/chain.json"
             ]
           }
         },

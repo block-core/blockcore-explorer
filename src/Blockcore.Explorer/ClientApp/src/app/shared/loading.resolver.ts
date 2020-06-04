@@ -4,10 +4,11 @@ import {
    ActivatedRouteSnapshot,
    RouterStateSnapshot
 } from '@angular/router';
-import { Observable, of, EMPTY } from 'rxjs';
-import { take, mergeMap, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { ApiService } from '../services/api.service';
 import { SetupService } from '../services/setup.service';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
    providedIn: 'root'
 })
@@ -20,6 +21,13 @@ export class LoadingResolverService implements Resolve<any> {
 
       let explorerChain = this.setup.current;
       this.setup.multiChain = true;
+
+      // If local is set to true, then we'll default to single chain and also not run normal initialization where the API is queried.
+      if (environment.local) {
+         this.setup.multiChain = false;
+         this.setup.initialized = true;
+         explorerChain = 'local'; // Used in the URLs, so make sure it is lowercase.
+      }
 
       if (!this.setup.initialized) {
          try {

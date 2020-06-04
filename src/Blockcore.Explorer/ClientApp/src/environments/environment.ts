@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   useLocalIndexer: true,
+  local: false // Set this to true to load your local "chain.json".
 };
 
 /*

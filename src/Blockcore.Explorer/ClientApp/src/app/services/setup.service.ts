@@ -4,6 +4,7 @@ import { ApiService } from './api.service';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
    providedIn: 'root'
@@ -46,6 +47,11 @@ export class SetupService {
    }
 
    async getChains() {
+
+      if (environment.local) {
+         return;
+      }
+
       const data = await this.api.loadSetups();
       this.chains = data;
       console.log('CHAINS:', this.chains);

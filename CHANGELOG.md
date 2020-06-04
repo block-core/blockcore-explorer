@@ -1,3 +1,12 @@
+## <small>0.1.6 (2020-05-14)</small>
+
+* Add icons to pages ([fa5c711](https://github.com/block-core/blockcore-explorer/commit/fa5c711))
+* Add support for accent color in Blockcore Explorer ([8ebb9e6](https://github.com/block-core/blockcore-explorer/commit/8ebb9e6)), closes [#10](https://github.com/block-core/blockcore-explorer/issues/10)
+* Optimize loading on navigation, default to multi-chain on errors ([45ae5be](https://github.com/block-core/blockcore-explorer/commit/45ae5be))
+* docs: Update changelog and version for next release ([7037d0d](https://github.com/block-core/blockcore-explorer/commit/7037d0d))
+
+
+
 ## <small>0.1.5 (2020-05-05)</small>
 
 * Add screenshots to README ([39f18d0](https://github.com/block-core/blockcore-explorer/commit/39f18d0))

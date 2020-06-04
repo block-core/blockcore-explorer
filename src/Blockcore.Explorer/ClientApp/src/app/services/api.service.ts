@@ -71,7 +71,14 @@ export class ApiService {
    }
 
    async loadSetup(chain: string) {
-      const setup = await this.download('https://chains.blockcore.net/chains/' + chain.toUpperCase() + '.json');
+      let setup = null;
+
+      if (environment.local) {
+         setup = await this.download('chain.json');
+      } else {
+         setup = await this.download('https://chains.blockcore.net/chains/' + chain.toUpperCase() + '.json');
+      }
+
       this.baseUrl = setup.Explorer.Indexer.ApiUrl;
 
       // Remove the trailing / as we expect all URLs we build up expect it.
