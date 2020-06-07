@@ -4,7 +4,8 @@ import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-insight',
-  templateUrl: './insight.component.html'
+  templateUrl: './insight.component.html',
+  styleUrls: ['./insight.component.css']
 })
 export class InsightComponent implements OnInit, OnDestroy {
   @HostBinding('class.content-centered-top') hostClass = true;

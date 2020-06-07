@@ -1,0 +1,7 @@
+.richlist{
+   grid-template-columns: 100px auto 1fr;
+ }
+
+ .right {
+    text-align: right;
+ }

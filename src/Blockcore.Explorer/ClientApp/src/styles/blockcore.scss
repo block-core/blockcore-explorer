@@ -651,9 +651,7 @@ footer {
   grid-template-columns: repeat(4, 1fr);
   gap: 0.25em 1.2em;
 }
-.richlist{
-  grid-template-columns: 1fr 4fr 1fr;
-}
+
 .grid div {
   display: contents;
 }

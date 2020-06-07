@@ -5,7 +5,8 @@ import { ScrollEvent } from 'src/app/shared/scroll.directive';
 
 @Component({
   selector: 'app-richlist',
-  templateUrl: './richlist.component.html'
+  templateUrl: './richlist.component.html',
+  styleUrls: ['./richlist.component.css', '../insight.component.css']
 })
 export class RichlistComponent implements OnInit {
   @HostBinding('class.content-centered-top') hostClass = true;
