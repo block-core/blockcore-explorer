@@ -26,6 +26,8 @@ import { SearchComponent } from './search/search.component';
 import { ErrorComponent } from './error/error.component';
 import { YesPipe } from './shared/yes.pipe';
 import { AddressComponent } from './explorer/address/address.component';
+import { InsightComponent } from './insight/insight.component';
+import { RichlistComponent } from './insight/richlist/richlist.component';
 
 const routes: Routes = [
   {
@@ -78,6 +80,16 @@ const routes: Routes = [
       chain: LoadingResolverService
     }
   },
+  {
+    path: ':chain/insight', component: InsightComponent, resolve: {
+      chain: LoadingResolverService
+    }
+  },
+  {
+    path: ':chain/insight/richlist', component: RichlistComponent, resolve: {
+      chain: LoadingResolverService
+    }
+  }
 ];
 
 @NgModule({
@@ -103,7 +115,9 @@ const routes: Routes = [
     SearchComponent,
     ErrorComponent,
     YesPipe,
-    AddressComponent
+    AddressComponent,
+    InsightComponent,
+    RichlistComponent
   ],
   imports: [
     BrowserModule,
