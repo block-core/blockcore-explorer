@@ -22,7 +22,7 @@
        <div *ngFor="let item of richlist; index as i">
           <span>{{i+1}}</span>
           <span><a [routerLink]="['../explorer/address/', item.address]">{{item.address}}</a></span>
-          <span class="right">{{item.balance}}</span>
+          <span class="right">{{item.balance | amount}}</span>
        </div>
     </div>
 

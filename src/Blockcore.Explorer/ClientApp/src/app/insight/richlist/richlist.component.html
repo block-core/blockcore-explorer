@@ -16,7 +16,7 @@
           <div class="grid grid-odd-line richlist" *ngFor="let item of blocks; index as i">
             <span class="center">{{i+1}}</span>
             <span><a [routerLink]="['../../explorer/address/', item.address]">{{item.address}}</a></span>
-            <span class="right">{{item.balance}}</span>
+            <span class="right">{{item.balance | amount}}</span>
           </div>
           <br>
           <app-progress class="centered" *ngIf="loading">Loading richlist...</app-progress>
