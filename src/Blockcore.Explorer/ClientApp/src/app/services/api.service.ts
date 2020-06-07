@@ -133,7 +133,7 @@ export class ApiService {
    async getPeers(date: Date) {
       return this.downloadRelative('/stats/peers/' + date.toISOString());
    }
-   
+
    async getRichlist(offset: number, limit: number) {
       return this.downloadRelative('/query/richlist?offset=' + offset + '&limit=' + limit);
    }

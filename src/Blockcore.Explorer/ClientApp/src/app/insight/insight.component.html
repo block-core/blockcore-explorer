@@ -6,13 +6,13 @@
 
 <div class="box">
     <h3>Richlist</h3>
- 
+
     <app-progress class="centered" *ngIf="!richlist"></app-progress>
- 
+
     <div *ngIf="errorRichlist">
        <span class="muted">Error from indexer:</span> <span class="negative">{{errorRichlist}}</span><br>
     </div>
- 
+
     <div class="grid grid-odd-line richlist" *ngIf="richlist">
        <div class="grid-header">
           <span>Rank</span>

@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit, OnDestroy } from '@angular/core';
 import { SetupService } from '../services/setup.service';
 import { ApiService } from '../services/api.service';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-insight',
   templateUrl: './insight.component.html'
@@ -43,7 +43,6 @@ export class InsightComponent implements OnInit, OnDestroy {
       list.reverse()
       this.richlist = list;
       this.errorRichlist = null;
-      console.log(list)
     } catch (error) {
       this.errorRichlist = error;
     }
