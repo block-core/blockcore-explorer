@@ -1,0 +1,31 @@
+
+<h1>Insight</h1>
+
+<br>
+<br>
+
+<div class="box">
+    <h3>Richlist</h3>
+ 
+    <app-progress class="centered" *ngIf="!richlist"></app-progress>
+ 
+    <div *ngIf="errorRichlist">
+       <span class="muted">Error from indexer:</span> <span class="negative">{{errorRichlist}}</span><br>
+    </div>
+ 
+    <div class="grid grid-odd-line richlist" *ngIf="richlist">
+       <div class="grid-header">
+          <span>Rank</span>
+          <span>Address</span>
+          <span>Balance</span>
+       </div>
+       <div *ngFor="let item of richlist; index as i">
+          <span>{{i+1}}</span>
+          <span><a [routerLink]="['../explorer/address/', item.address]">{{item.address}}</a></span>
+          <span class="right">{{item.balance}}</span>
+       </div>
+    </div>
+
+   <br>
+   <a [routerLink]="['richlist']">View all</a>
+ </div>
