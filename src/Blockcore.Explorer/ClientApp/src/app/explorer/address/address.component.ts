@@ -56,8 +56,10 @@ export class AddressComponent implements OnInit, OnDestroy {
     });
   }
 
-  amount(outputs: any) {
-    const amount = outputs.reduce((acc, item) => acc + item.balance, 0);
+  amount(outputs: any[]) {
+    const filteredOutputs = outputs.filter(o => o.address === this.address);
+    const amount = filteredOutputs.reduce((acc, item) => acc + item.balance, 0);
+
     return amount;
   }
 
