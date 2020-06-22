@@ -27,9 +27,10 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   }
 
-  inputType(value) {
-    // LONG_MAX: 9223372036854775807
-    if (value.length < 20) {
+  inputType(value: string) {
+    if (value.startsWith(this.setup.Network.NetworkWitnessPrefix)) {
+      return 'address';
+    } else if (value.length < 20) { // LONG_MAX: 9223372036854775807
       return 'index';
     } else if (value.length > 30 && value.length < 54) {
       return 'address';

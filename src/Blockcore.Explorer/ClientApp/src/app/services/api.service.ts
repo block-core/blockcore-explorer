@@ -44,7 +44,7 @@ export class ApiService {
 
       if (response.status !== 200) {
          if (json && json.status) {
-            throw new HttpError(json.status, url, json.title);
+            throw new HttpError(json.status, url, JSON.stringify(json));
          } else {
             throw new HttpError(response.status, url, response.statusText);
          }

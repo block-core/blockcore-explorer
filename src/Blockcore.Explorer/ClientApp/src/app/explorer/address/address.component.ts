@@ -1,7 +1,7 @@
 import { Component, HostBinding, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { ApiComponent } from 'src/app/api/api.component';
-import { ApiService } from 'src/app/services/api.service';
+import { ApiService, HttpError } from 'src/app/services/api.service';
 import { SetupService } from 'src/app/services/setup.service';
 import { ScrollEvent } from 'src/app/shared/scroll.directive';
 
@@ -35,6 +35,8 @@ export class AddressComponent implements OnInit, OnDestroy {
   count = 0;
   total: any;
   link: string;
+  error: any;
+  errorTransactions: any;
 
   constructor(
     private api: ApiService,
@@ -47,12 +49,27 @@ export class AddressComponent implements OnInit, OnDestroy {
       console.log('Address:', id);
 
       this.transactions = null;
-
       this.address = id;
-      this.balance = await this.api.getAddress(id);
-      console.log(this.balance);
 
-      await this.updateTransactions('/api/query/address/' + id + '/transactions?limit=' + this.limit);
+      try {
+        this.balance = await this.api.getAddress(id);
+      } catch (err) {
+        if (err.message[0] === '{') {
+          this.error = JSON.parse(err.message);
+        } else {
+          this.error = err;
+        }
+      }
+
+      try {
+        await this.updateTransactions('/api/query/address/' + id + '/transactions?limit=' + this.limit);
+      } catch (err) {
+        if (err.message[0] === '{') {
+          this.errorTransactions = JSON.parse(err.message);
+        } else {
+          this.errorTransactions = err;
+        }
+      }
     });
   }
 
@@ -85,6 +102,17 @@ export class AddressComponent implements OnInit, OnDestroy {
     // For the block scrolling (using link http header), we must manually set full URL.
     const response = await this.api.request(baseUrl + url);
 
+    // When the offset is not set (0), we should reverse the order of items.
+    const list = await response.json();
+
+    if (response.status !== 200) {
+       if (list && list.status) {
+          throw new HttpError(list.status, url, JSON.stringify(list));
+       } else {
+          throw new HttpError(response.status, url, response.statusText);
+       }
+    }
+
     this.total = response.headers.get('Pagination-Total');
     const linkHeader = response.headers.get('Link');
     const links = this.api.parseLinkHeader(linkHeader);
@@ -92,8 +120,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     // This will be set to undefined/null when no more next links is available.
     this.link = links['previous'];
 
-    // When the offset is not set (0), we should reverse the order of items.
-    const list = await response.json();
+
 
     if (!this.transactions) {
       this.transactions = [];
