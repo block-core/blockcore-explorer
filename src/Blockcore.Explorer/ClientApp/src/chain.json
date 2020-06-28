@@ -54,6 +54,11 @@
       },
       "Features": {
          "POSWeight": false
+      },
+      "About": {
+         "Title": "About Blockcore Explorer",
+         "Description": "Blockcore Explorer is a cross-chain compatible Block Explorer provided by Blockcore.",
+         "Link": "https://www.blockcore.net"
       }
    }
 }

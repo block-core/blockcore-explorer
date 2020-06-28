@@ -1,11 +1,11 @@
 {
-  "name": "blockcore-website",
+  "name": "blockcore-explorer",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "echo Starting... && ng serve",
     "build": "ng build",
-    "build:ssr": "ng run Blockcore.Website:server:dev",
+    "build:ssr": "ng run Blockcore.Explorer:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
