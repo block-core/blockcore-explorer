@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
+FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
 WORKDIR /app
 
 RUN apt-get update \
@@ -9,7 +9,8 @@ RUN apt-get update \
 COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-buster-slim
+FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal
+
 WORKDIR /app
 COPY --from=build /app/publish .
 EXPOSE 9911
