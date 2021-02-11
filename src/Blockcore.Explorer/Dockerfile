@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/sdk:5.0-focal AS build
+FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build
 WORKDIR /app
 
 RUN apt-get update \
@@ -9,7 +9,7 @@ RUN apt-get update \
 COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal
+FROM mcr.microsoft.com/dotnet/aspnet:3.1
 
 WORKDIR /app
 COPY --from=build /app/publish .

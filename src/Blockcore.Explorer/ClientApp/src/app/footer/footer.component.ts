@@ -18,14 +18,22 @@ export class FooterComponent {
    }
 
    get darkMode(): boolean {
-      return (localStorage.getItem('dark-mode') === 'on');
+      if (localStorage.getItem('theme')) {
+         if (localStorage.getItem('theme') === 'dark') {
+            return true;
+         }
+      } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+         return true;
+      }
+
+      return false;
    }
 
    set darkMode(value: boolean) {
       if (value) {
-         localStorage.setItem('dark-mode', 'on');
+         localStorage.setItem('theme', 'dark');
       } else {
-         localStorage.setItem('dark-mode', 'off');
+         localStorage.setItem('theme', 'white');
       }
 
       this.updateMode();
