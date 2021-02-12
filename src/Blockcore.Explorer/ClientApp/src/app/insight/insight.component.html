@@ -38,22 +38,7 @@
             <span class="number">{{supply.height}}</span>
          </div>
       </div>
-
-      <!-- <div class="grid-header richlist">
-         <span>Rank</span>
-         <span>Address</span>
-         <span class="right">Balance</span>
-      </div>
-
-      <div class="grid grid-odd-line richlist" *ngFor="let item of richlist; index as i">
-         <span>{{i+1}}</span>
-         <span><a [routerLink]="['../explorer/address/', item.address]">{{item.address}}</a></span>
-         <span class="right">{{item.balance | amount}}</span>
-      </div>
-   </div> -->
-
       <br>
-      <!-- <a [routerLink]="['richlist']">View all</a> -->
    </div>
 
    <div class="box">
@@ -85,7 +70,7 @@
       <a [routerLink]="['richlist']">View all</a>
    </div>
 
-   <h2>Supply</h2>
+   <h2>Wallets</h2>
 
    <app-progress class="centered" *ngIf="!wallets"></app-progress>
 
@@ -94,12 +79,6 @@
    </div>
 
    <div *ngIf="wallets">
-
-      <!-- <div class="grid-header richlist">
-         <span>Rank</span>
-         <span>Address</span>
-         <span class="right">Balance</span>
-      </div> -->
 
       <div class="" *ngFor="let item of wallets; index as i">
 
@@ -142,10 +121,6 @@
             </div>
 
          </div>
-
-         <!-- <span>{{i+1}}</span>
-         <span><a [routerLink]="['../explorer/address/', item.address]">{{item.address}}</a></span>
-         <span class="right number">{{item.balance | amount}}</span> -->
       </div>
 
    </div>
