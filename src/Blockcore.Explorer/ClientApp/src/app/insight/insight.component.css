@@ -5,3 +5,15 @@
  .right {
     text-align: right;
  }
+
+ .supply-line span:nth-child(2) {
+   text-align: right;
+ }
+
+ .wallet-icon {
+    width: 25%;
+ }
+
+ .wallet-address {
+    font-size: 0.8em;
+ }

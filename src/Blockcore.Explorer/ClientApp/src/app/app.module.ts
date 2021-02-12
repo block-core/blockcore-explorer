@@ -16,6 +16,7 @@ import { BlocksComponent } from './explorer/blocks/blocks.component';
 import { BlockComponent } from './explorer/block/block.component';
 import { ScrollDirective } from './shared/scroll.directive';
 import { AgoPipe } from './shared/ago.pipe';
+import { RemoveCommaPipe } from './shared/removecomma.pipe';
 import { TimestampPipe } from './shared/timestamp.pipe';
 import { SizePipe } from './shared/size.pipe';
 import { TickerComponent } from './ticker/ticker.component';
@@ -107,6 +108,7 @@ const routes: Routes = [
     BlockComponent,
     ScrollDirective,
     AgoPipe,
+    RemoveCommaPipe,
     TimestampPipe,
     SizePipe,
     AmountPipe,

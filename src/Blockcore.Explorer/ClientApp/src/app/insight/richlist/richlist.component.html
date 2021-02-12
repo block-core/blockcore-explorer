@@ -1,26 +1,26 @@
-
-
 <div class="box">
-    <h3>Richlist</h3>
+   <h3>Richlist</h3>
 
-    <app-progress class="centered" *ngIf="!blocks">Loading richlist...</app-progress>
+   <app-progress class="centered" *ngIf="!blocks">Loading richlist...</app-progress>
 
-    <div *ngIf="blocks">
-       <div class="grid-header richlist">
-          <span>Rank</span>
-          <span>Address</span>
-          <span class="right">Balance</span>
-       </div>
+   <div *ngIf="blocks">
+      <div class="grid-header richlist">
+         <span>Rank</span>
+         <span>Address</span>
+         <span class="right">Balance</span>
+      </div>
 
-       <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
-          <div class="grid grid-odd-line richlist" *ngFor="let item of blocks; index as i">
-            <span class="center">{{i+1}}</span>
-            <span><a [routerLink]="['../../explorer/address/', item.address]">{{item.address}}</a></span>
-            <span class="right">{{item.balance | amount}}</span>
-          </div>
-          <br>
-          <app-progress class="centered" *ngIf="loading">Loading richlist...</app-progress>
-       </div>
-    </div>
+      <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid grid-odd-line richlist" *ngFor="let item of blocks; index as i">
+            <span class="center">{{i+1}}<!--<span><i class="fas fa-info-circle"></i></span>--></span>
+            <span class><a [routerLink]="['../../explorer/address/', item.address]">{{item.address}}</a>
+            </span>
+            <span class="right number">
+               {{item.balance | amount}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading richlist...</app-progress>
+      </div>
+   </div>
 
- </div>
+</div>

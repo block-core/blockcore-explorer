@@ -21,11 +21,19 @@ export class InsightComponent implements OnInit, OnDestroy {
   richlist: any;
   timerInfo: any;
   timerRichlist: any;
+  timerSupply: any;
   errorRichlist: string;
+  errorSupply: string;
   errorInfo: string;
+  errorWallets: string;
+  supply: any;
+  wallets: any;
+  timerWallets: any;
 
   constructor(private api: ApiService, public setup: SetupService) {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
+      await this.updateSupply();
+      await this.updateWallets();
       await this.updateRichlist();
     });
    }
@@ -36,8 +44,37 @@ export class InsightComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     clearTimeout(this.timerInfo);
     clearTimeout(this.timerRichlist);
+    clearTimeout(this.timerSupply);
+    clearTimeout(this.timerWallets);
     this.subscription.unsubscribe();
   }
+
+  async updateWallets() {
+    try {
+      this.wallets = await this.api.getWallets();
+      this.errorWallets = null;
+    } catch (error) {
+      this.errorWallets = error;
+    }
+
+    this.timerWallets = setTimeout(async () => {
+      await this.updateWallets();
+    }, 30000);
+  }
+
+  async updateSupply() {
+    try {
+      this.supply = await this.api.getSupply();
+      this.errorSupply = null;
+    } catch (error) {
+      this.errorSupply = error;
+    }
+
+    this.timerSupply = setTimeout(async () => {
+      await this.updateSupply();
+    }, 15000);
+  }
+
   async updateRichlist() {
     try {
       const list = await this.api.getRichlist(0, 5);

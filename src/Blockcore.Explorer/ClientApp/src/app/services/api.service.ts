@@ -138,6 +138,14 @@ export class ApiService {
       return this.downloadRelative('/query/richlist?offset=' + offset + '&limit=' + limit);
    }
 
+   async getSupply() {
+      return this.downloadRelative('/insight/supply');
+   }
+
+   async getWallets() {
+      return this.downloadRelative('/insight/wallets');
+   }
+
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
       //const links: Record<string, string> = { };
