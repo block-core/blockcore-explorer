@@ -23,7 +23,7 @@ html {
  html[data-theme="dark"] {
    background: var(--background);
  
-   --background: black;
+   --background: #0a0a0a;
    --background-alternative: #2e2e2e;
  
    --foreground: #f9f9f9;
@@ -40,5 +40,5 @@ html {
    --shadow: rgba(255,255,255,0.1);
    --box-background: #0f0f0f;
  
-   --mode-filter: invert(100%);
+   --mode-filter: invert(96%);
  }
