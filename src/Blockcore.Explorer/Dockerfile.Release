@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/aspnet:5.0-focal
+FROM mcr.microsoft.com/dotnet/aspnet::3.1
 WORKDIR /usr/local/app/
 
 RUN apt-get update \

@@ -28,12 +28,12 @@ jobs:
           VERSION: ${{ github.event.release.tag_name }}
 
       - name: Build the Docker container image
-        run: docker build -f "./src/Blockcore.Explorer/Dockerfile.Release" -t blockcore/explorer:latest -t blockcore/explorer:${{ github.event.release.tag_name }} --label "unstable=true" "."
+        run: docker build -f "./src/Blockcore.Explorer/Dockerfile.Release" -t blockcore/explorer:latest -t blockcore/explorer:${{ github.event.release.tag_name }} "."
 
       - name: Login and Push to Docker Registry
         run: |
           docker login -u "sondreb" -p "${{secrets.DockerHubSecret}}"
-          docker push blockcore/explorer
+          docker push --all-tags blockcore/explorer
 
       # - name: Login and Push to GitHub Docker Registry
       #   run: |
