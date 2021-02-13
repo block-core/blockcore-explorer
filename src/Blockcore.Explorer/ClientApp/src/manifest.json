@@ -1,0 +1,20 @@
+{
+    "name": "Blockcore Explorer",
+    "short_name": "BlockcoreExplorer",
+    "lang": "en-US",
+    "start_url": "/",
+    "display": "minimal-ui",
+    "theme_color": "#2e2e2e",
+    "icons": [
+        {
+            "src": "assets/blockcore-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "assets/blockcore-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}

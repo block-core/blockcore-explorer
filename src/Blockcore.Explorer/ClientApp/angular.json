@@ -23,7 +23,9 @@
             "tsConfig": "src/tsconfig.app.json",
             "assets": [
               "src/assets",
-              "src/chain.json"
+              "src/chain.json",
+              "src/manifest.json",
+              "src/sw.js"
             ],
             "styles": [
               "src/styles.scss"
