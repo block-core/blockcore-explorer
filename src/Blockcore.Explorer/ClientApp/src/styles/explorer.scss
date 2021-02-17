@@ -1,3 +1,6 @@
+@import "variables";
+
+
 .tippy-box[data-theme~='tomato'] {
     background-color: tomato;
     color: yellow;
@@ -6,4 +9,17 @@
   .tooltip {
       margin: 0.2em;
       font-size: 1.2em;
+  }
+
+  .listing-table {
+      border: 0;
+      width: 100%;
+      text-align: left;
+  }
+
+  .details-box {
+      grid-column: 1 / span 4;
+      padding: 0.2em;
+      border: 1px solid var(--foreground-light);
+      background-color: var(--box-background);
   }

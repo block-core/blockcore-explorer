@@ -77,7 +77,7 @@
 
       <div class="grid-list-inputs" *ngFor="let item of transaction.inputs">
 
-         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a 
+         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a
                [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output"><i
                   class="fas fa-arrow-left"></i></a></div>
          <div *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">
@@ -86,8 +86,37 @@
          <div class="left number"> {{item.inputIndex}}</div>
          <div class="left" *ngIf="item.inputAddress != null"><a class="address" tippy tippyType="address"
                [routerLink]="['../../address', item.inputAddress]">{{item.inputAddress}}</a></div>
-         <div class="left" *ngIf="item.inputAddress == null && transaction.isCoinbase">No inputs (newly generated coins)</div>
+         <div class="left" *ngIf="item.inputAddress == null && transaction.isCoinbase">No inputs (newly generated coins)
+         </div>
          <div class="left" *ngIf="item.inputAddress == null && !transaction.isCoinbase">Nonstandard</div>
+
+
+         <div *ngIf="detailsVisible" class="details-box">
+            <div class="grid-label-value">
+               <div>
+                  <span>Witness</span>
+                  <span>{{item.witScript}}</span>
+               </div>
+               <div>
+                  <span>ScriptSig (ASM)</span>
+                  <span class="breakable">{{item.scriptSigAsm}}</span>
+               </div>
+               <div>
+                  <span>ScriptSig (HEX)</span>
+                  <span class="breakable">{{item.scriptSig}}</span>
+               </div>
+               <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'">
+                  <span>Input TX ID</span>
+                  <span class="breakable"><a [routerLink]="['../../transaction', item.inputTransactionId]"
+                        title="Input">{{item.inputTransactionId}}</a></span>
+               </div>
+               <div>
+                  <span>SequenceLock</span>
+                  <span>{{item.sequenceLock}}</span>
+               </div>
+            </div>
+         </div>
+
 
       </div>
 
@@ -97,14 +126,42 @@
 
       <div class="grid-list-outputs" *ngFor="let item of transaction.outputs">
          <div class="left number"> {{item.index}}</div>
-         <div class="left" *ngIf="item.address != null"><a class="address" tippy tippyType="address" [routerLink]="['../../address', item.address]">{{item.address}}</a></div>
+         <div class="left" *ngIf="item.address != null"><a class="address" tippy tippyType="address"
+               [routerLink]="['../../address', item.address]">{{item.address}}</a></div>
          <div class="left" *ngIf="item.address == null && transaction.isCoinbase">Coinbase TX</div>
          <div class="left" *ngIf="item.address == null && transaction.isCoinstake">Coinstake TX</div>
-         <div class="left" *ngIf="item.address == null && !transaction.isCoinbase && !transaction.isCoinstake">Nonstandard</div>
+         <div class="left" *ngIf="item.address == null && !transaction.isCoinbase && !transaction.isCoinstake">
+            Nonstandard</div>
          <div class="number">{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
-         <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></div>
+         <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]"
+               title="Spent"><i class="fas fa-arrow-right"></i></a></div>
          <div *ngIf="item.spentInTransaction == null"></div>
-      </div>
 
+         <div *ngIf="detailsVisible" class="details-box">
+            <div class="grid-label-value">
+               <div>
+                  <span>Type</span>
+                  <span>{{item.outputType}}</span>
+               </div>
+               <div>
+                  <span>ScriptPubKey (ASM)</span>
+                  <span class="breakable">{{item.scriptPubKeyAsm}}</span>
+               </div>
+               <div>
+                  <span>ScriptPubKey (HEX)</span>
+                  <span class="breakable">{{item.scriptPubKey}}</span>
+               </div>
+               <div>
+                  <span>Spending TX</span>
+                  <span class="breakable">
+                     <div *ngIf="item.spentInTransaction == null">Unspent</div>
+                     <div *ngIf="item.spentInTransaction != null">Spent by <a
+                           [routerLink]="['../../transaction', item.spentInTransaction]"
+                           title="Spent">{{item.spentInTransaction}}</a></div>
+                  </span>
+               </div>
+            </div>
+         </div>
+      </div>
    </div>
 </div>
