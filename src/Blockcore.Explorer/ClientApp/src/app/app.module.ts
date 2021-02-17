@@ -29,6 +29,7 @@ import { YesPipe } from './shared/yes.pipe';
 import { AddressComponent } from './explorer/address/address.component';
 import { InsightComponent } from './insight/insight.component';
 import { RichlistComponent } from './insight/richlist/richlist.component';
+import { TippyDirective } from './shared/tippy.directive';
 
 const routes: Routes = [
   {
@@ -119,7 +120,8 @@ const routes: Routes = [
     YesPipe,
     AddressComponent,
     InsightComponent,
-    RichlistComponent
+    RichlistComponent,
+    TippyDirective
   ],
   imports: [
     BrowserModule,

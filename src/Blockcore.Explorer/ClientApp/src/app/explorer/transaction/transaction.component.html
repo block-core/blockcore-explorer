@@ -84,9 +84,11 @@
             <i title="Coinbase" class="fas fa-hammer"></i>
          </div>
          <div class="left number"> {{item.inputIndex}}</div>
-         <div class="left" *ngIf="item.inputAddress != null"><a class="address"
+         <div class="left" *ngIf="item.inputAddress != null"><a class="address" tippy tippyType="address"
                [routerLink]="['../../address', item.inputAddress]">{{item.inputAddress}}</a></div>
-         <div class="left" *ngIf="item.inputAddress == null">Can't parse input address</div>
+         <div class="left" *ngIf="item.inputAddress == null && transaction.isCoinbase">No inputs (newly generated coins)</div>
+         <div class="left" *ngIf="item.inputAddress == null && !transaction.isCoinbase">Nonstandard</div>
+
       </div>
 
    </div>
@@ -95,9 +97,11 @@
 
       <div class="grid-list-outputs" *ngFor="let item of transaction.outputs">
          <div class="left number"> {{item.index}}</div>
-         <div class="left" *ngIf="item.address != null"><a class="address" [routerLink]="['../../address', item.address]">{{item.address}}</a></div>
-         <div class="left" *ngIf="item.address == null">Can't parse output address</div>
-         <div>{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
+         <div class="left" *ngIf="item.address != null"><a class="address" tippy tippyType="address" [routerLink]="['../../address', item.address]">{{item.address}}</a></div>
+         <div class="left" *ngIf="item.address == null && transaction.isCoinbase">Coinbase TX</div>
+         <div class="left" *ngIf="item.address == null && transaction.isCoinstake">Coinstake TX</div>
+         <div class="left" *ngIf="item.address == null && !transaction.isCoinbase && !transaction.isCoinstake">Nonstandard</div>
+         <div class="number">{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
          <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></div>
          <div *ngIf="item.spentInTransaction == null"></div>
       </div>

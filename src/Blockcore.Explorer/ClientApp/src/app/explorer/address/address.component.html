@@ -49,19 +49,19 @@
    <div class="grid-label-value" *ngIf="balance">
       <div>
          <span>Balance</span>
-         <span>{{balance.available | amount}}</span>
+         <span class="number">{{balance.available | amount}}</span>
       </div>
       <div>
          <span>Total Received</span>
-         <span>{{balance.received | amount}}</span>
+         <span class="number">{{balance.received | amount}}</span>
       </div>
       <div>
          <span>Total Sent</span>
-         <span>{{balance.sent | amount}}</span>
+         <span class="number">{{balance.sent | amount}}</span>
       </div>
       <div>
          <span>Unconfirmed Balance</span>
-         <span>{{balance.unconfirmed | amount}}</span>
+         <span class="number">{{balance.unconfirmed | amount}}</span>
       </div>
    </div>
 </div>
@@ -93,7 +93,7 @@
             <span>{{item.confirmations}}</span>
             <span>{{item.inputs.length}}</span>
             <span>{{item.outputs.length}}</span>
-            <span>{{amount(item.outputs) | amount}} {{setup.Chain.Symbol}}</span>
+            <span class="number">{{amount(item.outputs) | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>
          <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
