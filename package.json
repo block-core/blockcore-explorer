@@ -1,6 +1,6 @@
 {
   "name": "blockcoreexplorer",
-  "version": "0.1.12",
+  "version": "0.1.13",
   "license": "MIT",
   "author": {
     "name": "Blockcore",
@@ -18,7 +18,7 @@
   "homepage": "https://github.com/block-core/blockcore-explorer#readme",
   "scripts": {
     "version": "node -p \"require('./package.json').version\"",
-    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md"
+    "changelog": "conventional-changelog -i CHANGELOG.md -s -r 3 && git add CHANGELOG.md"
   },
   "private": true,
   "dependencies": {},
