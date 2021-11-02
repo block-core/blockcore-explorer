@@ -49,17 +49,25 @@
    <div class="grid-label-value" *ngIf="balance">
       <div>
          <span>Balance</span>
-         <span class="number">{{balance.available | amount}}</span>
+         <span class="number">{{balance.balance | amount}}</span>
       </div>
       <div>
          <span>Total Received</span>
-         <span class="number">{{balance.received | amount}}</span>
+         <span class="number">{{balance.totalReceived | amount}} (#{{balance.totalReceivedCount | number}})</span>
+      </div>
+      <div *ngIf="balance.totalStake > 0">
+         <span>Total Stake</span>
+         <span class="number">{{balance.totalStake | amount}} (#{{balance.totalStakeCount | number}})</span>
+      </div>
+      <div *ngIf="balance.totalMine > 0">
+         <span>Total Mine</span>
+         <span class="number">{{balance.totalMine | amount}} (#{{balance.totalMineCount | number}})</span>
       </div>
       <div>
          <span>Total Sent</span>
-         <span class="number">{{balance.sent | amount}}</span>
+         <span class="number">{{balance.totalSent | amount}} (#{{balance.totalSentCount | number}})</span>
       </div>
-      <div>
+      <div *ngIf="balance.unconfirmed > 0">
          <span>Unconfirmed Balance</span>
          <span class="number">{{balance.unconfirmed | amount}}</span>
       </div>
@@ -78,22 +86,22 @@
 
    <div *ngIf="transactions">
       <div class="grid-list-transactions">
-         <span>Date</span>
+         <span>Type</span>
          <span>Transaction ID</span>
+         <span>Height</span>
          <span>Confirmations</span>
-         <span>Inputs</span>
-         <span>Outputs</span>
+
+
          <span>Amount</span>
       </div>
 
       <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
          <div class="grid-list-transactions" *ngFor="let item of transactions">
-            <span>{{item.timestamp | timestamp | date:'dd/MM/yyyy hh:mm'}}</span>
-            <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
+            <span>{{item.entryType}}</span>
+            <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionHash]">{{item.transactionHash}}</a></span>
+            <span> <a class="nonbreakable number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
             <span>{{item.confirmations}}</span>
-            <span>{{item.inputs.length}}</span>
-            <span>{{item.outputs.length}}</span>
-            <span class="number">{{amount(item.outputs) | amount}} {{setup.Chain.Symbol}}</span>
+            <span class="number">{{item.value | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>
          <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
