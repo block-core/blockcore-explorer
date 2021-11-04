@@ -46,30 +46,36 @@
       {{error.errors | json}}
    </div>
 
-   <div class="grid-label-value" *ngIf="balance">
+   <div class="grid-label-value-label" *ngIf="balance">
       <div>
          <span>Balance</span>
          <span class="number">{{balance.balance | amount}}</span>
+         <span></span>
       </div>
       <div>
          <span>Total Received</span>
-         <span class="number">{{balance.totalReceived | amount}} (#{{balance.totalReceivedCount | number}})</span>
+         <span class="number">{{balance.totalReceived | amount}}</span>
+         <span class="number">#{{balance.totalReceivedCount | number}}</span>
       </div>
       <div *ngIf="balance.totalStake > 0">
          <span>Total Stake</span>
-         <span class="number">{{balance.totalStake | amount}} (#{{balance.totalStakeCount | number}})</span>
+         <span class="number">{{balance.totalStake | amount}}</span>
+         <span class="number">#{{balance.totalStakeCount | number}}</span>
       </div>
       <div *ngIf="balance.totalMine > 0">
          <span>Total Mine</span>
-         <span class="number">{{balance.totalMine | amount}} (#{{balance.totalMineCount | number}})</span>
+         <span class="number">{{balance.totalMine | amount}}</span>
+         <span class="number">#{{balance.totalMineCount | number}}</span>
       </div>
       <div>
          <span>Total Sent</span>
-         <span class="number">{{balance.totalSent | amount}} (#{{balance.totalSentCount | number}})</span>
+         <span class="number">{{balance.totalSent | amount}}</span>
+         <span class="number">#{{balance.totalSentCount | number}}</span>
       </div>
       <div *ngIf="balance.unconfirmed > 0">
          <span>Unconfirmed Balance</span>
          <span class="number">{{balance.unconfirmed | amount}}</span>
+         <span></span>
       </div>
    </div>
 </div>
@@ -97,7 +103,11 @@
 
       <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
          <div class="grid-list-transactions" *ngFor="let item of transactions">
-            <span>{{item.entryType}}</span>
+            
+            <mat-icon *ngIf="item.entryType == 'stake'">build_circle</mat-icon>
+            <mat-icon *ngIf="item.entryType != 'stake'">arrow_circle_down</mat-icon>
+            <!-- <span>{{item.entryType}}</span> -->
+
             <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionHash]">{{item.transactionHash}}</a></span>
             <span> <a class="nonbreakable number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
             <span>{{item.confirmations}}</span>

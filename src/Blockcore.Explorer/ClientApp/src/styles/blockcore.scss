@@ -374,6 +374,9 @@ footer {
   grid-area: footer-toggle;
   align-self: center;
   text-align: right;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .content {
@@ -517,6 +520,21 @@ footer {
 .sponsor-widget img:hover {
   box-shadow: 0px 0px 0px 6px var(--accent);
   transition: box-shadow 0.25s linear;
+}
+
+.amount-button {
+  border: 0;
+  background-color: transparent;
+  font-size: 1.4em;
+  color: var(--footer-foreground);
+}
+
+.amount-button:hover {
+  border: 0;
+  background-color: transparent;
+  font-size: 1.4em;
+  color: var(--accent);
+  cursor: pointer;
 }
 
 .mode-toggle {
@@ -869,12 +887,50 @@ pre {
 }
 
 .grid-label-value div span:nth-child(2) {
-  text-align: left;
+  text-align: right;
 }
 
 .grid-label-value ul {
   margin: 0;
 }
+
+
+
+.grid-label-value-label {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.25em 1.2em 1.2em;
+}
+
+.grid-label-value-label div {
+  display: contents;
+}
+
+.grid-label-value-label div span:nth-child(1) {
+  color: var(--foreground-alternative);
+  text-align: right;
+}
+
+.grid-label-value-label div span:nth-child(1)::after {
+  content: ":";
+}
+
+.grid-label-value-label div span:nth-child(2) {
+  text-align: right;
+}
+
+
+.grid-label-value-label div span:nth-child(3) {
+  text-align: left;
+  margin-left: 1em;
+}
+
+
+.grid-label-value-label ul {
+  margin: 0;
+}
+
+
 
 .grid-odd-color {
   border: 4px solid yellow !important;
