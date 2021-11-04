@@ -17,7 +17,7 @@ export class AmountPipe implements PipeTransform {
          return (value / 100000000).toFixed(8);
       }
       else {
-         const formatted = satcomma.fromSats(value, ' ');
+         const formatted = satcomma.fromSats(value);
          const values = formatted.split('.');
          return (+values[0]).toLocaleString('en-US', { maximumFractionDigits: 0 }) + '.' + values[1];
       }
