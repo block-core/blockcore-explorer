@@ -91,26 +91,24 @@
    </div>
 
    <div *ngIf="transactions">
-      <div class="grid-list-transactions">
-         <span>Type</span>
+      <!-- <div class="grid-list-transactions">
+         <span></span>
          <span>Transaction ID</span>
          <span>Height</span>
-         <span>Confirmations</span>
-
-
+         <span></span>
          <span>Amount</span>
-      </div>
+      </div> -->
 
       <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
          <div class="grid-list-transactions" *ngFor="let item of transactions">
             
-            <mat-icon *ngIf="item.entryType == 'stake'">build_circle</mat-icon>
-            <mat-icon *ngIf="item.entryType != 'stake'">arrow_circle_down</mat-icon>
+            <i *ngIf="item.entryType == 'stake'" class="fas fa-coins" title="Stake"></i>
+            <i *ngIf="item.entryType != 'stake'" class="fas fa-handshake" title="Transfer"></i>
             <!-- <span>{{item.entryType}}</span> -->
 
             <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionHash]">{{item.transactionHash}}</a></span>
-            <span> <a class="nonbreakable number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
-            <span>{{item.confirmations}}</span>
+            <span> <a class="number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
+            <!-- <span>{{item.confirmations}}</span> -->
             <span class="number">{{item.value | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>

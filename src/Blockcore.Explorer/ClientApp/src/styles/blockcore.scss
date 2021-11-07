@@ -853,8 +853,12 @@ footer {
   margin: 1em;
   display: grid;
   gap: 0.3em;
-  grid-template-columns: 140px minmax(0, 1fr) auto 60px 60px auto;
+  grid-template-columns: auto minmax(0, 1fr) 140px auto;
 }
+
+// .grid-list-transactions span {
+//   border: 1px solid red;
+// }
 
 .address {
   max-width: 100%;
@@ -1068,38 +1072,6 @@ pre {
   display: none;
 }
 
-// .grid-label {
-//   grid-area: grid-label;
-// }
-
-// .grid-value {
-//   grid-area: grid-value;
-// }
-
-// label {
-// /* it's a crude simplification, but effectively we remove
-//    the <label> from the DOM and instead show its contents;
-//    the text portion, and the <input>, become independant
-//    grid-items (sort of): */
-//   display: contents;
-// }
-
-// .grid-layout {
-//   display: grid;
-//   grid-template-columns: repeat(2, minmax(0, 1fr));
-//   gap: 0.5em 1em;
-//   margin: 0 auto;
-// }
-
-// label {
-//   display: contents;
-//   text-align: right;
-// }
-
-// label span::after {
-//   content: ':';
-// }
-
 @keyframes lds-ripple {
   0% {
     top: 36px;
@@ -1140,31 +1112,6 @@ pre {
   .nonbreakable {
     width: 400px;
   }
-
-  // .address {
-  //   width: 100px;
-  // }
-
-  // .grid-list-2 {
-  //   display: inline-grid;
-  //   grid-template-columns: 1fr;
-  //   grid-template-rows: repeat(2, auto);
-  //   grid-auto-flow: row;
-  // }
-
-  // .grid-list-3 {
-  //   display: inline-grid;
-  //   grid-template-columns: 1fr;
-  //   grid-template-rows: repeat(3, auto);
-  //   grid-auto-flow: row;
-  // }
-
-  // .grid-list-4 {
-  //   display: inline-grid;
-  //   grid-template-columns: 1fr;
-  //   grid-template-rows: repeat(4, auto);
-  //   grid-auto-flow: row;
-  // }
 }
 
 @media only screen and (max-width: 70em) {
@@ -1242,6 +1189,10 @@ pre {
 
   .nonbreakable {
     width: 150px;
+  }
+
+  .grid-list-transactions {
+    grid-template-columns: none;
   }
 }
 
