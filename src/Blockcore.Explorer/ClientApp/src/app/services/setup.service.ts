@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
 import { Observable, BehaviorSubject, Subject } from 'rxjs';
@@ -20,6 +20,18 @@ export class SetupService {
 
    multiChain: boolean;
    initialized = false;
+
+   format: string = 'satcommas'; // sat, satcommas, bitcoin
+
+   toggleFormat() {
+      if (this.format == 'sat') {
+         this.format = 'satcommas';
+      } else if (this.format == 'satcommas') {
+         this.format = 'bitcoin';
+      } else {
+         this.format = 'sat';
+      }
+   }
 
    // Both SubjectBehavior and Behavior, depending on consumer.
    // The "currentChainSubject$" will return current value as soon as subscribed.

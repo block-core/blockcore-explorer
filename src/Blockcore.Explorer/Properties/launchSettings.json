@@ -43,6 +43,15 @@
          "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
          }
+      },
+      "STRAX": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=STRAX",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
       }
    }
 }

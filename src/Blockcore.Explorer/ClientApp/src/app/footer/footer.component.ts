@@ -16,4 +16,8 @@ export class FooterComponent {
    ) {
 
    }
+
+   toggleAmountRendering() {
+      this.setup.toggleFormat();
+   }
 }

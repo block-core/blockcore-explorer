@@ -5,10 +5,19 @@
    <div class="footer-right icon-links">
       <a *ngFor="let link of setup.Explorer?.Setup.Links" [href]="link.url"><i class="{{link.icon}}"></i></a>
    </div>
+
    <div class="footer-toggle">
-      <div class="mode-toggle">
+
+      <div>
+         <button class="amount-button" (click)="toggleAmountRendering()" title="Toggle Amount Format">
+            <i class="fas fa-coins"></i>
+         </button>
+      </div>
+
+      <div class="mode-toggle" title="Toggle Theme">
          <input type="checkbox" id="switch" name="mode" [(ngModel)]="theme.darkMode">
          <label for="switch"></label>
       </div>
+
    </div>
 </footer>
