@@ -98,8 +98,9 @@ jobs:
         path: "${{env.RELEASE_PATH}}"
 
     - name: Release
-      uses: sondreb/action-release@master
+      uses: sondreb/action-release@main
       with:
+        commit: 'master'
         token: ${{ secrets.GITHUB_TOKEN }}
         files: "${{env.RELEASE_PATH}}"
         draft: true
