@@ -33,6 +33,33 @@ Explorer screen:
 
 This block explorer support multiple blockchains in the same running instance, or can be run with only a single blockchain. It is built on Angular and runs an Single Page Application.
 
+## Development
+
+Blockcore Explorer is an Angular app that is hosted by the .NET runtime with an Visual Studio C# project.
+
+When the Angular App first runs, it will make an HTTP request to a single REST API that is hosted on the Visual Studio C# project. This REST API will return which blockchain the explorer should display.
+
+It can either run in multi-chain mode and list all blockchains that exists in the [public JSON file](https://chains.blockcore.net/CHAINS.json).
+Or it can run in one specific chain mode, e.g. "City Chain".
+
+If you run from console/terminal using Node.js and Angular CLI, you do NOT get this functionality. You will always get multi-chain mode when running without the Visual Studio C# project.
+
+To run the explorer in an auto-reload mode with Angular, WITHOUT needing .NET at all, you must navigate to the following folder:
+
+"blockcore-explorer/src/Blockcore.Explorer/ClientApp"
+
+Then run: `npm install` and `npm start`.
+
+This will host an web server on: http://localhost:4200/
+
+The other alternative is to open the Blockcore.Indexer.sln using Visual Studio 2022 and clicking F5 (start debugging). This will run the explorer on the following URL: http://localhost:9911/
+
+Out of the box, the explorer will connect to locally running indexer. If you are not running your own indexer, you must do a minor configuration change so you rely on the public indexers that is hosted by the Blockcore team.
+
+Edit this file and change the `useLocalIndexer: true` to `useLocalIndexer: false`.
+
+[src/Blockcore.Explorer/ClientApp/src/environments/environment.ts](src/Blockcore.Explorer/ClientApp/src/environments/environment.ts)
+
 ## Legacy Explorer
 
 Our previous Block Explorer was built on ASP.NET Razor technology and the repo has been moved
