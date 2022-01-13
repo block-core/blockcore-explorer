@@ -37,6 +37,8 @@ This block explorer support multiple blockchains in the same running instance, o
 
 Blockcore Explorer is an Angular app that is hosted by the .NET runtime with an Visual Studio C# project.
 
+It is possible to develop on the explorer without needing Visual Studio, but you need [Node.js](https://nodejs.org/).
+
 When the Angular App first runs, it will make an HTTP request to a single REST API that is hosted on the Visual Studio C# project. This REST API will return which blockchain the explorer should display.
 
 It can either run in multi-chain mode and list all blockchains that exists in the [public JSON file](https://chains.blockcore.net/CHAINS.json).
@@ -48,7 +50,13 @@ To run the explorer in an auto-reload mode with Angular, WITHOUT needing .NET at
 
 "blockcore-explorer/src/Blockcore.Explorer/ClientApp"
 
-Then run: `npm install` and `npm start`.
+Then run: 
+
+```sh
+npm install -g @angular/cli
+npm install
+npm start
+```
 
 This will host an web server on: http://localhost:4200/
 
