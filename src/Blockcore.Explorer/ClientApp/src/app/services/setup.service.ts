@@ -21,7 +21,8 @@ export class SetupService {
    multiChain: boolean;
    initialized = false;
 
-   format: string = 'satcommas'; // sat, satcommas, bitcoin
+   // Default to bitcoin as that is most user friendly for coins other than Bitcoin.
+   format: string = 'bitcoin'; // sat, satcommas, bitcoin
 
    toggleFormat() {
       if (this.format == 'sat') {
