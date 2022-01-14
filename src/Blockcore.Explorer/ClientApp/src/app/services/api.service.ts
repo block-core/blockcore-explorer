@@ -150,6 +150,10 @@ export class ApiService {
       return this.downloadRelative('/query/cirrus/contract/transaction/' + hash);
    }
 
+   async getContractAddress(address: string) {
+      return this.downloadRelative('/query/cirrus/contract/' + address);
+   }
+
 
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');

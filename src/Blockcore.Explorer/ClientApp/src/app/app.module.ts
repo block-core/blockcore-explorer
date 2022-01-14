@@ -31,6 +31,7 @@ import { InsightComponent } from './insight/insight.component';
 import { RichlistComponent } from './insight/richlist/richlist.component';
 import { TippyDirective } from './shared/tippy.directive';
 import { ContractTransactionComponent } from './explorer/contracttransaction/contracttransaction.component';
+import { ContractAddressComponent } from './explorer/contractaddress/contractaddress.component';
 
 const routes: Routes = [
   {
@@ -97,7 +98,12 @@ const routes: Routes = [
     path: ':chain/explorer/contracttransaction/:transaction', component: ContractTransactionComponent, resolve: {
       chain: LoadingResolverService
     }
-  }
+   },
+   {
+      path: ':chain/explorer/contractaddress/:address', component: ContractAddressComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   }
 ];
 
 @NgModule({
@@ -128,7 +134,8 @@ const routes: Routes = [
     InsightComponent,
     RichlistComponent,
     TippyDirective,
-    ContractTransactionComponent
+    ContractTransactionComponent,
+    ContractAddressComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,106 @@
+<app-search></app-search>
+
+<div class="box">
+   <div *ngIf="transaction">
+      <div class="grid-hash">
+         <div>
+            <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
+            <span class="grid-hash-middle breakable">{{transaction.transactionId}}</span>
+            <span class="grid-hash-middle breakable"><a [routerLink]="['../../','contracttransaction', transaction.transactionId]">Contract Transaction</a></span>
+            <span class="grid-hash-right">
+               <div class="grid-double">
+               </div>
+            </span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="box">
+
+   <!--<a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
+         *ngIf="detailsVisible">Hide</span>
+      details</a>-->
+
+   <h3><i class="fas fa-receipt"></i>&nbsp;&nbsp;Smart Contract Details</h3>
+
+   <app-progress class="centered" *ngIf="!transaction"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
+
+   <div class="grid-label-value" *ngIf="transaction">
+      <div>
+         <span>Is this a new contract</span>
+         <span>{{transaction.contractOpcode == "create" | yes}}</span>
+      </div>
+      <div>
+         <span>Contract Type</span>
+         <span>{{transaction.contractCodeType}}</span>
+      </div>
+      <div>
+         <span>Block</span>
+         <span><a [routerLink]="['../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
+      </div>
+      <div>
+         <span>Execution Success</span>
+         <span>{{transaction.success | yes}}</span>
+      </div>
+      <div>
+         <span>Gas Used</span>
+         <span>{{transaction.gasUsed }}</span>
+      </div>
+      <div>
+         <span>From Address</span>
+         <span>{{transaction.fromAddress}}</span>
+      </div>
+
+      <div>
+         <span>Contract Address</span>
+         <span>{{transaction.contractAddress}}</span>
+      </div>
+
+      <div *ngIf="transaction.error">
+         <span>Error</span>
+         <span>{{transaction.error}}</span>
+      </div>
+
+   </div>
+</div>
+
+<div class="box">
+   <h3>Transactions ({{total}})</h3>
+
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="errorTransactions">
+      <span class="muted">Error: </span> <span class="negative">{{errorTransactions.title}}</span><br><br>
+      {{errorTransactions.errors | json}}
+   </div>
+
+   <div *ngIf="transactions">
+      <!-- <div class="grid-list-transactions">
+         <span></span>
+         <span>Transaction ID</span>
+         <span>Height</span>
+         <span></span>
+         <span>Amount</span>
+      </div> -->
+
+      <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid-list-transactions" *ngFor="let item of transactions">
+
+
+            <span class="left"><a class=" number" [routerLink]="['../../','contracttransaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
+            <span class="left">{{item.success}}</span>
+            <span class="left">{{item.methodName}}</span>
+            <span class="number left">{{item.gasUsed }} {{setup.Chain.Symbol}}</span>
+            <span class="left"> <a class="number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
+            <span class="address left" tippy tippyType="address">{{item.fromAddress}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
+
+
