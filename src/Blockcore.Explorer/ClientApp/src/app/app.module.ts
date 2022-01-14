@@ -30,6 +30,7 @@ import { AddressComponent } from './explorer/address/address.component';
 import { InsightComponent } from './insight/insight.component';
 import { RichlistComponent } from './insight/richlist/richlist.component';
 import { TippyDirective } from './shared/tippy.directive';
+import { ContractTransactionComponent } from './explorer/contracttransaction/contracttransaction.component';
 
 const routes: Routes = [
   {
@@ -91,6 +92,11 @@ const routes: Routes = [
     path: ':chain/insight/richlist', component: RichlistComponent, resolve: {
       chain: LoadingResolverService
     }
+  },
+  {
+    path: ':chain/explorer/contracttransaction/:transaction', component: ContractTransactionComponent, resolve: {
+      chain: LoadingResolverService
+    }
   }
 ];
 
@@ -121,7 +127,8 @@ const routes: Routes = [
     AddressComponent,
     InsightComponent,
     RichlistComponent,
-    TippyDirective
+    TippyDirective,
+    ContractTransactionComponent
   ],
   imports: [
     BrowserModule,
