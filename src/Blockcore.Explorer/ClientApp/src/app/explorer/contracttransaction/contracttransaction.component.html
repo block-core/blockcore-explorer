@@ -38,7 +38,7 @@
          <span>Contract Type</span>
          <span>{{transaction.contractCodeType}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.methodName">
          <span>Method Name</span>
          <span>{{transaction.methodName}}</span>
       </div>
@@ -53,10 +53,6 @@
       <div>
          <span>Gas Used</span>
          <span>{{transaction.gasUsed }}</span>
-      </div>
-      <div>
-         <span>Method Name</span>
-         <span>{{transaction.methodName}}</span>
       </div>
       <div>
          <span>From Address</span>
