@@ -5,10 +5,10 @@ import { ApiService } from 'src/app/services/api.service';
 import { SetupService } from 'src/app/services/setup.service';
 
 @Component({
-  selector: 'app-transaction-component',
-  templateUrl: './transaction.component.html'
+   selector: 'app-contract-transaction-component',
+   templateUrl: './contract-transaction.component.html'
 })
-export class TransactionComponent implements OnInit, OnDestroy {
+export class ContractTransactionComponent implements OnInit, OnDestroy {
   @HostBinding('class.content-centered-top') hostClass = true;
 
   info: any;
@@ -40,17 +40,8 @@ export class TransactionComponent implements OnInit, OnDestroy {
       const id: any = params.get('transaction');
       console.log('Transaction ID:', id);
 
-       try {
-        this.transaction = await this.api.getTransaction(id);
-
-         if (this.transaction.outputs.length = 2)
-         {
-            if (this.transaction.outputs[1].outputType == "OP_CALLCONTRACT")
-               this.transaction.hasContract = true;
-
-            if (this.transaction.outputs[1].outputType == "OP_CREATECONTRACT")
-               this.transaction.hasContract = true;
-         }
+      try {
+         this.transaction = await this.api.getContractTransaction(id);
 
         this.error = null;
       } catch (e) {

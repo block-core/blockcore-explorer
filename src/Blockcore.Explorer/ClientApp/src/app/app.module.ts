@@ -26,10 +26,13 @@ import { AmountPipe } from './shared/amount';
 import { SearchComponent } from './search/search.component';
 import { ErrorComponent } from './error/error.component';
 import { YesPipe } from './shared/yes.pipe';
+import { SuccessPipe } from './shared/success.pipe';
 import { AddressComponent } from './explorer/address/address.component';
 import { InsightComponent } from './insight/insight.component';
 import { RichlistComponent } from './insight/richlist/richlist.component';
 import { TippyDirective } from './shared/tippy.directive';
+import { ContractTransactionComponent } from './explorer/contract-transaction/contract-transaction.component';
+import { ContractAddressComponent } from './explorer/contract-address/contract-address.component';
 
 const routes: Routes = [
   {
@@ -91,7 +94,17 @@ const routes: Routes = [
     path: ':chain/insight/richlist', component: RichlistComponent, resolve: {
       chain: LoadingResolverService
     }
-  }
+  },
+  {
+     path: ':chain/explorer/contract-transaction/:transaction', component: ContractTransactionComponent, resolve: {
+      chain: LoadingResolverService
+    }
+   },
+   {
+      path: ':chain/explorer/contract-address/:address', component: ContractAddressComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   }
 ];
 
 @NgModule({
@@ -118,10 +131,13 @@ const routes: Routes = [
     SearchComponent,
     ErrorComponent,
     YesPipe,
+    SuccessPipe,
     AddressComponent,
     InsightComponent,
     RichlistComponent,
-    TippyDirective
+    TippyDirective,
+    ContractTransactionComponent,
+    ContractAddressComponent
   ],
   imports: [
     BrowserModule,

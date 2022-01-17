@@ -146,6 +146,15 @@ export class ApiService {
       return this.downloadRelative('/insight/wallets');
    }
 
+   async getContractTransaction(hash: string) {
+      return this.downloadRelative('/query/cirrus/contract/transaction/' + hash);
+   }
+
+   async getContractAddress(address: string) {
+      return this.downloadRelative('/query/cirrus/contract/' + address);
+   }
+
+
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
       //const links: Record<string, string> = { };

@@ -1,0 +1,84 @@
+<app-search></app-search>
+
+<div class="box">
+   <div *ngIf="transaction">
+      <div class="grid-hash">
+         <div>
+            <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
+            <span class="grid-hash-middle breakable">{{transaction.transactionId}}</span>
+            <span class="grid-hash-right">
+               <div class="grid-double">
+               </div>
+            </span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="box">
+
+   <!--<a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
+         *ngIf="detailsVisible">Hide</span>
+      details</a>-->
+
+   <h3><i class="fas fa-receipt"></i>&nbsp;&nbsp;Smart Contract Transaction Details</h3>
+
+   <app-progress class="centered" *ngIf="!transaction"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
+
+   <div class="grid-label-value" *ngIf="transaction">
+      <div>
+         <span>Contract Type</span>
+         <span>{{transaction.contractCodeType}}</span>
+      </div>
+      <div *ngIf="transaction.methodName">
+         <span>Method Name</span>
+         <span>{{transaction.methodName}}</span>
+      </div>
+      <div>
+         <span>Block</span>
+         <span><a [routerLink]="['../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
+      </div>
+      <div>
+         <span>Status</span>
+         <span>{{transaction.success | success}}</span>
+      </div>
+      <div>
+         <span>Gas Used</span>
+         <span>{{transaction.gasUsed }}</span>
+      </div>
+      <div>
+         <span>From Address</span>
+         <span>{{transaction.fromAddress}}</span>
+      </div>
+      <div *ngIf="transaction.toAddress">
+         <span>To Address</span>
+         <span><a [routerLink]="['../../contract-address', transaction.toAddress]">{{transaction.toAddress}}</a></span>
+      </div>
+      <div *ngIf="transaction.newContractAddress">
+         <span>New Contract Address</span>
+         <span><a [routerLink]="['../../contract-address', transaction.newContractAddress]">{{transaction.newContractAddress}}</a></span>
+      </div>
+      <div>
+         <span>View Transaction</span>
+         <span><a [routerLink]="['../../','transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
+      </div>
+
+      
+      <div *ngIf="transaction.error">
+         <span>Error</span>
+         <span>{{transaction.error}}</span>
+      </div>
+
+
+
+   </div>
+</div>
+
+<div *ngIf="transaction.logs" class="box left" >
+   <h3>Logs</h3>
+
+   <span><pre>{{transaction.logs | json}}</pre></span>
+
+</div>
+

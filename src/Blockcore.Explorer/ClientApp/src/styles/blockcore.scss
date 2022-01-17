@@ -841,7 +841,7 @@ footer {
 }
 
 .grid-list-inputs {
-  grid-template-columns: 18px 18px minmax(0, 1fr);
+   grid-template-columns: 18px 18px minmax(0, 1fr) auto;
 }
 
 .grid-list-outputs {
@@ -854,6 +854,14 @@ footer {
   display: grid;
   gap: 0.3em;
   grid-template-columns: auto minmax(0, 1fr) 140px auto;
+}
+
+.grid-list-contract-address {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: minmax(0, 2fr) 140px auto 140px minmax(0, 3fr) auto;
 }
 
 // .grid-list-transactions span {
