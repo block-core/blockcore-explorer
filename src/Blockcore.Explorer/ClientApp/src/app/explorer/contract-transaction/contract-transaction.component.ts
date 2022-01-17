@@ -5,8 +5,8 @@ import { ApiService } from 'src/app/services/api.service';
 import { SetupService } from 'src/app/services/setup.service';
 
 @Component({
-   selector: 'app-contracttransaction-component',
-   templateUrl: './contracttransaction.component.html'
+   selector: 'app-contract-transaction-component',
+   templateUrl: './contract-transaction.component.html'
 })
 export class ContractTransactionComponent implements OnInit, OnDestroy {
   @HostBinding('class.content-centered-top') hostClass = true;

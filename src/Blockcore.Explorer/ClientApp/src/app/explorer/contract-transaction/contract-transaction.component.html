@@ -31,10 +31,6 @@
 
    <div class="grid-label-value" *ngIf="transaction">
       <div>
-         <span>Is this a new contract</span>
-         <span>{{transaction.contractOpcode == "create" | yes}}</span>
-      </div>
-      <div>
          <span>Contract Type</span>
          <span>{{transaction.contractCodeType}}</span>
       </div>
@@ -47,8 +43,8 @@
          <span><a [routerLink]="['../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
       </div>
       <div>
-         <span>Execution Success</span>
-         <span>{{transaction.success | yes}}</span>
+         <span>Status</span>
+         <span>{{transaction.success | success}}</span>
       </div>
       <div>
          <span>Gas Used</span>
@@ -60,11 +56,11 @@
       </div>
       <div *ngIf="transaction.toAddress">
          <span>To Address</span>
-         <span><a [routerLink]="['../../contractaddress', transaction.toAddress]">{{transaction.toAddress}}</a></span>
+         <span><a [routerLink]="['../../contract-address', transaction.toAddress]">{{transaction.toAddress}}</a></span>
       </div>
       <div *ngIf="transaction.newContractAddress">
          <span>New Contract Address</span>
-         <span><a [routerLink]="['../../contractaddress', transaction.newContractAddress]">{{transaction.newContractAddress}}</a></span>
+         <span><a [routerLink]="['../../contract-address', transaction.newContractAddress]">{{transaction.newContractAddress}}</a></span>
       </div>
       <div *ngIf="transaction.error">
          <span>Error</span>

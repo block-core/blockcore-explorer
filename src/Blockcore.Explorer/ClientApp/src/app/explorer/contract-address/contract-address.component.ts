@@ -6,8 +6,8 @@ import { SetupService } from 'src/app/services/setup.service';
 import { ScrollEvent } from 'src/app/shared/scroll.directive';
 
 @Component({
-   selector: 'app-contractaddress-component',
-   templateUrl: './contractaddress.component.html'
+   selector: 'app-contract-address-component',
+   templateUrl: './contract-address.component.html'
 })
 export class ContractAddressComponent implements OnInit, OnDestroy {
    @HostBinding('class.content-centered-top') hostClass = true;

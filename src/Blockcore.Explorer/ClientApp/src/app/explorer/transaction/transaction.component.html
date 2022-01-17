@@ -7,7 +7,7 @@
             <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
             <span class="grid-hash-middle breakable">{{transaction.transactionId}}</span>
             <div *ngIf="transaction.hasContract">
-               <span class="grid-hash-middle breakable"><a [routerLink]="['../../','contracttransaction', transaction.transactionId]">Contract Transaction</a></span>
+               <span class="grid-hash-middle breakable"><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">Contract Transaction</a></span>
             </div>
             <span class="grid-hash-right">
                <div class="grid-double">
