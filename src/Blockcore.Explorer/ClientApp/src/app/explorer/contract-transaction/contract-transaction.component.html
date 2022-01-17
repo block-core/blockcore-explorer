@@ -6,9 +6,6 @@
          <div>
             <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
             <span class="grid-hash-middle breakable">{{transaction.transactionId}}</span>
-             <span class="grid-hash-middle breakable"><a [routerLink]="['../../','transaction', transaction.transactionId]">View Transaction</a></span>
-
-
             <span class="grid-hash-right">
                <div class="grid-double">
                </div>
@@ -62,6 +59,12 @@
          <span>New Contract Address</span>
          <span><a [routerLink]="['../../contract-address', transaction.newContractAddress]">{{transaction.newContractAddress}}</a></span>
       </div>
+      <div>
+         <span>View Transaction</span>
+         <span><a [routerLink]="['../../','transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
+      </div>
+
+      
       <div *ngIf="transaction.error">
          <span>Error</span>
          <span>{{transaction.error}}</span>
