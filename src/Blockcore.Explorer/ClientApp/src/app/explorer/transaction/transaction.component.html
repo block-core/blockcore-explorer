@@ -81,19 +81,26 @@
 
       <div class="grid-list-inputs" *ngFor="let item of transaction.inputs">
 
-         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a
-               [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output"><i
-                  class="fas fa-arrow-left"></i></a></div>
+         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'">
+            <a [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output">
+               <i class="fas fa-arrow-left"></i>
+            </a>
+         </div>
          <div *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">
             <i title="Coinbase" class="fas fa-hammer"></i>
          </div>
          <div class="left number"> {{item.inputIndex}}</div>
-         <div class="left" *ngIf="item.inputAddress != null"><a class="address" tippy tippyType="address"
-               [routerLink]="['../../address', item.inputAddress]">{{item.inputAddress}}</a></div>
-         <div class="left" *ngIf="item.inputAddress == null && transaction.isCoinbase">No inputs (newly generated coins)
+         <div class="left" *ngIf="item.inputAddress != null">
+            <a class="address" tippy tippyType="address"
+               [routerLink]="['../../address', item.inputAddress]">{{item.inputAddress}}</a>
+
+
+         </div>
+         <div class="left" *ngIf="item.inputAddress == null && transaction.isCoinbase">
+            No inputs (newly generated coins)
          </div>
          <div class="left" *ngIf="item.inputAddress == null && !transaction.isCoinbase">Nonstandard</div>
-
+         <div class="number right">{{item.inputAmount | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
 
          <div *ngIf="detailsVisible" class="details-box">
             <div class="grid-label-value">
@@ -111,8 +118,10 @@
                </div>
                <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'">
                   <span>Input TX ID</span>
-                  <span class="breakable"><a [routerLink]="['../../transaction', item.inputTransactionId]"
-                        title="Input">{{item.inputTransactionId}}</a></span>
+                  <span class="breakable">
+                     <a [routerLink]="['../../transaction', item.inputTransactionId]"
+                        title="Input">{{item.inputTransactionId}}</a>
+                  </span>
                </div>
                <div>
                   <span>SequenceLock</span>
