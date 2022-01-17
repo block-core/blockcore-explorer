@@ -69,7 +69,7 @@
       </div>
 
       <div *ngIf="transaction.hasContract">
-         <span>View Smart Cotnract</span>
+         <span>View Smart Contract</span>
          <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
       </div>
    </div>

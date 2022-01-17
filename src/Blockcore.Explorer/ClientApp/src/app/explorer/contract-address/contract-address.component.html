@@ -53,7 +53,7 @@
          <span>{{transaction.contractAddress}}</span>
       </div>
       <div>
-         <span>View Smart Cotnract</span>
+         <span>View Smart Contract</span>
          <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
       </div>
       <div *ngIf="transaction.error">
