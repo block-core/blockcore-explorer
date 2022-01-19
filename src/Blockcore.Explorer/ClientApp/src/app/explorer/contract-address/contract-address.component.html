@@ -56,6 +56,10 @@
          <span>View Smart Contract</span>
          <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
       </div>
+      <div>
+         <span>Smart Contract Code</span>
+         <span><a [routerLink]="['../../','contract-code', transaction.contractAddress]">View C# Code</a></span>
+      </div>
       <div *ngIf="transaction.error">
          <span>Error</span>
          <span>{{transaction.error}}</span>
