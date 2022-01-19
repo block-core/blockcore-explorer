@@ -43,68 +43,72 @@
 
   <div *ngIf="!node?.error">
 
-    <div class="grid-label-value">
-      <div>
-        <span>Chain</span>
-        <span>{{node.blockchain.chain}}</span>
-      </div>
-      <div>
-        <span>Sync Progress</span>
-        <span>{{node.progress}} (Indexed/Chain Tip - Remaining)</span>
-      </div>
-      <div>
-        <span>Transactions in pool (mempool)</span>
-        <span>{{node.transactionsInPool}}</span>
-      </div>
-      <div>
-        <span>Average Block Persist In Seconds</span>
-        <span>{{node.avgBlockPersistInSeconds}}</span>
-      </div>
-      <div>
-        <span>Average Block Size</span>
-        <span>{{node.avgBlockSizeKb | size}}</span>
-      </div>
-      <div>
-        <span>Best Block Hash</span>
-        <span class="breakable">{{blockchain.bestBlockHash}}</span>
-      </div>
-      <div>
-        <span>Difficulty</span>
-        <span class="breakable">{{blockchain.difficulty}}</span>
-      </div>
-      <div>
-        <span>Is Initial Block Download</span>
-        <span>{{blockchain.isInitialBlockDownload | yes}}</span>
-      </div>
-      <div>
-        <span>Is Pruned</span>
-        <span>{{blockchain.isPruned | yes}}</span>
-      </div>
-      <div>
-        <span>Version</span>
-        <span>{{network.version}}</span>
-      </div>
-      <div>
-        <span>Sub Version</span>
-        <span>{{network.subVersion}}</span>
-      </div>
-      <div>
-        <span>Protocol Version</span>
-        <span>{{network.protocolVersion}}</span>
-      </div>
-      <div>
-        <span>Connections</span>
-        <span>{{network.connections}}</span>
-      </div>
-      <div>
-        <span>Relay Fee</span>
-        <span>{{network.relayFee}}</span>
-      </div>
-      <div>
-        <span>Incremental Fee</span>
-        <span>{{network.incrementalFee}}</span>
-      </div>
-    </div>
+     <div class="grid-label-value">
+        <div>
+           <span>Chain</span>
+           <span>{{node.blockchain.chain}}</span>
+        </div>
+        <div>
+           <span>Sync Progress</span>
+           <span>{{node.progress}} (Indexed/Chain Tip - Remaining)</span>
+        </div>
+        <div>
+           <span>Transactions in pool (mempool)</span>
+           <span>{{node.transactionsInPool}}</span>
+        </div>
+        <div>
+           <span>Average Block Persist In Seconds</span>
+           <span>{{node.avgBlockPersistInSeconds}}</span>
+        </div>
+        <div>
+           <span>Average Block Size</span>
+           <span>{{node.avgBlockSizeKb | size}}</span>
+        </div>
+        <div>
+           <span>Best Block Hash</span>
+           <span class="breakable">{{blockchain.bestBlockHash}}</span>
+        </div>
+        <div>
+           <span>Difficulty</span>
+           <span class="breakable">{{blockchain.difficulty}}</span>
+        </div>
+        <div *ngIf="blockchain.networkWeight > 0">
+           <span>Total Network Staking Weight</span>
+           <span>{{blockchain.networkWeight | amount}} {{setup.Chain.Symbol}}</span>
+        </div>
+        <div>
+           <span>Is Initial Block Download</span>
+           <span>{{blockchain.isInitialBlockDownload | yes}}</span>
+        </div>
+        <div>
+           <span>Is Pruned</span>
+           <span>{{blockchain.isPruned | yes}}</span>
+        </div>
+        <div>
+           <span>Version</span>
+           <span>{{network.version}}</span>
+        </div>
+        <div>
+           <span>Sub Version</span>
+           <span>{{network.subVersion}}</span>
+        </div>
+        <div>
+           <span>Protocol Version</span>
+           <span>{{network.protocolVersion}}</span>
+        </div>
+        <div>
+           <span>Connections</span>
+           <span>{{network.connections}}</span>
+        </div>
+        <div>
+           <span>Relay Fee</span>
+           <span>{{network.relayFee}}</span>
+        </div>
+        <div>
+           <span>Incremental Fee</span>
+           <span>{{network.incrementalFee}}</span>
+        </div>
+     </div>
   </div>
 
   <h2>Nodes seen last 24 hours</h2>
