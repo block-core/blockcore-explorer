@@ -64,6 +64,10 @@
             <span>Difficulty</span>
             <span>{{blockchain.difficulty}}</span>
          </div>
+         <div *ngIf="blockchain.networkWeight > 0">
+            <span>Total Network Staking Weight</span>
+            <span>{{blockchain.networkWeight | amount}} {{setup.Chain.Symbol}}</span>
+         </div>
          <div>
             <span>Sync Progress</span>
             <span>{{node.progress}}</span>

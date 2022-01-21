@@ -33,6 +33,7 @@ import { RichlistComponent } from './insight/richlist/richlist.component';
 import { TippyDirective } from './shared/tippy.directive';
 import { ContractTransactionComponent } from './explorer/contract-transaction/contract-transaction.component';
 import { ContractAddressComponent } from './explorer/contract-address/contract-address.component';
+import { ContractCodeComponent } from './explorer/contract-code/contract-code.component';
 
 const routes: Routes = [
   {
@@ -104,6 +105,11 @@ const routes: Routes = [
       path: ':chain/explorer/contract-address/:address', component: ContractAddressComponent, resolve: {
          chain: LoadingResolverService
       }
+   },
+   {
+      path: ':chain/explorer/contract-code/:address', component: ContractCodeComponent, resolve: {
+         chain: LoadingResolverService
+      }
    }
 ];
 
@@ -137,7 +143,8 @@ const routes: Routes = [
     RichlistComponent,
     TippyDirective,
     ContractTransactionComponent,
-    ContractAddressComponent
+    ContractAddressComponent,
+    ContractCodeComponent
   ],
   imports: [
     BrowserModule,
