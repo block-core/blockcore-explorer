@@ -45,6 +45,12 @@ export class TransactionComponent implements OnInit, OnDestroy {
 
          if (this.transaction.outputs.length = 2)
          {
+            if (this.transaction.outputs[0].outputType == "OP_CALLCONTRACT")
+               this.transaction.hasContract = true;
+
+            if (this.transaction.outputs[0].outputType == "OP_CREATECONTRACT")
+               this.transaction.hasContract = true;
+
             if (this.transaction.outputs[1].outputType == "OP_CALLCONTRACT")
                this.transaction.hasContract = true;
 
