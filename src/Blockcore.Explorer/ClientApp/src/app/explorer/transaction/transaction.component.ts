@@ -43,7 +43,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
        try {
         this.transaction = await this.api.getTransaction(id);
 
-         if (this.transaction.outputs.length = 2)
+         if (this.transaction.outputs.length == 2)
          {
             if (this.transaction.outputs[0].outputType == "OP_CALLCONTRACT")
                this.transaction.hasContract = true;
