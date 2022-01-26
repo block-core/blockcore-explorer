@@ -1,0 +1,33 @@
+<app-search></app-search>
+
+
+<div class="box">
+
+   <h3><i class="fas fa-cube"></i>&nbsp;&nbsp;Mempool Details</h3>
+
+   <app-error class="centered" [error]="error"></app-error>
+
+</div>
+
+
+<div class="box">
+   <h3>Transactions ({{total}})</h3>
+
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="transactions">
+      <div class="grid-header">
+         <span>Transaction ID</span>
+      </div>
+
+      <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid grid-odd-line" *ngFor="let item of transactions">
+            <span><a class="nonbreakable" [routerLink]="['../','transaction', item.transactionId]">{{item.transactionId}}</a></span>
+
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
