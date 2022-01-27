@@ -34,6 +34,8 @@ import { TippyDirective } from './shared/tippy.directive';
 import { ContractTransactionComponent } from './explorer/contract-transaction/contract-transaction.component';
 import { ContractAddressComponent } from './explorer/contract-address/contract-address.component';
 import { ContractCodeComponent } from './explorer/contract-code/contract-code.component';
+import { MempoolComponent } from './explorer/mempool/mempool.component';
+
 
 const routes: Routes = [
   {
@@ -95,7 +97,12 @@ const routes: Routes = [
     path: ':chain/insight/richlist', component: RichlistComponent, resolve: {
       chain: LoadingResolverService
     }
-  },
+   },
+   {
+      path: ':chain/explorer/mempool', component: MempoolComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   },
   {
      path: ':chain/explorer/contract-transaction/:transaction', component: ContractTransactionComponent, resolve: {
       chain: LoadingResolverService
@@ -141,6 +148,7 @@ const routes: Routes = [
     AddressComponent,
     InsightComponent,
     RichlistComponent,
+    MempoolComponent,
     TippyDirective,
     ContractTransactionComponent,
     ContractAddressComponent,
