@@ -68,6 +68,23 @@
          <span>{{transaction.version}}</span>
       </div>
 
+      <div *ngIf="detailsVisible">
+         <span>Transaction fee</span>
+         <span>{{transaction.fee | amount}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Size</span>
+         <span>{{transaction.size | size}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Virtual size</span>
+         <span>{{transaction.virtualSize | size}}</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>HasWitness</span>
+         <span>{{transaction.hasWitness | yes}}</span>
+      </div>
+
       <div *ngIf="transaction.hasContract">
          <span>View Smart Contract</span>
          <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
