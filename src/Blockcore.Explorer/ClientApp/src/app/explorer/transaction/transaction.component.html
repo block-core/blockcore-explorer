@@ -74,11 +74,11 @@
       </div>
       <div *ngIf="detailsVisible">
          <span>Size</span>
-         <span>{{transaction.size}} B</span>
+         <span>{{transaction.size | size}}</span>
       </div>
       <div *ngIf="detailsVisible">
          <span>Virtual size</span>
-         <span>{{transaction.virtualSize}} B</span>
+         <span>{{transaction.virtualSize | size}}</span>
       </div>
       <div *ngIf="detailsVisible">
          <span>HasWitness</span>
