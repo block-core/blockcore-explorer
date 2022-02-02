@@ -46,7 +46,8 @@ export class TippyDirective implements OnInit {
                     instance.setContent('<div class="tooltip">Balance: <span class="number">' + balance + '</span></div>');
 
                 }).catch(error => {
-                    instance.setContent(`Request failed. ${error}`);
+                    instance.setContent(`Request failed. Try again soon.`);
+                    console.error(error);
                 });
             }
         };

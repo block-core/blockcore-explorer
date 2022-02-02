@@ -168,20 +168,21 @@ header a:hover {
 }
 
 .shadow {
-  box-shadow: 0px 8px 16px 0px var(--shadow);
+  // box-shadow: 0px 8px 16px 0px var(--shadow);
   border: 1px solid var(--foreground-light);
   background-color: var(--box-background);
+  border-radius: 0.6em; 
 }
 
 // START EXPLORER
 
 .box {
-  box-shadow: 0px 8px 16px 0px var(--shadow);
+  // box-shadow: 0px 3px 6px 0px var(--shadow);
   border: 1px solid var(--foreground-light);
   margin-bottom: 1.4em;
-
   padding: 0 1em 1em 1em;
   background-color: var(--box-background);
+  border-radius: 0.6em; 
 }
 
 // END EXPLORER
