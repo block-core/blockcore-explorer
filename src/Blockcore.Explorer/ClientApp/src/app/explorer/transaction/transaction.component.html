@@ -27,17 +27,21 @@
    <app-error class="centered" [error]="error"></app-error>
 
    <div class="grid-label-value" *ngIf="transaction">
-      <div>
+      <div *ngIf="transaction.timestamp !== 0">
          <span>Age</span>
          <span>{{transaction.timestamp | ago}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.timestamp !== 0">
          <span>Date</span>
          <span>{{transaction.timestamp | timestamp}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.blockIndex">
          <span>Block</span>
          <span><a [routerLink]="['../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
+      </div>
+      <div *ngIf="!transaction.blockIndex">
+         <span>Block</span>
+         <span><a [routerLink]="['../../mempool']">Mempool</a></span>
       </div>
       <div>
          <span>Confirmations</span>

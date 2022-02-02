@@ -4,7 +4,7 @@
    <ul>
      <li class="chain-home-item" *ngFor="let chain of setup.chains">
        <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>
-       <a class="chain-home-link link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
+       <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
      </li>
    </ul>
  </div>

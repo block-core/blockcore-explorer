@@ -240,8 +240,13 @@ header a:hover {
    margin: 0.5em;
 }
 
+.chain-home-link:hover {
+  text-decoration: underline;
+}
+
 .chains-home > ul > li > a {
    white-space: nowrap;
+   text-decoration: none !important;
 }
 
 .chain-home-item {

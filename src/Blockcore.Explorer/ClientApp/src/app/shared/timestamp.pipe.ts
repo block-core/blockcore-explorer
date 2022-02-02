@@ -6,6 +6,10 @@ import * as moment from 'moment';
 export class TimestampPipe implements PipeTransform {
    transform(value: number): any {
 
+      if (value === 0) {
+         return '';
+      }
+
       const date = moment.unix(value);
       return date.toDate();
    }
