@@ -241,7 +241,7 @@ header a:hover {
 }
 
 .chain-home-link:hover {
-  text-decoration: underline;
+   text-decoration: underline;
 }
 
 .chains-home > ul > li > a {
@@ -318,6 +318,14 @@ header a:hover {
 
 .chain-link:hover {
    text-decoration: underline;
+}
+
+.decimals {
+   color: var(--foreground-alternative);
+}
+
+.symbol {
+   margin-left: 0.3em;
 }
 
 // END DROPDOWN WIDGET
