@@ -22,7 +22,7 @@ import { SizePipe } from './shared/size.pipe';
 import { TickerComponent } from './ticker/ticker.component';
 import { LoadingResolverService } from './shared/loading.resolver';
 import { TransactionComponent } from './explorer/transaction/transaction.component';
-import { AmountPipe } from './shared/amount';
+import { AmountMarkdownPipe, AmountPipe } from './shared/amount';
 import { SearchComponent } from './search/search.component';
 import { ErrorComponent } from './error/error.component';
 import { YesPipe } from './shared/yes.pipe';
@@ -35,7 +35,6 @@ import { ContractTransactionComponent } from './explorer/contract-transaction/co
 import { ContractAddressComponent } from './explorer/contract-address/contract-address.component';
 import { ContractCodeComponent } from './explorer/contract-code/contract-code.component';
 import { MempoolComponent } from './explorer/mempool/mempool.component';
-
 
 const routes: Routes = [
   {
@@ -139,6 +138,7 @@ const routes: Routes = [
     TimestampPipe,
     SizePipe,
     AmountPipe,
+    AmountMarkdownPipe,
     TickerComponent,
     TransactionComponent,
     SearchComponent,
@@ -152,7 +152,7 @@ const routes: Routes = [
     TippyDirective,
     ContractTransactionComponent,
     ContractAddressComponent,
-    ContractCodeComponent
+    ContractCodeComponent,
   ],
   imports: [
     BrowserModule,

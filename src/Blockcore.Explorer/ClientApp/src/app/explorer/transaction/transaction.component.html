@@ -10,8 +10,8 @@
                <div class="grid-double">
                </div>
             </span>
-            </div>
          </div>
+      </div>
    </div>
 </div>
 
@@ -91,7 +91,9 @@
 
       <div *ngIf="transaction.hasContract">
          <span>View Smart Contract</span>
-         <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
+         <span><a
+               [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId |
+               slice:0:20}}</a></span>
       </div>
    </div>
 </div>
@@ -121,7 +123,8 @@
             No inputs (newly generated coins)
          </div>
          <div class="left" *ngIf="item.inputAddress == null && !transaction.isCoinbase">Nonstandard</div>
-         <div class="number right">{{item.inputAmount | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
+         <div class="number right"><span [innerHTML]="item.inputAmount | amountHtml"></span><span
+               class="symbol hide-small">{{setup.Chain.Symbol}}</span></div>
 
          <div *ngIf="detailsVisible" class="details-box">
             <div class="grid-label-value">
@@ -137,7 +140,8 @@
                   <span>ScriptSig (HEX)</span>
                   <span class="breakable">{{item.scriptSig}}</span>
                </div>
-               <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'">
+               <div
+                  *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'">
                   <span>Input TX ID</span>
                   <span class="breakable">
                      <a [routerLink]="['../../transaction', item.inputTransactionId]"
@@ -166,7 +170,7 @@
          <div class="left" *ngIf="item.address == null && transaction.isCoinstake">Coinstake TX</div>
          <div class="left" *ngIf="item.address == null && !transaction.isCoinbase && !transaction.isCoinstake">
             Nonstandard</div>
-         <div class="number">{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
+         <div class="number"><span [innerHTML]="item.balance | amountHtml"></span><span class="symbol hide-small">{{setup.Chain.Symbol}}</span></div>
          <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]"
                title="Spent"><i class="fas fa-arrow-right"></i></a></div>
          <div *ngIf="item.spentInTransaction == null"></div>
