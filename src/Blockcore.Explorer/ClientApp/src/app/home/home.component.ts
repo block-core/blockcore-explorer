@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
 })
 export class HomeComponent {
-  @HostBinding('class.content-centered') hostClass = true;
+  // @HostBinding('class.content-centered') hostClass = true;
 
   constructor(public setup: SetupService, private router: Router) {
     // When we are not in multichain mode, redirect to chain-home.
