@@ -15,8 +15,7 @@
             <span class="center">{{i+1}}<!--<span><i class="fas fa-info-circle"></i></span>--></span>
             <span class><a [routerLink]="['../../explorer/address/', item.address]">{{item.address}}</a>
             </span>
-            <span class="right number">
-               {{item.balance | amount}}</span>
+            <span class="right number" [innerHTML]="item.balance | amountHtml"></span>
          </div>
          <br>
          <app-progress class="centered" *ngIf="loading">Loading richlist...</app-progress>

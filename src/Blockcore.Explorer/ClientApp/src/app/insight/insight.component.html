@@ -58,7 +58,7 @@
          <div class="grid grid-odd-line richlist" *ngFor="let item of richlist; index as i">
             <span class="hide-small">{{i+1}}</span>
             <span><a [routerLink]="['../explorer/address/', item.address]">{{item.address}}</a></span>
-            <span class="hide-small right number">{{item.balance | amount}}</span>
+            <span class="hide-small right number" [innerHTML]="item.balance | amountHtml"></span>
          </div>
 
       </div>
