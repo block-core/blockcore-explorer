@@ -5,6 +5,8 @@ import { Observable, BehaviorSubject, Subject } from 'rxjs';
 import { Router, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import * as satcomma from 'satcomma';
+
 
 @Injectable({
    providedIn: 'root'
@@ -31,6 +33,20 @@ export class SetupService {
          this.format = 'bitcoin';
       } else {
          this.format = 'sat';
+      }
+   }
+
+   transformFormat(value: number) {
+      if (this.format == 'sat') {
+         return value.toString();
+      }
+      else if (this.format == 'bitcoin') {
+         return (value / 100000000).toFixed(8);
+      }
+      else {
+         const formatted = satcomma.fromSats(value, { validateBitcoinMaxSupply: false });
+         const values = formatted.split('.');
+         return (+values[0]).toLocaleString('en-US', { maximumFractionDigits: 0 }) + '.' + values[1];
       }
    }
 

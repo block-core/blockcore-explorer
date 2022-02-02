@@ -1,5 +1,43 @@
-## <small>0.1.13 (2021-02-18)</small>
+## <small>0.1.14 (2022-01-30)</small>
 
+* act on review ([e11f10a](https://github.com/block-core/blockcore-explorer/commit/e11f10a))
+* Act on review ([725182d](https://github.com/block-core/blockcore-explorer/commit/725182d))
+* Add contract address ui ([4dc2615](https://github.com/block-core/blockcore-explorer/commit/4dc2615))
+* add contract transaction ([6b69814](https://github.com/block-core/blockcore-explorer/commit/6b69814))
+* Add csharp code view ([7571f3c](https://github.com/block-core/blockcore-explorer/commit/7571f3c))
+* Add development instructions ([f09f78b](https://github.com/block-core/blockcore-explorer/commit/f09f78b))
+* Add input amount and fix contract address grid ([38ca53f](https://github.com/block-core/blockcore-explorer/commit/38ca53f))
+* Add mempool view ([9e31caf](https://github.com/block-core/blockcore-explorer/commit/9e31caf))
+* add network weight ([3b54c28](https://github.com/block-core/blockcore-explorer/commit/3b54c28))
+* Add size and fee to trx view (#27) ([8f2dcb9](https://github.com/block-core/blockcore-explorer/commit/8f2dcb9)), closes [#27](https://github.com/block-core/blockcore-explorer/issues/27)
+* Contract opcode can be on eitehr the first or second output ([dc970a0](https://github.com/block-core/blockcore-explorer/commit/dc970a0))
+* Fix a few minor issues after upgrading ([1f91eff](https://github.com/block-core/blockcore-explorer/commit/1f91eff))
+* Fix annoying js bug ([e9b29a3](https://github.com/block-core/blockcore-explorer/commit/e9b29a3))
+* Fix code view box size ([c155efa](https://github.com/block-core/blockcore-explorer/commit/c155efa))
+* fix typo ([d62b6b2](https://github.com/block-core/blockcore-explorer/commit/d62b6b2))
+* increase address list view size ([7988400](https://github.com/block-core/blockcore-explorer/commit/7988400))
+* limit the size of the logs view ([9b3ae76](https://github.com/block-core/blockcore-explorer/commit/9b3ae76))
+* Make the number formatting default to bitcoin ([a00a091](https://github.com/block-core/blockcore-explorer/commit/a00a091))
+* Manual upgrade to Angular 13 ([247721f](https://github.com/block-core/blockcore-explorer/commit/247721f))
+* Manually update this package that is causing upgrade issues ([2e0b601](https://github.com/block-core/blockcore-explorer/commit/2e0b601))
+* Move the links in to the details body ([65bfad1](https://github.com/block-core/blockcore-explorer/commit/65bfad1))
+* Remove packages no longer in use ([13573d6](https://github.com/block-core/blockcore-explorer/commit/13573d6))
+* Remove the SSR parts from Visual Studio project ([bac27d7](https://github.com/block-core/blockcore-explorer/commit/bac27d7))
+* rmeove duplicate tag ([7fca226](https://github.com/block-core/blockcore-explorer/commit/7fca226))
+* role back chains.json ([3457e0e](https://github.com/block-core/blockcore-explorer/commit/3457e0e))
+* Update development instructions for explorer ([caa3f7d](https://github.com/block-core/blockcore-explorer/commit/caa3f7d))
+* Upgrade 10 to 11 ([8e6caf2](https://github.com/block-core/blockcore-explorer/commit/8e6caf2))
+
+
+
+## <small>0.1.13 (2022-01-11)</small>
+
+* Computed addresses (#22) ([af36fba](https://github.com/block-core/blockcore-explorer/commit/af36fba)), closes [#22](https://github.com/block-core/blockcore-explorer/issues/22)
+* Make the script breakable in UI ([2973a17](https://github.com/block-core/blockcore-explorer/commit/2973a17))
+* Minor typo reported by "Wajenzi" ([8ae2430](https://github.com/block-core/blockcore-explorer/commit/8ae2430))
+* Specify branch to release ([44706dd](https://github.com/block-core/blockcore-explorer/commit/44706dd))
+* Update changelog and version ([13e3474](https://github.com/block-core/blockcore-explorer/commit/13e3474))
+* Upgrades to .NET 6 and upgrades dependencies ([6c3c16b](https://github.com/block-core/blockcore-explorer/commit/6c3c16b))
 * Add display of details on each input and output ([6e4a47d](https://github.com/block-core/blockcore-explorer/commit/6e4a47d))
 * Add support for array in ticker API response ([131a2a5](https://github.com/block-core/blockcore-explorer/commit/131a2a5))
 

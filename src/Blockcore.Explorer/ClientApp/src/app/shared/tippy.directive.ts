@@ -2,6 +2,7 @@ import { Directive, Input, OnInit, ElementRef } from '@angular/core';
 import tippy from 'tippy.js';
 import { ThemeService } from '../services/theme.service';
 import { ApiService } from '../services/api.service';
+import { SetupService } from '../services/setup.service';
 
 @Directive({
     /* tslint:disable-next-line */
@@ -15,6 +16,7 @@ export class TippyDirective implements OnInit {
     constructor(
         private el: ElementRef,
         private api: ApiService,
+        private setup: SetupService,
         private theme: ThemeService) {
         this.el = el;
 
@@ -40,8 +42,9 @@ export class TippyDirective implements OnInit {
             var address = element.innerText;
             if (tippyType === 'address') {
                 api.getAddress(address).then(response => {
-                    const available = (response.available / 100000000).toFixed(8);
-                    instance.setContent('<div class="tooltip">Balance: <span class="number">' + available + '</span></div>');
+                    const balance = this.setup.transformFormat(response.balance);
+                    instance.setContent('<div class="tooltip">Balance: <span class="number">' + balance + '</span></div>');
+
                 }).catch(error => {
                     instance.setContent(`Request failed. ${error}`);
                 });
