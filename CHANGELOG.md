@@ -1,3 +1,28 @@
+## <small>0.1.18 (2022-02-03)</small>
+
+* Fix minor UI issue with search box not taking full width ([829a9a9](https://github.com/block-core/blockcore-explorer/commit/829a9a9)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Update screenshots in README ([7026db2](https://github.com/block-core/blockcore-explorer/commit/7026db2))
+
+
+
+## <small>0.1.16 (2022-02-03)</small>
+
+* Add a global search on main page ([7b36985](https://github.com/block-core/blockcore-explorer/commit/7b36985)), closes [#33](https://github.com/block-core/blockcore-explorer/issues/33)
+* Update CHANGELOG.md ([a5d60aa](https://github.com/block-core/blockcore-explorer/commit/a5d60aa))
+
+
+
+## <small>0.1.15 (2022-02-02)</small>
+
+* Add address formatting to dim the decimal (#32) ([e57cc64](https://github.com/block-core/blockcore-explorer/commit/e57cc64)), closes [#32](https://github.com/block-core/blockcore-explorer/issues/32) [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Add formatting of amount on richlist ([1a858fe](https://github.com/block-core/blockcore-explorer/commit/1a858fe)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Fix issue address tooltip balance ([dee4aaf](https://github.com/block-core/blockcore-explorer/commit/dee4aaf)), closes [#29](https://github.com/block-core/blockcore-explorer/issues/29)
+* Improve the front page layout of blockchains ([091d031](https://github.com/block-core/blockcore-explorer/commit/091d031)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Improve the mempool transaction details ([c347224](https://github.com/block-core/blockcore-explorer/commit/c347224)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Make boxes less visual ([541ee9d](https://github.com/block-core/blockcore-explorer/commit/541ee9d))
+
+
+
 ## <small>0.1.17 (2022-02-03)</small>
 
 * Update screenshots in README ([7026db2](https://github.com/block-core/blockcore-explorer/commit/7026db2))
