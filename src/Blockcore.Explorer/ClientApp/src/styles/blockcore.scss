@@ -676,6 +676,15 @@ footer {
    padding: 0;
 }
 
+.input-search {
+   color: var(--foreground);
+   font-size: 1.2em;
+   padding: 0.6em 0.4em 0.6em 2em;
+   width: 100%;
+   font-family: "Manrope", sans-serif;
+   font-family: "Raleway", sans-serif;
+ }
+ 
 .search-global {
    display: flex;
    flex-direction: row;
@@ -685,36 +694,29 @@ footer {
    padding-right: 3em;
 }
 
-.search-global .input-search {
+.input-search-global {
+   color: var(--foreground);
+   font-size: 1.2em;
+   padding: 0.6em 0.4em 0.6em 2em;
+   width: 80%;
+   font-family: "Raleway", sans-serif;
    flex-grow: 2;
    padding: 0.6em 0.4em 0.6em 2em;
    margin-bottom: 0;
    margin-right: 0.3em;
 }
 
-.input-search {
-   color: var(--foreground);
-   font-size: 1.2em;
-   padding: 0.6em 0.4em 0.6em 2em;
-
-   width: 80%;
-   font-family: "Raleway", sans-serif;
-}
-
-.input-search-select {
+.input-search-global-select {
+   background-color: var(--box-background);
+   color: var(--foreground-alternative);
    width: 180px;
-   color: var(--foreground);
-   // font-size: 1.2em;
-   // padding: 0.6em 0.4em 0.6em 2em;
    font-family: "Raleway", sans-serif;
-   border: 1px solid silver;
-
+   border: 1px solid var(--foreground-alternative);
    font-family: inherit;
    font-size: inherit;
    line-height: inherit;
    font-size: 1.3em;
    height: 100%;
-
    border-radius: 0.6em;
 }
 
@@ -726,62 +728,6 @@ footer {
    position: absolute;
    color: var(--foreground-alternative);
 }
-
-// :root {
-//    --select-border: #777;
-//    --select-focus: black;
-//    --select-arrow: var(--select-border);
-// }
-
-// select {
-//    appearance: none;
-//    background-color: transparent;
-//    border: none;
-//    padding: 0 1em 0 0;
-//    margin: 0;
-//    width: 100%;
-//    font-family: inherit;
-//    font-size: inherit;
-//    line-height: inherit;
-//    cursor: inherit;
-//    z-index: 1;
-//    outline: none;
-// }
-
-// .select {
-//    display: grid;
-//    grid-template-areas: "select";
-//    align-items: center;
-//    position: relative;
-
-//    select,
-//    &::after {
-//       grid-area: select;
-//    }
-
-//    cursor: pointer;
-//    border: 1px solid var(--select-border);
-//    border-radius: 0.25em;
-//    padding: 0.25em 0.5em;
-//    padding-top: 14px;
-
-//    &:not(.select--multiple)::after {
-//       content: "";
-//       justify-self: end;
-//       width: 0.8em;
-//       height: 0.5em;
-//       background-color: var(--select-arrow);
-//       clip-path: polygon(100% 0%, 0 0%, 50% 100%);
-//    }
-// }
-
-// select:focus + .focus {
-//    position: fixed;
-//     top: 6px;
-//    left: -1px;
-//    border: 2px solid var(--select-focus);
-//    border-radius: inherit;
-// }
 
 .grid,
 .grid-header {
