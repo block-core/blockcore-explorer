@@ -35,6 +35,7 @@ import { ContractTransactionComponent } from './explorer/contract-transaction/co
 import { ContractAddressComponent } from './explorer/contract-address/contract-address.component';
 import { ContractCodeComponent } from './explorer/contract-code/contract-code.component';
 import { MempoolComponent } from './explorer/mempool/mempool.component';
+import { SearchGlobalComponent } from './search-global/search-global.component';
 
 const routes: Routes = [
   {
@@ -142,6 +143,7 @@ const routes: Routes = [
     TickerComponent,
     TransactionComponent,
     SearchComponent,
+    SearchGlobalComponent,
     ErrorComponent,
     YesPipe,
     SuccessPipe,

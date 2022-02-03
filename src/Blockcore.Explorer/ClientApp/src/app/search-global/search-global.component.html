@@ -1,0 +1,12 @@
+<div class="search-global">
+    <i class="fas fa-search input-icon"></i>
+    <input class="input-search box" type="search" (keyup.enter)="search()" [(ngModel)]="searchTerm"
+        placeholder="Search for address, transaction or block.">
+
+    <div class="select">
+        <select class="input-search-select custom-select" [(ngModel)]="optionValue">
+            <option [value]="chain.symbol" [selected]="chain.symbol === optionValue" *ngFor="let chain of setup.chains">&nbsp;{{chain.name}}</option>
+        </select>
+    </div>
+
+</div>

@@ -38,7 +38,6 @@ export class ApiService {
    }
 
    async download(url, options = {}) {
-      console.log('DOWNLOADING:', url);
       const response = await fetch(url, options);
       const json = await response.json();
 
@@ -50,7 +49,6 @@ export class ApiService {
          }
       }
 
-      console.log('DOWNLOADED:', url);
       return json;
    }
 
@@ -59,13 +57,11 @@ export class ApiService {
    }
 
    async request(url, options = {}) {
-      console.log('DOWNLOADING:', url);
       const response = await fetch(url, options);
       return response;
    }
 
    async requestRelative(path, options = {}) {
-      console.log('DOWNLOADING:', this.baseUrl + path);
       const response = await fetch(this.baseUrl + path, options);
       return response;
    }

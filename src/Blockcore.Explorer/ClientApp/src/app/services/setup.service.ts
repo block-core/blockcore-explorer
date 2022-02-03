@@ -76,22 +76,18 @@ export class SetupService {
    }
 
    async getChains() {
-
       if (environment.local) {
          return;
       }
 
       const data = await this.api.loadSetups();
       this.chains = data;
-      console.log('CHAINS:', this.chains);
    }
 
    // Important that this is async and we wait for continued processing,
    // as we must have the chain setup as early as possible.
    async setChain(chain: string) {
       if (chain !== 'BLOCKCORE' && this.current === chain) {
-         console.log('CURRENT CHAIN IS SAME!');
-
          // Update the chain subject, which should trigger consumers to do some processing.
          this.current = chain;
 
@@ -109,9 +105,6 @@ export class SetupService {
 
       // Update the chain subject, which should trigger consumers to do some processing.
       this.current = chain;
-
-      console.log(this.Chain);
-      console.log(this.Chain.Color);
 
       if (this.Chain?.Color) {
          document.documentElement.style.setProperty('--accent', this.Chain?.Color);

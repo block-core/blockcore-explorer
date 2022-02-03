@@ -5,13 +5,14 @@ import { filter } from 'rxjs/operators';
 import { ApiService } from '../services/api.service';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
+  selector: 'app-search-global',
+  templateUrl: './search-global.component.html',
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SearchGlobalComponent implements OnInit, OnDestroy {
   // @HostBinding('class.content-centered') hostClass = true;
 
   searchTerm: any;
+  optionValue: string = 'STRAX';
 
   constructor(
     private api: ApiService,
@@ -28,6 +29,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   inputType(value: string) {
+    debugger;
     if (value.startsWith(this.setup.Network.NetworkWitnessPrefix)) {
       return 'address';
     } else if (value.length < 20) { // LONG_MAX: 9223372036854775807
@@ -40,8 +42,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   async search() {
-    const text = this.searchTerm;
+    await this.setup.setChain(this.optionValue.toLowerCase());
 
+    const text = this.searchTerm;
     const inputType = this.inputType(text);
 
     switch (inputType) {
