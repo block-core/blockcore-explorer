@@ -8,6 +8,15 @@
             "ASPNETCORE_ENVIRONMENT": "Development"
          }
       },
+      "COINVAULT (MULTI)": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=COINVAULT",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
       "CITY": {
          "commandName": "Project",
          "commandLineArgs": "--chain=CITY",

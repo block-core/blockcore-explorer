@@ -19,48 +19,63 @@ export class LoadingResolverService implements Resolve<any> {
    ) { }
    async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<Observable<any> | Observable<never>> {
 
+      // When resolving the route, just get the latest always (defaults to 'BLOCKCORE').
       let explorerChain = this.setup.current;
-      this.setup.multiChain = true;
+      let wasInitilized = this.setup.initialized;
 
-      // If local is set to true, then we'll default to single chain and also not run normal initialization where the API is queried.
-      if (environment.local) {
-         this.setup.multiChain = false;
-         this.setup.initialized = true;
-         explorerChain = 'local'; // Used in the URLs, so make sure it is lowercase.
-      }
-
+      // If not initialized yet, perform some operations:
       if (!this.setup.initialized) {
-         try {
-            this.setup.initialized = true;
+         console.log('Initilization of Explorer');
 
-            // Fetch the configure explorer chain to see if we should run in single or multi-chain mode.
+         try {
+            // First make a request to the local API to check what chain instance it is runnign.
             const explorerChainRequest = await this.api.request('/api/explorer/chain');
 
             if (explorerChainRequest.status === 200) {
                explorerChain = await explorerChainRequest.text();
-               this.setup.multiChain = (explorerChain === 'BLOCKCORE');
-            }
 
+               console.log('API Chain:', explorerChain);
+               this.setup.apiChain = explorerChain;
+
+               this.setup.multiChain = (explorerChain === 'BLOCKCORE' || explorerChain === 'COINVAULT');
+            } else { // If it fails... fallback
+               this.setup.multiChain = true;
+               this.setup.apiChain = 'BLOCKCORE';
+            }
          } catch {
+            this.setup.multiChain = true;
+            this.setup.apiChain = 'BLOCKCORE';
          }
+
+         if (this.setup.multiChain) {
+            console.log('GO GET', explorerChain);
+            await this.setup.getChains(explorerChain);
+         }
+
+         // If local is set to true, then we'll default to single chain and also not run normal initialization where the API is queried.
+         if (environment.local) {
+            this.setup.multiChain = false;
+            this.setup.initialized = true;
+            explorerChain = 'local'; // Used in the URLs, so make sure it is lowercase.
+         }
+
+         this.setup.initialized = true;
       }
 
-      if (this.setup.multiChain) {
-         // TODO: Figure out a better way to get path fragments pre-parsed into an array.
-         const fragments = state.url.split('/');
-         let chain = fragments[1];
+      console.log('Explorer Chain:', explorerChain);
 
-         if (!chain) {
-            chain = 'BLOCKCORE';
-         }
+      // TODO: Figure out a better way to get path fragments pre-parsed into an array.
+      const fragments = state.url.split('/');
+      let chain = fragments[1];
 
-         // If the chain has changed, load again.
-         if (chain === 'BLOCKCORE' || this.setup.current !== chain) {
-            return this.setup.setChain(chain);
-         }
+      if (chain != '') {
+         return this.setup.setChain(chain);
       } else {
-         // If the chain has changed, load again.
-         if (this.setup.current !== explorerChain) {
+         // We should reset to multichain configuration if user navigate back to home.
+         // If already initilized and no chain in URL; we'll reset back to root.
+         if (wasInitilized) {
+            return this.setup.setChain(this.setup.apiChain);
+         } else {
             return this.setup.setChain(explorerChain);
          }
       }

@@ -1,19 +1,19 @@
-<header class="header dropdown">
-  <a class="header-logo" [routerLink]="['/']"><img class="header-image" [ngClass]="{'mode-aware': setup.Chain?.IconFilter}" [src]="setup.Chain?.Icon"></a>
-  <a class="header-title" [routerLink]="['/']">{{setup.Chain?.Name}}<br>Explorer</a>
+<header class="header dropdown" *ngIf="chain">
+  <a class="header-logo" [routerLink]="['/']"><img class="header-image" [ngClass]="{'mode-aware': chain.IconFilter}" [src]="chain.Icon"></a>
+  <a class="header-title" [routerLink]="['/']">{{chain.Name}}<br>Explorer</a>
 
   <div *ngIf="setup.multiChain" class="dropdown-content chains">
     <ul>
-      <li class="chain-item" *ngFor="let chain of setup.chains">
-        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>
-        <a class="chain-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
+      <li class="chain-item" *ngFor="let c of setup.chains">
+        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': c.filter}" [src]="c.icon"></a>
+        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase()]">{{c.name}}</a>
       </li>
     </ul>
   </div>
 </header>
 
-<nav class="menu">
-  <ul *ngIf="setup.current != 'BLOCKCORE'">
+<nav class="menu" *ngIf="chain">
+  <ul *ngIf="!setup.isCurrentRootChain">
     <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)">
       <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"
         [routerLink]="[setup.current]">Ticker</a>

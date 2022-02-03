@@ -25,8 +25,10 @@ export class ExplorerComponent implements OnInit, OnDestroy {
 
   constructor(private api: ApiService, public setup: SetupService) {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
-      await this.updateInfo();
-      await this.updateBlocks();
+      if (!this.setup.isCurrentRootChain) {
+        await this.updateInfo();
+        await this.updateBlocks();
+      }
     });
   }
 
@@ -41,6 +43,10 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   }
 
   async updateBlocks() {
+    if (this.setup.isCurrentRootChain) {
+      return;
+    }
+
     try {
       const list = await this.api.getBlocks(0, 5);
 
@@ -69,6 +75,10 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   }
 
   async updateInfo() {
+    if (this.setup.isCurrentRootChain) {
+      return;
+    }
+
     try {
       this.info = await this.api.getInfo();
 

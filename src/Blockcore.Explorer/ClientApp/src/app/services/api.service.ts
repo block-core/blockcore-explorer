@@ -67,6 +67,9 @@ export class ApiService {
    }
 
    async loadSetup(chain: string) {
+
+      console.log('LOAD SETUP', chain);
+
       let setup = null;
 
       if (environment.local) {
@@ -89,8 +92,8 @@ export class ApiService {
       return setup;
    }
 
-   async loadSetups() {
-      return this.download('https://chains.blockcore.net/CHAINS.json');
+   async loadSetups(chain: string) {
+      return this.download(`https://chains.blockcore.net/CHAINS-${chain}.json`);
    }
 
    async getInfo() {

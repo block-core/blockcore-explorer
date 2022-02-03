@@ -1,12 +1,10 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ApiService } from './api.service';
-import { Observable, BehaviorSubject, Subject } from 'rxjs';
-import { Router, NavigationStart } from '@angular/router';
-import { filter } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
+import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
 import * as satcomma from 'satcomma';
-
 
 @Injectable({
    providedIn: 'root'
@@ -23,8 +21,17 @@ export class SetupService {
    multiChain: boolean;
    initialized = false;
 
+   private readonly currentChainSubjectBehavior = new BehaviorSubject<string>('BLOCKCORE');
+   readonly currentChain$ = this.currentChainSubjectBehavior.asObservable();
+
    // Default to bitcoin as that is most user friendly for coins other than Bitcoin.
    format: string = 'bitcoin'; // sat, satcommas, bitcoin
+
+   apiChain: string;
+
+   get isCurrentRootChain(): boolean {
+      return this.current == 'BLOCKCORE' || this.current == 'COINVAULT';
+   }
 
    toggleFormat() {
       if (this.format == 'sat') {
@@ -50,15 +57,6 @@ export class SetupService {
       }
    }
 
-   // Both SubjectBehavior and Behavior, depending on consumer.
-   // The "currentChainSubject$" will return current value as soon as subscribed.
-   private readonly currentChainSubjectBehavior = new BehaviorSubject<string>('BLOCKCORE');
-   // private readonly currentChainSubject = new Subject<string>();
-
-   // readonly currentChainSubjectBehavior$ = this.currentChainSubjectBehavior.asObservable();
-   // readonly currentChainBehavior$ = this.currentChainBehavior.asObservable();
-   readonly currentChain$ = this.currentChainSubjectBehavior.asObservable();
-
    get current(): string {
       return this.currentChainSubjectBehavior.getValue();
    }
@@ -75,22 +73,22 @@ export class SetupService {
 
    }
 
-   async getChains() {
+   async getChains(chain: string) {
       if (environment.local) {
+         console.log(`Environment is local, don't get setup configuration from server.`);
          return;
       }
 
-      const data = await this.api.loadSetups();
+      const data = await this.api.loadSetups(chain);
       this.chains = data;
    }
 
    // Important that this is async and we wait for continued processing,
    // as we must have the chain setup as early as possible.
    async setChain(chain: string) {
-      if (chain !== 'BLOCKCORE' && this.current === chain) {
+      if (this.current === chain) {
          // Update the chain subject, which should trigger consumers to do some processing.
          this.current = chain;
-
          return;
       }
 
