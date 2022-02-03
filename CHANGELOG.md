@@ -1,3 +1,52 @@
+## <small>0.1.16 (2022-02-03)</small>
+
+* Add a global search on main page ([7b36985](https://github.com/block-core/blockcore-explorer/commit/7b36985)), closes [#33](https://github.com/block-core/blockcore-explorer/issues/33)
+
+
+
+## <small>0.1.15 (2022-02-02)</small>
+
+* Add address formatting to dim the decimal (#32) ([e57cc64](https://github.com/block-core/blockcore-explorer/commit/e57cc64)), closes [#32](https://github.com/block-core/blockcore-explorer/issues/32) [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Add formatting of amount on richlist ([1a858fe](https://github.com/block-core/blockcore-explorer/commit/1a858fe)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Fix issue address tooltip balance ([dee4aaf](https://github.com/block-core/blockcore-explorer/commit/dee4aaf)), closes [#29](https://github.com/block-core/blockcore-explorer/issues/29)
+* Improve the front page layout of blockchains ([091d031](https://github.com/block-core/blockcore-explorer/commit/091d031)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Improve the mempool transaction details ([c347224](https://github.com/block-core/blockcore-explorer/commit/c347224)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Make boxes less visual ([541ee9d](https://github.com/block-core/blockcore-explorer/commit/541ee9d))
+
+
+
+## <small>0.1.14 (2022-01-30)</small>
+
+* act on review ([e11f10a](https://github.com/block-core/blockcore-explorer/commit/e11f10a))
+* Act on review ([725182d](https://github.com/block-core/blockcore-explorer/commit/725182d))
+* Add contract address ui ([4dc2615](https://github.com/block-core/blockcore-explorer/commit/4dc2615))
+* add contract transaction ([6b69814](https://github.com/block-core/blockcore-explorer/commit/6b69814))
+* Add csharp code view ([7571f3c](https://github.com/block-core/blockcore-explorer/commit/7571f3c))
+* Add development instructions ([f09f78b](https://github.com/block-core/blockcore-explorer/commit/f09f78b))
+* Add input amount and fix contract address grid ([38ca53f](https://github.com/block-core/blockcore-explorer/commit/38ca53f))
+* Add mempool view ([9e31caf](https://github.com/block-core/blockcore-explorer/commit/9e31caf))
+* add network weight ([3b54c28](https://github.com/block-core/blockcore-explorer/commit/3b54c28))
+* Add size and fee to trx view (#27) ([8f2dcb9](https://github.com/block-core/blockcore-explorer/commit/8f2dcb9)), closes [#27](https://github.com/block-core/blockcore-explorer/issues/27)
+* Contract opcode can be on eitehr the first or second output ([dc970a0](https://github.com/block-core/blockcore-explorer/commit/dc970a0))
+* Fix a few minor issues after upgrading ([1f91eff](https://github.com/block-core/blockcore-explorer/commit/1f91eff))
+* Fix annoying js bug ([e9b29a3](https://github.com/block-core/blockcore-explorer/commit/e9b29a3))
+* Fix code view box size ([c155efa](https://github.com/block-core/blockcore-explorer/commit/c155efa))
+* fix typo ([d62b6b2](https://github.com/block-core/blockcore-explorer/commit/d62b6b2))
+* increase address list view size ([7988400](https://github.com/block-core/blockcore-explorer/commit/7988400))
+* limit the size of the logs view ([9b3ae76](https://github.com/block-core/blockcore-explorer/commit/9b3ae76))
+* Make the number formatting default to bitcoin ([a00a091](https://github.com/block-core/blockcore-explorer/commit/a00a091))
+* Manual upgrade to Angular 13 ([247721f](https://github.com/block-core/blockcore-explorer/commit/247721f))
+* Manually update this package that is causing upgrade issues ([2e0b601](https://github.com/block-core/blockcore-explorer/commit/2e0b601))
+* Move the links in to the details body ([65bfad1](https://github.com/block-core/blockcore-explorer/commit/65bfad1))
+* Remove packages no longer in use ([13573d6](https://github.com/block-core/blockcore-explorer/commit/13573d6))
+* Remove the SSR parts from Visual Studio project ([bac27d7](https://github.com/block-core/blockcore-explorer/commit/bac27d7))
+* rmeove duplicate tag ([7fca226](https://github.com/block-core/blockcore-explorer/commit/7fca226))
+* role back chains.json ([3457e0e](https://github.com/block-core/blockcore-explorer/commit/3457e0e))
+* Update development instructions for explorer ([caa3f7d](https://github.com/block-core/blockcore-explorer/commit/caa3f7d))
+* Upgrade 10 to 11 ([8e6caf2](https://github.com/block-core/blockcore-explorer/commit/8e6caf2))
+
+
+
 ## <small>0.1.15 (2022-02-02)</small>
 
 * Add address formatting to dim the decimal (#32) ([e57cc64](https://github.com/block-core/blockcore-explorer/commit/e57cc64)), closes [#32](https://github.com/block-core/blockcore-explorer/issues/32) [#31](https://github.com/block-core/blockcore-explorer/issues/31)
