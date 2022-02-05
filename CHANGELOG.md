@@ -1,3 +1,25 @@
+## <small>0.1.19 (2022-02-05)</small>
+
+* Add prices on home page and 24 hour change difference ([88ee798](https://github.com/block-core/blockcore-explorer/commit/88ee798))
+* Update changelog ([2e68f45](https://github.com/block-core/blockcore-explorer/commit/2e68f45))
+
+
+
+## <small>0.1.18 (2022-02-03)</small>
+
+* Add support for multi-multi-explorer ([8112b23](https://github.com/block-core/blockcore-explorer/commit/8112b23))
+* Remove the "." from menu options ([516c173](https://github.com/block-core/blockcore-explorer/commit/516c173)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Update the changelog ([5035fca](https://github.com/block-core/blockcore-explorer/commit/5035fca))
+
+
+
+## <small>0.1.17 (2022-02-03)</small>
+
+* Fix minor UI issue with search box not taking full width ([829a9a9](https://github.com/block-core/blockcore-explorer/commit/829a9a9)), closes [#31](https://github.com/block-core/blockcore-explorer/issues/31)
+* Update screenshots in README ([7026db2](https://github.com/block-core/blockcore-explorer/commit/7026db2))
+
+
+
 ## <small>0.1.18 (2022-02-03)</small>
 
 * Add support for multi-multi-explorer ([8112b23](https://github.com/block-core/blockcore-explorer/commit/8112b23))
