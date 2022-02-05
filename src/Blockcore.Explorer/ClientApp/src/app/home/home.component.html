@@ -4,7 +4,12 @@
    <ul>
      <li class="chain-home-item" *ngFor="let chain of setup.chains">
        <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': chain.filter}" [src]="chain.icon"></a>
-       <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]">{{chain.name}}</a>
+       <a class="chain-home-link" [routerLink]="[chain.symbol.toLowerCase()]">
+         {{chain.name}}
+        </a><br>
+        <div class="chain-home-ticker" *ngIf="tickers && chain.coin">
+          {{ tickers[chain.coin].btc }} <i class="fab fa-btc"></i> <span *ngIf="tickers[chain.coin].btc_24h_change" class="chain-home-ticker-change" [ngClass]="getChangeClass(tickers[chain.coin].btc_24h_change)">{{tickers[chain.coin].btc_24h_change.toFixed(2)}}%</span>
+        </div>
      </li>
    </ul>
  </div>

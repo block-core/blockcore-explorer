@@ -1,0 +1,75 @@
+.chains-home {
+   width: 100%;
+   font-size: 1.2em;
+   text-align: center;
+}
+
+.chains-home img {
+   width: 32px;
+   height: 32px;
+}
+
+.chains-home li {
+   margin-left: 0.5em;
+   width: 180px;
+}
+
+.chains-home {
+   padding: 2rem;
+}
+
+.chains-home > ul {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+   grid-gap: 1em;
+   list-style-type: none;
+}
+
+.chains-home > ul > li {
+   margin: 0.5em;
+}
+
+.chain-home-link:hover {
+   text-decoration: underline;
+}
+
+.chains-home > ul > li > a {
+   white-space: nowrap;
+   text-decoration: none !important;
+}
+
+.chain-home-item {
+   display: grid;
+   grid-template-columns: 32px 1fr;
+   grid-template-rows: 1fr 1fr;
+   margin-bottom: 1em;
+   column-gap: 10px;
+   row-gap: 0px;
+}
+
+.chain-home-ticker {
+   clear: both;
+   display: block;
+   place-self: start;
+   white-space: nowrap;
+   color: var(--foreground-alternative);
+   font-size: 0.8em;
+}
+
+.chain-home-link {
+   height: 32px;
+   line-height: 32px;
+   place-self: start;
+}
+
+.chain-home-link img {
+   margin-right: 0.2em;
+}
+
+.chain-home-link:hover {
+   text-decoration: none;
+}
+
+.chain-home-ticker-change {
+   margin-left: 0.2em;
+}
