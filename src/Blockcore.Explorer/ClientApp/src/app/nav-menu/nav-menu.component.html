@@ -5,8 +5,8 @@
   <div *ngIf="setup.multiChain" class="dropdown-content chains">
     <ul>
       <li class="chain-item" *ngFor="let c of setup.chains">
-        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase()]"><img [ngClass]="{'mode-aware': c.filter}" [src]="c.icon"></a>
-        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase()]">{{c.name}}</a>
+        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase(), 'explorer']"><img [ngClass]="{'mode-aware': c.filter}" [src]="c.icon"></a>
+        <a class="chain-link" [routerLink]="[c.symbol.toLowerCase(), 'explorer']">{{c.name}}</a>
       </li>
     </ul>
   </div>
