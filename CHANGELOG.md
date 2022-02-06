@@ -1,3 +1,10 @@
+## <small>0.1.20 (2022-02-06)</small>
+
+* Link directly from home into the explorer and not the ticker ([68df03d](https://github.com/block-core/blockcore-explorer/commit/68df03d))
+* Update changelog ([1ee51ac](https://github.com/block-core/blockcore-explorer/commit/1ee51ac))
+
+
+
 ## <small>0.1.19 (2022-02-05)</small>
 
 * Add prices on home page and 24 hour change difference ([88ee798](https://github.com/block-core/blockcore-explorer/commit/88ee798))
