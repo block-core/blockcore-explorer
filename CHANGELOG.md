@@ -1,3 +1,10 @@
+## <small>0.1.21 (2022-02-06)</small>
+
+* Route the top left menu directly to explorer and not ticker ([c4d797f](https://github.com/block-core/blockcore-explorer/commit/c4d797f))
+* Update changelog ([f7c7502](https://github.com/block-core/blockcore-explorer/commit/f7c7502))
+
+
+
 ## <small>0.1.20 (2022-02-06)</small>
 
 * Link directly from home into the explorer and not the ticker ([68df03d](https://github.com/block-core/blockcore-explorer/commit/68df03d))
