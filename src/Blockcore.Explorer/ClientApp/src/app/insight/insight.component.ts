@@ -29,6 +29,7 @@ export class InsightComponent implements OnInit, OnDestroy {
   supply: any;
   wallets: any;
   timerWallets: any;
+  killed: boolean;
 
   constructor(private api: ApiService, public setup: SetupService) {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
@@ -36,12 +37,14 @@ export class InsightComponent implements OnInit, OnDestroy {
       await this.updateWallets();
       await this.updateRichlist();
     });
-   }
+  }
 
   ngOnInit(): void {
   }
 
   ngOnDestroy(): void {
+    this.killed = true;
+
     clearTimeout(this.timerInfo);
     clearTimeout(this.timerRichlist);
     clearTimeout(this.timerSupply);
@@ -50,6 +53,10 @@ export class InsightComponent implements OnInit, OnDestroy {
   }
 
   async updateWallets() {
+    if (this.killed) {
+      return;
+    }
+
     try {
       this.wallets = await this.api.getWallets();
       this.errorWallets = null;
@@ -63,6 +70,10 @@ export class InsightComponent implements OnInit, OnDestroy {
   }
 
   async updateSupply() {
+    if (this.killed) {
+      return;
+    }
+
     try {
       this.supply = await this.api.getSupply();
       this.errorSupply = null;
@@ -76,6 +87,10 @@ export class InsightComponent implements OnInit, OnDestroy {
   }
 
   async updateRichlist() {
+    if (this.killed) {
+      return;
+    }
+
     try {
       const list = await this.api.getRichlist(0, 5);
       this.richlist = list;
