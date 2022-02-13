@@ -72,9 +72,14 @@
          <span class="number">{{balance.totalSent | amount}}</span>
          <span class="number">#{{balance.totalSentCount | number}}</span>
       </div>
-      <div *ngIf="balance.unconfirmed > 0">
-         <span>Unconfirmed Balance</span>
-         <span class="number">{{balance.unconfirmed | amount}}</span>
+      <div *ngIf="balance.pendingReceived > 0">
+         <span>Pending Received</span>
+         <span class="number">{{balance.pendingReceived | amount}}</span>
+         <span></span>
+      </div>
+      <div *ngIf="balance.pendingSent > 0">
+         <span>Pending Sent</span>
+         <span class="number">{{balance.pendingSent | amount}}</span>
          <span></span>
       </div>
    </div>
