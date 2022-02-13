@@ -1,7 +1,7 @@
 import { Component, OnInit, HostBinding, HostListener } from '@angular/core';
-import { SetupService } from 'src/app/services/setup.service';
-import { ApiService } from 'src/app/services/api.service';
-import { ScrollEvent } from 'src/app/shared/scroll.directive';
+import { SetupService } from '../../services/setup.service';
+import { ApiService } from '../../services/api.service';
+import { ScrollEvent } from '../../shared/scroll.directive';
 
 @Component({
   selector: 'app-richlist',
@@ -18,8 +18,7 @@ export class RichlistComponent implements OnInit {
   configuration: any;
   consensus: any;
   peers: any;
-  blocks: any = null;
-
+  addresses: any = null;
   timerInfo: any;
   timerBlocks: any;
   count = 0;
@@ -38,12 +37,13 @@ export class RichlistComponent implements OnInit {
 
   ngOnInit(): void {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
-      await this.updateRichlist('/api/query/richlist?limit=' + this.limit);
+      // await this.api.getRichlist(0, this.limit);
+      // return this.downloadRelative('/insight/richlist?offset=' + offset + '&limit=' + limit);
+      await this.updateRichlist('/api/insight/richlist?limit=' + this.limit);
     });
   }
 
   async updateRichlist(url) {
-
     console.log('url: ', url);
 
     if (!url) {
@@ -59,28 +59,15 @@ export class RichlistComponent implements OnInit {
     const links = this.api.parseLinkHeader(linkHeader);
 
     // This will be set to undefined/null when no more previous links is available.
-    this.link = links.previous;
+    this.link = links.next;
 
-    // When the offset is not set (0), we should reverse the order of items.
     const list = await response.json();
-    list.reverse()
-    list.sort((b, a) => {
-      if (a.blockIndex === b.blockIndex) {
-        return 0;
-      }
-      if (a.blockIndex < b.blockIndex) {
-        return -1;
-      }
-      if (a.blockIndex > b.blockIndex) {
-        return 1;
-      }
-    });
 
-    if (!this.blocks) {
-      this.blocks = [];
+    if (!this.addresses) {
+      this.addresses = [];
     }
 
-    this.blocks = [...this.blocks, ...list];
+    this.addresses = [...this.addresses, ...list];
     this.count++;
   }
 
@@ -93,6 +80,7 @@ export class RichlistComponent implements OnInit {
       this.loading = true;
 
       setTimeout(async () => {
+        console.log('UPDATE RICH LIST', this.link);
         await this.updateRichlist(this.link);
         this.loading = false;
       });

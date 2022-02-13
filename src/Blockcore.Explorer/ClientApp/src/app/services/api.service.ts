@@ -134,7 +134,7 @@ export class ApiService {
    }
 
    async getRichlist(offset: number, limit: number) {
-      return this.downloadRelative('/query/richlist?offset=' + offset + '&limit=' + limit);
+      return this.downloadRelative('/insight/richlist?offset=' + offset + '&limit=' + limit);
    }
 
    async getSupply() {

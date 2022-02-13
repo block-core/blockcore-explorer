@@ -78,7 +78,6 @@ export class InsightComponent implements OnInit, OnDestroy {
   async updateRichlist() {
     try {
       const list = await this.api.getRichlist(0, 5);
-      list.reverse()
       this.richlist = list;
       this.errorRichlist = null;
     } catch (error) {
