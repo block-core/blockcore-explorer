@@ -62,7 +62,7 @@ export class AddressComponent implements OnInit, OnDestroy {
       }
 
       try {
-        await this.updateTransactions('/api/query/address/' + id + '/transactions?limit=' + this.limit);
+        await this.updateTransactions('/api/query/address/' + id + '/transactions?offset=&limit=' + this.limit);
       } catch (err) {
         if (err.message[0] === '{') {
           this.errorTransactions = JSON.parse(err.message);
@@ -103,7 +103,7 @@ export class AddressComponent implements OnInit, OnDestroy {
     const response = await this.api.request(baseUrl + url);
 
     // When the offset is not set (0), we should reverse the order of items.
-    const list = await response.json();
+    let list = await response.json();
 
     if (response.status !== 200) {
        if (list && list.status) {
@@ -113,14 +113,15 @@ export class AddressComponent implements OnInit, OnDestroy {
        }
     }
 
+    // Since we are looking at the history from latest to oldest, we must reverse the data in this individual page.
+    list = list.reverse();
+
     this.total = response.headers.get('Pagination-Total');
     const linkHeader = response.headers.get('Link');
     const links = this.api.parseLinkHeader(linkHeader);
 
     // This will be set to undefined/null when no more next links is available.
-    this.link = links['previous'];
-
-
+    this.link = links.previous;
 
     if (!this.transactions) {
       this.transactions = [];

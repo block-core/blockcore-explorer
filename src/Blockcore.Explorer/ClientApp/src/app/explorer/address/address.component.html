@@ -8,22 +8,6 @@
             <span class="grid-hash-middle breakable">{{address}}</span>
             <span class="grid-hash-right">
                <div class="grid-double">
-                  <!-- <div *ngIf="block.blockIndex > 1">
-                     <a [routerLink]="['../', block.blockIndex - 1]">
-                        <i class="fas fa-cube"></i><br>
-                        <span class="grid-hash-block-index">{{block.blockIndex - 1}}</span>
-                     </a>
-                  </div>
-                  <div class="muted">
-                     <i class="fas fa-cube"></i><br>
-                     <span class="grid-hash-block-index">{{block.blockIndex}}</span>
-                  </div>
-                  <div *ngIf="block.blockIndex !== lastBlockHeight">
-                     <a [routerLink]="['../', block.blockIndex + 1]">
-                        <i class="fas fa-cube"></i><br>
-                        <span class="grid-hash-block-index">{{block.blockIndex + 1}}</span>
-                     </a>
-                  </div> -->
                </div>
             </span>
          </div>
@@ -32,10 +16,6 @@
 </div>
 
 <div class="box">
-
-   <!-- <a class="link block-details-toggle" (click)="toggleDetails()"><span *ngIf="!detailsVisible">View</span><span
-         *ngIf="detailsVisible">Hide</span>
-      details</a> -->
 
    <h3><i class="fas fa-wallet"></i>&nbsp;&nbsp;Address</h3>
 
@@ -96,24 +76,13 @@
    </div>
 
    <div *ngIf="transactions">
-      <!-- <div class="grid-list-transactions">
-         <span></span>
-         <span>Transaction ID</span>
-         <span>Height</span>
-         <span></span>
-         <span>Amount</span>
-      </div> -->
 
       <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
          <div class="grid-list-transactions" *ngFor="let item of transactions">
-            
             <i *ngIf="item.entryType == 'stake'" class="fas fa-coins" title="Stake"></i>
             <i *ngIf="item.entryType != 'stake'" class="fas fa-handshake" title="Transfer"></i>
-            <!-- <span>{{item.entryType}}</span> -->
-
             <span class="left"><a class="nonbreakable number" [routerLink]="['../../transaction', item.transactionHash]">{{item.transactionHash}}</a></span>
             <span> <a class="number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
-            <!-- <span>{{item.confirmations}}</span> -->
             <span class="number">{{item.value | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>
@@ -122,57 +91,3 @@
    </div>
 
 </div>
-
-<!-- <div class="box" *ngIf="address">
-   <h3>Transactions ({{address.transactions.length}})</h3>
-
-   <div class="grid grid-odd-line" *ngIf="address">
-      <div class="grid-header">
-         <span>Transaction ID</span>
-         <span></span>
-         <span></span>
-         <span></span>
-      </div>
-      <div *ngFor="let item of address.transactions">
-         <span><a class="nonbreakable" [routerLink]="['../../transaction', item.transactionId]">{{item.transactionId}}</a></span>
-         <span></span>
-         <span></span>
-         <span></span>
-      </div>
-   </div>
-
-</div> -->
-
-<!-- <div class="grid-double" *ngIf="transaction">
-   <div class="grid-double-left shadow">
-      <h3>Inputs ({{transaction.inputs.length}})</h3>
-
-      <div class="grid-list-inputs" *ngFor="let item of transaction.inputs">
-
-         <div *ngIf="item.inputTransactionId != '0000000000000000000000000000000000000000000000000000000000000000'"><a 
-               [routerLink]="['../../transaction', item.inputTransactionId]" title="Previous output"><i
-                  class="fas fa-arrow-left"></i></a></div>
-         <div *ngIf="item.inputTransactionId == '0000000000000000000000000000000000000000000000000000000000000000'">
-            <i title="Coinbase" class="fas fa-hammer"></i>
-         </div>
-         <div class="left number"> {{item.inputIndex}}</div>
-         <div class="left" *ngIf="item.inputAddress != null"><a class="address"
-               [routerLink]="['address', item.inputAddress]">{{item.inputAddress}}</a></div>
-         <div class="left" *ngIf="item.inputAddress == null">Can't parse input address</div>
-      </div>
-
-   </div>
-   <div class="grid-double-right shadow">
-      <h3>Outputs ({{transaction.outputs.length}})</h3>
-
-      <div class="grid-list-outputs" *ngFor="let item of transaction.outputs">
-         <div class="left number"> {{item.index}}</div>
-         <div class="left" *ngIf="item.address != null"><a class="address" [routerLink]="['address', item.address]">{{item.address}}</a></div>
-         <div class="left" *ngIf="item.address == null">Can't parse output address</div>
-         <div>{{item.balance | amount}} <span class="hide-small">{{setup.Chain.Symbol}}</span></div>
-         <div *ngIf="item.spentInTransaction != null"><a [routerLink]="['../../transaction', item.spentInTransaction]" title="Spent"><i class="fas fa-arrow-right"></i></a></div>
-         <div *ngIf="item.spentInTransaction == null"></div>
-      </div>
-
-   </div>
-</div> -->
