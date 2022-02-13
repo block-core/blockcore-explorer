@@ -1,3 +1,14 @@
+## <small>0.1.22 (2022-02-13)</small>
+
+* Add pending receive and sent ([7bb76ef](https://github.com/block-core/blockcore-explorer/commit/7bb76ef))
+* Fix resource leak in controller ([fb1f311](https://github.com/block-core/blockcore-explorer/commit/fb1f311))
+* Fix the listing of transactions on address ([fb15017](https://github.com/block-core/blockcore-explorer/commit/fb15017))
+* Fix the rich list to work against updated (breaking) API ([7cb44e4](https://github.com/block-core/blockcore-explorer/commit/7cb44e4))
+* Update changelog ([4a168da](https://github.com/block-core/blockcore-explorer/commit/4a168da))
+* Update explorer with changes to default offset ([f5c0aaa](https://github.com/block-core/blockcore-explorer/commit/f5c0aaa))
+
+
+
 ## <small>0.1.21 (2022-02-06)</small>
 
 * Route the top left menu directly to explorer and not ticker ([c4d797f](https://github.com/block-core/blockcore-explorer/commit/c4d797f))
