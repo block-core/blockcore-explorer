@@ -40,7 +40,7 @@ export class BlocksComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
-      await this.updateBlocks('/api/query/block?limit=' + this.limit);
+      await this.updateBlocks('/api/query/block?offset=&limit=' + this.limit);
     });
   }
 

@@ -22,6 +22,7 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   errorBlocks: string;
   errorInfo: string;
   subscription: any;
+  killed: boolean;
 
   constructor(private api: ApiService, public setup: SetupService) {
     this.subscription = this.setup.currentChain$.subscribe(async (chain) => {
@@ -37,18 +38,32 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    clearTimeout(this.timerInfo);
-    clearTimeout(this.timerBlocks);
+    this.killed = true;
+
+    if (this.timerInfo) {
+      clearTimeout(this.timerInfo);
+      this.timerInfo = null;
+    }
+
+    if (this.timerBlocks) {
+      clearTimeout(this.timerBlocks);
+      this.timerBlocks = null;
+    }
+
     this.subscription.unsubscribe();
   }
 
   async updateBlocks() {
+    if (this.killed) {
+      return;
+    }
+
     if (this.setup.isCurrentRootChain) {
       return;
     }
 
     try {
-      const list = await this.api.getBlocks(0, 5);
+      const list = await this.api.getBlocks('', 5);
 
       // When the offset is not set (0), we should reverse the order of items.
       list.sort((b, a) => {
@@ -75,6 +90,10 @@ export class ExplorerComponent implements OnInit, OnDestroy {
   }
 
   async updateInfo() {
+    if (this.killed) {
+      return;
+    }
+
     if (this.setup.isCurrentRootChain) {
       return;
     }

@@ -104,7 +104,7 @@ export class ApiService {
       return this.downloadRelative('/query/block/latest');
    }
 
-   async getBlocks(offset: number, limit: number) {
+   async getBlocks(offset: number | string, limit: number) {
       return this.downloadRelative('/query/block?offset=' + offset + '&limit=' + limit);
    }
 
