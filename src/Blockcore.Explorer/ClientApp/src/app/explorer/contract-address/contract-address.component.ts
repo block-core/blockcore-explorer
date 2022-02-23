@@ -63,7 +63,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
          }
 
          try {
-            await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?limit=' + this.limit);
+            await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?offset=&limit=' + this.limit);
          } catch (err) {
             if (err.message[0] === '{') {
                this.errorTransactions = JSON.parse(err.message);
@@ -113,6 +113,19 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
             throw new HttpError(response.status, url, response.statusText);
          }
       }
+
+      list.sort((b, a) => {
+         if (a.blockIndex === b.blockIndex) {
+            return 0;
+         }
+         if (a.blockIndex < b.blockIndex) {
+            return -1;
+         }
+         if (a.blockIndex > b.blockIndex) {
+            return 1;
+         }
+      });
+
 
       this.total = response.headers.get('Pagination-Total');
       const linkHeader = response.headers.get('Link');
