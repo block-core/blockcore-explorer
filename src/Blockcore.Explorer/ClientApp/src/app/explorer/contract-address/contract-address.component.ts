@@ -63,7 +63,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
          }
 
          try {
-            await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?offset=&limit=' + this.limit);
+            await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?limit=' + this.limit);
          } catch (err) {
             if (err.message[0] === '{') {
                this.errorTransactions = JSON.parse(err.message);
@@ -132,7 +132,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
       const links = this.api.parseLinkHeader(linkHeader);
 
       // This will be set to undefined/null when no more next links is available.
-      this.link = links['previous'];
+      this.link = links['next'];
 
 
 
