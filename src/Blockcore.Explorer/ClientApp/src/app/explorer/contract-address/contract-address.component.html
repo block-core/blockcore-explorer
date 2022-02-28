@@ -44,6 +44,14 @@
          <span>{{transaction.gasUsed }}</span>
       </div>
       <div>
+         <span>Gas Price</span>
+         <span>{{transaction.gasPrice  }}</span>
+      </div>
+      <div>
+         <span>Amount</span>
+         <span>{{transaction.amount | amount}}</span>
+      </div>
+      <div>
          <span>From Address</span>
          <span>{{transaction.fromAddress}}</span>
       </div>
@@ -96,7 +104,7 @@
             <span class="left">{{item.methodName}}</span>
             <span class="left"> <a class="number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
             <span class="address left" tippy tippyType="address">{{item.fromAddress}}</span>
-            <span class="number left">{{item.gasUsed | amount}} {{setup.Chain.Symbol}}</span>
+            <span class="number left">{{item.amount | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>
          <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
