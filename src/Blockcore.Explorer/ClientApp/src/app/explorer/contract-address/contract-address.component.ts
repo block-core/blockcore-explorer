@@ -27,6 +27,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
    timerBlocks: any;
    timerTransactions: any;
    address: any;
+   filterAddress: any;
    balance: any;
    detailsVisible = false;
    lastBlockHeight: number;
@@ -49,8 +50,12 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
          const id: any = params.get('address');
          console.log('Address:', id);
 
+         const idFilter: any = params.get('filterAddress');
+         console.log('filterAddress:', idFilter);
+
          this.transactions = null;
          this.address = id;
+         this.filterAddress = idFilter;
 
          try {
             this.transaction = await this.api.getContractAddress(id);
@@ -63,7 +68,13 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
          }
 
          try {
-            await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?offset=&limit=' + this.limit);
+            if (idFilter != null) {
+               await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions/' + idFilter + '?offset=&limit=' + this.limit);
+            }
+            else {
+               await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?offset=&limit=' + this.limit);
+            }
+            
          } catch (err) {
             if (err.message[0] === '{') {
                this.errorTransactions = JSON.parse(err.message);

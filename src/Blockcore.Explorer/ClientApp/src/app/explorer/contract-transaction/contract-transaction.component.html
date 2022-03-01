@@ -57,7 +57,7 @@
       </div>
       <div>
          <span>From Address</span>
-         <span>{{transaction.fromAddress}}</span>
+         <span><a [routerLink]="['../../contract-address', transaction.toAddress, transaction.fromAddress ]">{{transaction.fromAddress}}</a></span>
       </div>
       <div *ngIf="transaction.toAddress">
          <span>To Address</span>

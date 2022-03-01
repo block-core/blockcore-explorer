@@ -109,7 +109,7 @@ const routes: Routes = [
     }
    },
    {
-      path: ':chain/explorer/contract-address/:address', component: ContractAddressComponent, resolve: {
+      path: ':chain/explorer/contract-address/:address/:filterAddress', component: ContractAddressComponent, resolve: {
          chain: LoadingResolverService
       }
    },

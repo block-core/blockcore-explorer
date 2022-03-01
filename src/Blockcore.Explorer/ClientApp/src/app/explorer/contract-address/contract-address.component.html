@@ -86,6 +86,11 @@
       {{errorTransactions.errors | json}}
    </div>
 
+   <div *ngIf="this.filterAddress">
+      <h4>Filter by ({{this.filterAddress}})</h4>
+   </div>
+   
+
    <div *ngIf="transactions">
       <!-- <div class="grid-list-transactions">
          <span></span>
