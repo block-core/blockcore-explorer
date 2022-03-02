@@ -55,12 +55,16 @@
          <span>Amount</span>
          <span>{{transaction.amount | amount}}</span>
       </div>
-      <div>
+      <div *ngIf="transaction.newContractAddress">
          <span>From Address</span>
-         <span>{{transaction.fromAddress}}</span>
+         <span><a [routerLink]="['../../contract-address', transaction.newContractAddress, transaction.fromAddress ]">{{transaction.fromAddress}}</a></span>
       </div>
       <div *ngIf="transaction.toAddress">
-         <span>To Address</span>
+         <span>From Address</span>
+         <span><a [routerLink]="['../../contract-address', transaction.toAddress, transaction.fromAddress ]">{{transaction.fromAddress}}</a></span>
+      </div>
+      <div *ngIf="transaction.toAddress">
+         <span>Contract Address</span>
          <span><a [routerLink]="['../../contract-address', transaction.toAddress]">{{transaction.toAddress}}</a></span>
       </div>
       <div *ngIf="transaction.newContractAddress">
