@@ -31,13 +31,9 @@
          <span>Contract Type</span>
          <span>{{transaction.contractCodeType}}</span>
       </div>
-      <div *ngIf="this.filterAddress">
+      <div>
          <span>Block</span>
-         <span><a [routerLink]="['../../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
-      </div>
-      <div *ngIf="!this.filterAddress">
-         <span>Block</span>
-         <span><a [routerLink]="['../../block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
+         <span><a [routerLink]="[navPath, 'block', transaction.blockIndex]">{{transaction.blockIndex}}</a></span>
       </div>
       <div>
          <span>Status</span>
@@ -64,21 +60,13 @@
          <span>Contract Address</span>
          <span>{{transaction.contractAddress}}</span>
       </div>
-      <div *ngIf="this.filterAddress">
+      <div>
          <span>View Smart Contract</span>
-         <span><a [routerLink]="['../../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
+         <span><a [routerLink]="[navPath,'contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
       </div>
-      <div *ngIf="!this.filterAddress">
-         <span>View Smart Contract</span>
-         <span><a [routerLink]="['../../','contract-transaction', transaction.transactionId]">{{transaction.transactionId | slice:0:20}}</a></span>
-      </div>
-      <div *ngIf="this.filterAddress">
+      <div>
          <span>Smart Contract Code</span>
-         <span><a [routerLink]="['../../../','contract-code', transaction.contractAddress]">View Source Code</a></span>
-      </div>
-      <div *ngIf="!this.filterAddress">
-         <span>Smart Contract Code</span>
-         <span><a [routerLink]="['../../','contract-code', transaction.contractAddress]">View Source Code</a></span>
+         <span><a [routerLink]="[navPath,'contract-code', transaction.contractAddress]">View Source Code</a></span>
       </div>
       <div *ngIf="transaction.error">
          <span>Error</span>
@@ -91,7 +79,7 @@
 <div class="box">
 
    <div *ngIf="this.filterAddress">
-      <h4>Filter by {{this.filterAddress}}</h4>
+      <h4>Filter by address: {{this.filterAddress}}</h4>
    </div>
 
    <h3>Transactions ({{total}})</h3>
@@ -119,12 +107,10 @@
          <div class="grid-list-contract-address" *ngFor="let item of transactions">
 
 
-            <span *ngIf="this.filterAddress" class="left"><a class=" number" [routerLink]="['../../../','contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
-            <span *ngIf="!this.filterAddress" class="left"><a class=" number" [routerLink]="['../../','contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
+            <span class="left"><a class=" number" [routerLink]="[navPath,'contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
             <span class="left">{{item.success | success}}</span>
             <span class="left">{{item.methodName}}</span>
-            <span *ngIf="this.filterAddress" class="left"> <a class="number" [routerLink]="['../../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
-            <span *ngIf="!this.filterAddress" class="left"> <a class="number" [routerLink]="['../../block', item.blockIndex]">{{item.blockIndex}}</a></span>
+            <span class="left"> <a class="number" [routerLink]="[navPath, 'block', item.blockIndex]">{{item.blockIndex}}</a></span>
             <span class="address left" tippy tippyType="address">{{item.fromAddress}}</span>
             <span class="number left">{{item.amount | amount}} {{setup.Chain.Symbol}}</span>
          </div>

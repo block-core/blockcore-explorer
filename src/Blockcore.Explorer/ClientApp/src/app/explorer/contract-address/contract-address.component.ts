@@ -39,6 +39,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
    link: string;
    error: any;
    errorTransactions: any;
+   navPath: any;
 
    constructor(
       private api: ApiService,
@@ -69,9 +70,11 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
 
          try {
             if (idFilter != null) {
+               this.navPath = "../../../";
                await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions/' + idFilter + '?offset=&limit=' + this.limit);
             }
             else {
+               this.navPath = "../../";
                await this.updateTransactions('/api/query/cirrus/contract/' + id + '/transactions?offset=&limit=' + this.limit);
             }
             
@@ -92,7 +95,7 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
       return amount;
    }
 
-   async ngOnInit() {
+      async ngOnInit() {
 
    }
 
