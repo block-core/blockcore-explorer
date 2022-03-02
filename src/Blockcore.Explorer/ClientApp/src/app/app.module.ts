@@ -36,6 +36,7 @@ import { ContractAddressComponent } from './explorer/contract-address/contract-a
 import { ContractCodeComponent } from './explorer/contract-code/contract-code.component';
 import { MempoolComponent } from './explorer/mempool/mempool.component';
 import { SearchGlobalComponent } from './search-global/search-global.component';
+import { OrphansComponent } from './explorer/orphans/orphans.component';
 
 const routes: Routes = [
   {
@@ -122,7 +123,12 @@ const routes: Routes = [
       path: ':chain/explorer/contract-code/:address', component: ContractCodeComponent, resolve: {
          chain: LoadingResolverService
       }
-   }
+   },
+   {
+      path: ':chain/explorer/orphans', component: OrphansComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   },
 ];
 
 @NgModule({
@@ -160,6 +166,7 @@ const routes: Routes = [
     ContractTransactionComponent,
     ContractAddressComponent,
     ContractCodeComponent,
+    OrphansComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,42 @@
+<app-search></app-search>
+
+<br>
+<br>
+
+<div class="box">
+   <h3>Orphan blocks ({{total}})</h3>
+
+   <app-progress class="centered" *ngIf="!blocks">Loading latest blocks...</app-progress>
+
+   <div *ngIf="blocks">
+      <div class="grid-header">
+         <span>Height</span>
+         <span>Hash</span>
+         <span>Date</span>
+         <span class="right hide-small">Transactions</span>
+      </div>
+
+      <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid grid-odd-line" *ngFor="let item of blocks">
+            <span><a style="cursor:pointer" (click)="showBlockDetails(item.blockHash)">{{item.blockIndex}}</a></span>
+            <span><a style="cursor:pointer" (click)="showBlockDetails(item.blockHash)">{{item.blockHash | slice:0:20}}</a></span>
+            <span>{{item.created | date:'dd/MM/yyyy hh:mm'}}</span>
+            <span class="right">{{item.block.transactionCount}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more blocks...</app-progress>
+      </div>
+   </div>
+
+</div>
+
+<div class="box " *ngIf="displayBlock">
+   <div>
+
+      <h4>Block Hash: {{displayBlock.blockHash}}</h4>
+
+      <span><pre style="max-width: 1270px; text-align:left; overflow: auto;">{{displayBlock | json}}</pre></span>
+
+
+   </div>
+</div>
