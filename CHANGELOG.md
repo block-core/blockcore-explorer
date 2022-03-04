@@ -1,3 +1,16 @@
+## <small>0.2.23 (2022-03-04)</small>
+
+* Add block reorg view ([b8eb0b7](https://github.com/block-core/blockcore-explorer/commit/b8eb0b7))
+* Add gas price and amount ([3bf908a](https://github.com/block-core/blockcore-explorer/commit/3bf908a))
+* change to contract address ([f9b2b12](https://github.com/block-core/blockcore-explorer/commit/f9b2b12))
+* enable filter by an address ([e9c28fe](https://github.com/block-core/blockcore-explorer/commit/e9c28fe))
+* Fix paging on smart contract list view ([d97841c](https://github.com/block-core/blockcore-explorer/commit/d97841c))
+* Fix some routing links ([c26854c](https://github.com/block-core/blockcore-explorer/commit/c26854c))
+* fix ugly hack with a local param ([32e6bdb](https://github.com/block-core/blockcore-explorer/commit/32e6bdb))
+* Update version ([6003cb2](https://github.com/block-core/blockcore-explorer/commit/6003cb2))
+
+
+
 ## <small>0.1.22 (2022-02-13)</small>
 
 * Add pending receive and sent ([7bb76ef](https://github.com/block-core/blockcore-explorer/commit/7bb76ef))
