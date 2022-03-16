@@ -37,6 +37,7 @@ import { ContractCodeComponent } from './explorer/contract-code/contract-code.co
 import { MempoolComponent } from './explorer/mempool/mempool.component';
 import { SearchGlobalComponent } from './search-global/search-global.component';
 import { OrphansComponent } from './explorer/orphans/orphans.component';
+import {DaoContractComponent} from "./explorer/DaoContract/dao-contract.component";
 
 const routes: Routes = [
   {
@@ -129,6 +130,11 @@ const routes: Routes = [
          chain: LoadingResolverService
       }
    },
+   {
+      path: ':chain/explorer/dao-contract/:address', component: DaoContractComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   },
 ];
 
 @NgModule({
@@ -167,6 +173,7 @@ const routes: Routes = [
     ContractAddressComponent,
     ContractCodeComponent,
     OrphansComponent,
+     DaoContractComponent
   ],
   imports: [
     BrowserModule,
