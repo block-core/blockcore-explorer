@@ -37,7 +37,7 @@
       </div>
       <div>
          <span>Created on Transaction</span>
-         <span><a [routerLink]="['../../','transaction', daoContract.contractCreateTransactionId]">{{daoContract.contractCreateTransactionId | slice:0:20}}</a></span>
+         <span><a [routerLink]="['../../','contract-transaction', daoContract.contractCreateTransactionId]">{{daoContract.contractCreateTransactionId | slice:0:20}}</a></span>
       </div>
 
       <div *ngIf="daoContract.error">
@@ -50,28 +50,41 @@
 
    </div>
 
+
+
+
+</div>
+
+<div class="box">
+   <h3>Deposits</h3>
+
    <div *ngIf="daoContract.deposits" class="left">
-      <h3>Deposits</h3>
       <div>
-         <span>Total amount:</span>
-         <span>{{totalDepositsAmount}}</span>
+         <span>Total amount: </span>
+         <span>{{totalDepositsAmount | amount}} {{setup.Chain.Symbol}}</span>
       </div>
+      <br />
+
       <div *ngIf="daoContract.deposits">
          <div class="grid grid-odd-line" *ngFor="let item of daoContract.deposits">
-            <span class="address left" tippy tippyType="address">{{item.senderAddress}}</span>
+            <span class="address left">{{item.senderAddress}}</span>
             <span class="right">{{item.amount| amount}}</span>
-            <span class="centered">{{item.transactionId | slice:0:20}}</span>
+            <span><a [routerLink]="['../../','contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
+
          </div>
       </div>
    </div>
+</div>
+
+<div class="box">
+   <h3>Proposals</h3>
 
    <div *ngIf="daoContract.proposals" class="left">
-      <h3>Proposals</h3>
       <div>
          <div class="grid grid-odd-line" *ngFor="let item of daoContract.proposals">
             <span class="left">{{item.description}}</span>
             <span class="right">{{item.amount| amount}}</span>
-            <span class="address centered" tippy tippyType="address">{{item.recipient}}</span>
+            <span class="address centered">{{item.recipient}}</span>
             <span class="centered" *ngIf="!item.wasProposalAccepted">rejected</span>
             <span class="centered" *ngIf="item.wasProposalAccepted">accepted</span>
          </div>
@@ -79,5 +92,3 @@
    </div>
 
 </div>
-
-
