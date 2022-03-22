@@ -12,6 +12,8 @@ export class DaoContractComponent implements OnInit,OnDestroy{
    daoContract: any;
    error: null;
    totalDepositsAmount:number = 0;
+   totalAmountOnApprovedProposals:number = 0;
+   deposits: Map<string, any>;
    @HostBinding('class.content-centered-top') private _hostClass = true;
 
    constructor(
@@ -28,6 +30,22 @@ export class DaoContractComponent implements OnInit,OnDestroy{
             this.daoContract = await this.api.getDaoContractTransaction(address);
 
             this.totalDepositsAmount = this.daoContract.deposits.map((item)=> Number.parseInt(item.amount)).reduce((acc, curr) => acc + curr, 0);
+
+            this.totalAmountOnApprovedProposals = this.daoContract.proposals.map((item)=> {
+               Number.parseInt(item.amount) * (item.wasProposalAccepted ? 1 : -1)
+            }).reduce((acc, curr) => acc + curr, 0);
+
+            // this.daoContract.deposits.forEach((item) =>
+            // {
+            //    if (this.deposits[item.senderAddress] == null)
+            //    {
+            //       this.deposits[item.senderAddress] = new item()
+            //    }
+            //
+            //    this.deposits[item.senderAddress].amount += item.amount;
+            //    this.deposits[item.senderAddress].transactions += 1;
+            //
+            // })
 
             this.error = null;
          } catch (e) {

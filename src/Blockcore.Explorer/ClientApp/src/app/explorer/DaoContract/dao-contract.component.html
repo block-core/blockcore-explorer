@@ -39,6 +39,14 @@
          <span>Created on Transaction</span>
          <span><a [routerLink]="['../../','contract-transaction', daoContract.contractCreateTransactionId]">{{daoContract.contractCreateTransactionId | slice:0:20}}</a></span>
       </div>
+      <div *ngIf="totalDepositsAmount">
+         <span>Total deposits amount</span>
+         <span>{{totalDepositsAmount}}</span>
+      </div>
+      <div *ngIf="totalDepositsAmount">
+         <span>Amounts on approved proposals</span>
+         <span>{{totalAmountOnApprovedProposals}}</span>
+      </div>
 
       <div *ngIf="daoContract.error">
          <span>Error</span>
@@ -59,11 +67,7 @@
    <h3>Deposits</h3>
 
    <div *ngIf="daoContract.deposits" class="left">
-      <div>
-         <span>Total amount: </span>
-         <span>{{totalDepositsAmount | amount}} {{setup.Chain.Symbol}}</span>
-      </div>
-      <br />
+      <h3>Deposits</h3>
 
       <div *ngIf="daoContract.deposits">
          <div class="grid grid-odd-line" *ngFor="let item of daoContract.deposits">
