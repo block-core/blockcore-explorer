@@ -157,6 +157,10 @@ export class ApiService {
       return this.downloadRelative('/query/cirrus/contract/code/' + address);
    }
 
+   async getDaoContractTransaction(address: string) {
+      return this.downloadRelative('/query/cirrus/contract/Dao/' + address);
+   }
+
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
       //const links: Record<string, string> = { };

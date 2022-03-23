@@ -61,6 +61,15 @@
          "environmentVariables": {
             "ASPNETCORE_ENVIRONMENT": "Development"
          }
+      },
+      "Cirrus": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=CRS",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
       }
    }
 }
