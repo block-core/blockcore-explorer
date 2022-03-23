@@ -23,6 +23,10 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
    transactions: any;
    transaction: any;
 
+   contractCodeTypeLink = false;
+   contractCodeTypeLinkPath: any;
+   contractCodeTypeLinkParam: any;
+
    timerInfo: any;
    timerBlocks: any;
    timerTransactions: any;
@@ -60,6 +64,8 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
 
          try {
             this.transaction = await this.api.getContractAddress(id);
+            this.buildLinkAddress();
+
          } catch (err) {
             if (err.message[0] === '{') {
                this.error = JSON.parse(err.message);
@@ -105,6 +111,17 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
 
    ngOnDestroy(): void {
 
+   }
+
+   buildLinkAddress() {
+
+      if (this.transaction.contractCodeType == "DAOContract") {
+
+         this.contractCodeTypeLink = true;
+         this.contractCodeTypeLinkPath = "dao-contract";
+         this.contractCodeTypeLinkParam = this.transaction.contractAddress;
+
+      }
    }
 
    async updateTransactions(url) {

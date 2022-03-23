@@ -25,7 +25,7 @@
    <div class="grid-label-value" *ngIf="daoContract">
       <div *ngIf="daoContract">
          <span>Available amount</span>
-         <span>{{daoContract.currentAmount | amount}}</span>
+         <span>{{daoContract.currentAmount | amount}} {{setup.Chain.Symbol}}</span>
       </div>
       <div *ngIf="daoContract.minVotingDuration">
          <span>Min voting duration</span>
@@ -41,11 +41,11 @@
       </div>
       <div *ngIf="totalDepositsAmount">
          <span>Total deposits amount</span>
-         <span>{{totalDepositsAmount}}</span>
+         <span>{{totalDepositsAmount | amount}} {{setup.Chain.Symbol}}</span>
       </div>
       <div *ngIf="totalDepositsAmount">
          <span>Amounts on approved proposals</span>
-         <span>{{totalAmountOnApprovedProposals}}</span>
+         <span>{{totalAmountOnApprovedProposals | amount}} {{setup.Chain.Symbol}}</span>
       </div>
 
       <div *ngIf="daoContract.error">
@@ -72,7 +72,7 @@
       <div *ngIf="daoContract.deposits">
          <div class="grid grid-odd-line" *ngFor="let item of daoContract.deposits">
             <span class="address left">{{item.senderAddress}}</span>
-            <span class="right">{{item.amount| amount}}</span>
+            <span class="right">{{item.amount | amount}}</span>
             <span><a [routerLink]="['../../','contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
 
          </div>
@@ -87,8 +87,11 @@
       <div>
          <div class="grid grid-odd-line" *ngFor="let item of daoContract.proposals">
             <span class="left">{{item.description}}</span>
+            <!--<span class="left">Start block: {{item.proposalStartedAtBlock}}</span>
+            <span class="left">End block: {{item.proposalCompletedAtBlock}}</span>-->
+            <!--<span><a [routerLink]="['../../','address', item.recipient]">{{item.recipient  | slice:0:20}}</a></span>-->
+            <span><a [routerLink]="['../../','contract-transaction', item.payoutTransactionId]">{{item.payoutTransactionId | slice:0:20}}</a></span>
             <span class="right">{{item.amount| amount}}</span>
-            <span class="address centered">{{item.recipient}}</span>
             <span class="centered" *ngIf="!item.wasProposalAccepted">rejected</span>
             <span class="centered" *ngIf="item.wasProposalAccepted">accepted</span>
          </div>

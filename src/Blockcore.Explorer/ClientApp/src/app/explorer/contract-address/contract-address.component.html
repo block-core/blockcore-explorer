@@ -29,7 +29,8 @@
    <div class="grid-label-value" *ngIf="transaction">
       <div>
          <span>Contract Type</span>
-         <span>{{transaction.contractCodeType}}</span>
+         <span *ngIf="!contractCodeTypeLink">{{transaction.contractCodeType}}</span>
+         <span *ngIf="contractCodeTypeLink"><a [routerLink]="[navPath, contractCodeTypeLinkPath, contractCodeTypeLinkParam]">{{transaction.contractCodeType}}</a></span>
       </div>
       <div>
          <span>Block</span>
