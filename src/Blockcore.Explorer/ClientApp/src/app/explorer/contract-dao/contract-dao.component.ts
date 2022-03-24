@@ -4,11 +4,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {SetupService} from "../../services/setup.service";
 
 @Component({
-   selector: 'app-dao-contract-component',
-   templateUrl: './dao-contract.component.html'
+   selector: 'app-contract-dao-component',
+   templateUrl: './contract-dao.component.html'
 })
 
-export class DaoContractComponent implements OnInit,OnDestroy{
+export class ContractDaoComponent implements OnInit,OnDestroy{
    daoContract: any;
    error: null;
    totalDepositsAmount:number = 0;
