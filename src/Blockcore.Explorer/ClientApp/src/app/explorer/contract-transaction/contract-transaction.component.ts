@@ -74,7 +74,7 @@ export class ContractTransactionComponent implements OnInit, OnDestroy {
       if (this.transaction.contractCodeType == "DAOContract") {
 
          this.contractCodeTypeLink = true;
-         this.contractCodeTypeLinkPath = "dao-contract";
+         this.contractCodeTypeLinkPath = "contract-dao";
 
          if (this.transaction.newContractAddress) {
             this.contractCodeTypeLinkParam = this.transaction.newContractAddress;
