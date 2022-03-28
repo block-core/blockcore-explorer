@@ -869,6 +869,14 @@ footer {
    grid-template-columns: auto auto;
 }
 
+.grid-list-contract-list {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: 250px 140px auto;
+}
+
 // .grid-list-transactions span {
 //   border: 1px solid red;
 // }
