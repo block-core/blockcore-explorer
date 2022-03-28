@@ -27,7 +27,7 @@ export class ContractDaoComponent implements OnInit,OnDestroy{
          console.log('Smart contract address:', address);
 
          try {
-            this.daoContract = await this.api.getDaoContractTransaction(address);
+            this.daoContract = await this.api.getContractDaoTransaction(address);
 
             this.totalDepositsAmount = this.daoContract.deposits.map((item)=> Number.parseInt(item.amount)).reduce((acc, curr) => acc + curr, 0);
 
