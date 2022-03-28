@@ -46,7 +46,7 @@ export class ContractListComponent implements OnInit, OnDestroy {
 
       try {
          this.transactions = await this.api.getContractList();
-         this.navPath = "../../";
+         this.navPath = "../";
          this.total = this.transactions.length;
 
         this.error = null;
