@@ -19,7 +19,7 @@
         [routerLink]="[setup.current]">Ticker</a>
     </li>
     <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Explorer)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer']">Explorer</a>
+      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="[setup.current, 'explorer']">Explorer</a>
     </li>
     <li class="nav-item" *ngIf="setup.Chain.Symbol == 'CRS'">
       <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer', 'contract-list']">Contracts</a>
