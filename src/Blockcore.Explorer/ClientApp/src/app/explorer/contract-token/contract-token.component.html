@@ -1,0 +1,99 @@
+<app-search></app-search>
+
+<div class="box">
+   <div *ngIf="transaction">
+      <div class="grid-hash">
+         <div>
+            <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
+            <span class="grid-hash-middle breakable">{{transaction.contractAddress}}</span>
+            <span class="grid-hash-right">
+               <div class="grid-double">
+               </div>
+            </span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="box">
+
+   <h3><i class="fas fa-receipt"></i>&nbsp;&nbsp;Standard Token Details</h3>
+
+   <app-progress class="centered" *ngIf="!transaction"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
+
+   <div class="grid-label-value" *ngIf="transaction">
+
+    
+
+      <div>
+         <span>Token name</span>
+         <span>{{transaction.name }}</span>
+      </div>
+      <div>
+         <span>Token symbol</span>
+         <span>{{transaction.symbol}}</span>
+      </div>
+      <div>
+         <span>Token total supply</span>
+         <span>{{transaction.totalSupply | amount}}</span>
+      </div>
+      <div>
+         <span>Decimals</span>
+         <span>{{transaction.decimals}}</span>
+      </div>
+      <div>
+         <span>Contract Address</span>
+         <span><a [routerLink]="['../../contract-address', transaction.contractAddress]">{{transaction.contractAddress}}</a></span>
+      </div>
+      <div>
+         <span>Created on Transaction</span>
+         <span><a [routerLink]="['../../','contract-transaction', transaction.contractCreateTransactionId]">{{transaction.contractCreateTransactionId | slice:0:20}}</a></span>
+      </div>
+
+      <div *ngIf="transaction.error">
+         <span>Error</span>
+         <span>{{transaction.error}}</span>
+      </div>
+
+   </div>
+</div>
+
+<div class="box">
+
+   <div *ngIf="this.filterAddress">
+      <h4>Filter by address: {{this.filterAddress}}</h4>
+   </div>
+
+   <h3>Token Holders</h3>
+
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="errorTransactions">
+      <span class="muted">Error: </span> <span class="negative">{{errorTransactions.title}}</span><br><br>
+      {{errorTransactions.errors | json}}
+   </div>
+
+   <div *ngIf="transactions">
+      <!-- <div class="grid-list-transactions">
+         <span></span>
+         <span>Transaction ID</span>
+         <span>Height</span>
+         <span></span>
+         <span>Amount</span>
+      </div> -->
+
+      <div class="scrollable address-transactions-scrollable" appDetectScroll [bottomOffset]="400" [topOffset]="400">
+         <div class="grid-list-contract-token" *ngFor="let item of transactions">
+
+            <span class="address left">{{item.address}}</span>
+            <span class="number">{{item.amount | amount}} {{transaction.symbol}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
+
+

@@ -861,6 +861,14 @@ footer {
    grid-template-columns: minmax(0, 2fr) 140px auto 140px minmax(0, 3fr) auto;
 }
 
+.grid-list-contract-token {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: auto auto;
+}
+
 // .grid-list-transactions span {
 //   border: 1px solid red;
 // }
