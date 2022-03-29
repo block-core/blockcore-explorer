@@ -1,0 +1,22 @@
+<app-search></app-search>
+
+<div class="box">
+   <h3>Smart Contract Types ({{total}})</h3>
+
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="transactions">
+   
+      <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+         <div class="grid-list-contract-list" *ngFor="let item of transactions">
+            <span class="left"><a class=" number" [routerLink]="[navPath,'contract-listbytype', item.contractCodeType]">{{item.contractCodeType}}</a></span>
+            <span class="left">{{item.count}} contracts</span>
+            <span class="left">{{item.contractHash}}</span>
+         </div>
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
+

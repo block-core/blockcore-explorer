@@ -62,11 +62,11 @@
 <div class="box">
    <h3>Deposits</h3>
 
-   <div *ngIf="daoContract.deposits" class="left">
+   <div *ngIf="deposits" class="left">
       <h3>Deposits</h3>
 
-      <div *ngIf="daoContract.deposits">
-         <div class="grid grid-odd-line" *ngFor="let item of daoContract.deposits">
+      <div >
+         <div class="grid grid-odd-line" *ngFor="let item of deposits">
             <span class="address left">{{item.senderAddress}}</span>
             <span class="right">{{item.amount | amount}}</span>
             <span><a [routerLink]="['../../','contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
@@ -79,9 +79,9 @@
 <div class="box">
    <h3>Proposals</h3>
 
-   <div *ngIf="daoContract.proposals" class="left">
+   <div *ngIf="proposals" class="left">
       <div>
-         <div class="grid grid-odd-line" *ngFor="let item of daoContract.proposals">
+         <div class="grid-list-contract-dao-proposals grid grid-odd-line" *ngFor="let item of proposals">
             <span class="left">{{item.description}}</span>
             <!--<span class="left">Start block: {{item.proposalStartedAtBlock}}</span>
             <span class="left">End block: {{item.proposalCompletedAtBlock}}</span>-->

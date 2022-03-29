@@ -858,7 +858,7 @@ footer {
    margin: 1em;
    display: grid;
    gap: 0.3em;
-   grid-template-columns: minmax(0, 2fr) 140px auto 140px minmax(0, 3fr) auto;
+   grid-template-columns: 200px 100px 250px 100px minmax(0, 3fr) auto;
 }
 
 .grid-list-contract-token {
@@ -867,6 +867,30 @@ footer {
    display: grid;
    gap: 0.3em;
    grid-template-columns: auto auto;
+}
+
+.grid-list-contract-list {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: 250px 140px auto;
+}
+
+.grid-list-contract-listbytype {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: 250px auto 140px auto;
+}
+
+.grid-list-contract-dao-proposals {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: 450px 250px auto auto;
 }
 
 // .grid-list-transactions span {

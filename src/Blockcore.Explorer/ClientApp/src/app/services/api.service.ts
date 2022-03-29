@@ -165,6 +165,9 @@ export class ApiService {
       return this.downloadRelative('/query/cirrus/contract/standardtoken/' + address);
    }
 
+   async getContractList() {
+      return this.downloadRelative('/query/cirrus/contract/list/');
+   }
 
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
