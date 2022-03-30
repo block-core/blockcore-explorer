@@ -4,11 +4,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {SetupService} from "../../services/setup.service";
 
 @Component({
-   selector: 'app-contract-dao-component',
-   templateUrl: './contract-dao.component.html'
+   selector: 'app-contract-daocontract-component',
+   templateUrl: './contract-daocontract.component.html'
 })
 
-export class ContractDaoComponent implements OnInit,OnDestroy{
+export class ContractDaoContractComponent implements OnInit,OnDestroy{
    daoContract: any;
    deposits: any;
    proposals: any;

@@ -118,18 +118,18 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
       if (this.transaction.contractCodeType == "DAOContract") {
 
          this.contractCodeTypeLink = true;
-         this.contractCodeTypeLinkPath = "contract-dao";
+         this.contractCodeTypeLinkPath = "contract-" + this.transaction.contractCodeType.toLowerCase();
          this.contractCodeTypeLinkParam = this.transaction.contractAddress;
       }
 
       if (this.transaction.contractCodeType == "StandardToken") {
 
          this.contractCodeTypeLink = true;
-         this.contractCodeTypeLinkPath = "contract-token";
+         this.contractCodeTypeLinkPath = "contract-" + this.transaction.contractCodeType.toLowerCase();
          this.contractCodeTypeLinkParam = this.transaction.contractAddress;
       }
 
-      if (this.transaction.contractCodeType.toLowerCase() == "nonfungibletoken") {
+      if (this.transaction.contractCodeType == "NonFungibleToken") {
 
          this.contractCodeTypeLink = true;
          this.contractCodeTypeLinkPath = "contract-" + this.transaction.contractCodeType.toLowerCase() ;

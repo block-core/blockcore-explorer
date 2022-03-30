@@ -6,10 +6,10 @@ import { SetupService } from 'src/app/services/setup.service';
 import { ScrollEvent } from 'src/app/shared/scroll.directive';
 
 @Component({
-   selector: 'app-contract-token-component',
-   templateUrl: './contract-token.component.html'
+   selector: 'app-contract-standardtoken-component',
+   templateUrl: './contract-standardtoken.component.html'
 })
-export class ContractTokenComponent implements OnInit, OnDestroy {
+export class ContractStandardTokenComponent implements OnInit, OnDestroy {
    @HostBinding('class.content-centered-top') hostClass = true;
 
    info: any;
@@ -63,7 +63,7 @@ export class ContractTokenComponent implements OnInit, OnDestroy {
          this.filterAddress = idFilter;
 
          try {
-            this.transaction = await this.api.getContractTokenTransaction(id);
+            this.transaction = await this.api.getContractStandardTokenTransaction(id);
             this.transactions = this.transaction.tokenHolders;
 
          } catch (err) {

@@ -161,7 +161,7 @@ export class ApiService {
       return this.downloadRelative('/query/cirrus/contract/dao/' + address);
    }
 
-   async getContractTokenTransaction(address: string) {
+   async getContractStandardTokenTransaction(address: string) {
       return this.downloadRelative('/query/cirrus/contract/standardtoken/' + address);
    }
 
