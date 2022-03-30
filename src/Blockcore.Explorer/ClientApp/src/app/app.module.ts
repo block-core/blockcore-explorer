@@ -41,6 +41,7 @@ import { ContractDaoComponent } from "./explorer/contract-dao/contract-dao.compo
 import { ContractTokenComponent } from './explorer/contract-token/contract-token.component';
 import { ContractListComponent } from './explorer/contract-list/contract-list.component';
 import { ContractListByTypeComponent } from './explorer/contract-listbytype/contract-listbytype.component';
+import { ContractNonFungibleTokenComponent } from './explorer/contract-nonfungibletoken/contract-nonfungibletoken.component';
 
 const routes: Routes = [
   {
@@ -153,6 +154,11 @@ const routes: Routes = [
          chain: LoadingResolverService
       }
    },
+   {
+      path: ':chain/explorer/contract-nonfungibletoken/:address', component: ContractNonFungibleTokenComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   },
 ];
 
 @NgModule({
@@ -194,7 +200,8 @@ const routes: Routes = [
     ContractDaoComponent,
     ContractTokenComponent,
     ContractListComponent,
-    ContractListByTypeComponent
+    ContractListByTypeComponent,
+    ContractNonFungibleTokenComponent
   ],
   imports: [
     BrowserModule,

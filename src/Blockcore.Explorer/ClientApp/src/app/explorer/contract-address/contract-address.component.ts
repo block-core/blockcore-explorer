@@ -128,6 +128,14 @@ export class ContractAddressComponent implements OnInit, OnDestroy {
          this.contractCodeTypeLinkPath = "contract-token";
          this.contractCodeTypeLinkParam = this.transaction.contractAddress;
       }
+
+      if (this.transaction.contractCodeType.toLowerCase() == "nonfungibletoken") {
+
+         this.contractCodeTypeLink = true;
+         this.contractCodeTypeLinkPath = "contract-" + this.transaction.contractCodeType.toLowerCase() ;
+         this.contractCodeTypeLinkParam = this.transaction.contractAddress;
+      }
+
    }
 
    async updateTransactions(url) {

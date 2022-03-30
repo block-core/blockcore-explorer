@@ -169,6 +169,11 @@ export class ApiService {
       return this.downloadRelative('/query/cirrus/contract/list/');
    }
 
+   async getContractNonFungibleTokenTransaction(address: string) {
+      return this.downloadRelative('/query/cirrus/contract/nonfungibletoken/' + address);
+   }
+
+
    parseLinkHeader(linkHeader: string) {
       const sections = linkHeader.split(', ');
       //const links: Record<string, string> = { };
