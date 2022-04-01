@@ -869,6 +869,14 @@ footer {
    grid-template-columns: auto auto;
 }
 
+.grid-list-contract-nft {
+   font-size: 0.75em;
+   margin: 1em;
+   display: grid;
+   gap: 0.6em;
+   grid-template-columns: 100%;
+}
+
 .grid-list-contract-list {
    font-size: 0.75em;
    margin: 1em;

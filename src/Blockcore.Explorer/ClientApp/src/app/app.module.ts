@@ -37,10 +37,11 @@ import { ContractCodeComponent } from './explorer/contract-code/contract-code.co
 import { MempoolComponent } from './explorer/mempool/mempool.component';
 import { SearchGlobalComponent } from './search-global/search-global.component';
 import { OrphansComponent } from './explorer/orphans/orphans.component';
-import { ContractDaoComponent } from "./explorer/contract-dao/contract-dao.component";
-import { ContractTokenComponent } from './explorer/contract-token/contract-token.component';
+import { ContractDaoContractComponent } from "./explorer/contract-daocontract/contract-daocontract.component";
+import { ContractStandardTokenComponent } from './explorer/contract-standardtoken/contract-standardtoken.component';
 import { ContractListComponent } from './explorer/contract-list/contract-list.component';
 import { ContractListByTypeComponent } from './explorer/contract-listbytype/contract-listbytype.component';
+import { ContractNonFungibleTokenComponent } from './explorer/contract-nonfungibletoken/contract-nonfungibletoken.component';
 
 const routes: Routes = [
   {
@@ -134,12 +135,12 @@ const routes: Routes = [
       }
    },
    {
-      path: ':chain/explorer/contract-dao/:address', component: ContractDaoComponent, resolve: {
+      path: ':chain/explorer/contract-daocontract/:address', component: ContractDaoContractComponent, resolve: {
          chain: LoadingResolverService
       }
    },
    {
-      path: ':chain/explorer/contract-token/:address', component: ContractTokenComponent, resolve: {
+      path: ':chain/explorer/contract-standardtoken/:address', component: ContractStandardTokenComponent, resolve: {
          chain: LoadingResolverService
       }
    },
@@ -150,6 +151,11 @@ const routes: Routes = [
    },
    {
       path: ':chain/explorer/contract-listbytype/:contractType', component: ContractListByTypeComponent, resolve: {
+         chain: LoadingResolverService
+      }
+   },
+   {
+      path: ':chain/explorer/contract-nonfungibletoken/:address', component: ContractNonFungibleTokenComponent, resolve: {
          chain: LoadingResolverService
       }
    },
@@ -191,10 +197,11 @@ const routes: Routes = [
     ContractAddressComponent,
     ContractCodeComponent,
     OrphansComponent,
-    ContractDaoComponent,
-    ContractTokenComponent,
+    ContractDaoContractComponent,
+    ContractStandardTokenComponent,
     ContractListComponent,
-    ContractListByTypeComponent
+    ContractListByTypeComponent,
+    ContractNonFungibleTokenComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,101 @@
+<app-search></app-search>
+
+<div class="box">
+   <div *ngIf="transaction">
+      <div class="grid-hash">
+         <div>
+            <span class="grid-hash-left"><i class="fas fa-hashtag"></i></span>
+            <span class="grid-hash-middle breakable">{{transaction.contractAddress}}</span>
+            <span class="grid-hash-right">
+               <div class="grid-double">
+               </div>
+            </span>
+         </div>
+      </div>
+   </div>
+</div>
+
+<div class="box">
+
+   <h3><i class="fas fa-receipt"></i>&nbsp;&nbsp;Non Fungible Token Details</h3>
+
+   <app-progress class="centered" *ngIf="!transaction"></app-progress>
+   <app-error class="centered" [error]="error"></app-error>
+
+   <div class="grid-label-value" *ngIf="transaction">
+
+
+      <div>
+         <span>Token name</span>
+         <span>{{transaction.name }}</span>
+      </div>
+      <div>
+         <span>Token symbol</span>
+         <span>{{transaction.symbol}}</span>
+      </div>
+      <div>
+         <span>Owner Only Minting</span>
+         <span>{{transaction.ownerOnlyMinting | yes }}</span>
+      </div>
+      <div>
+         <span>Contract Type</span>
+         <span>{{transaction.contractType}}</span>
+      </div>
+      <div>
+         <span>Owner</span>
+         <span><a [routerLink]="['../../contract-address', transaction.contractAddress, transaction.owner]">{{transaction.owner}}</a></span>
+      </div>
+      <div>
+         <span>Contract Address</span>
+         <span><a [routerLink]="['../../contract-address', transaction.contractAddress]">{{transaction.contractAddress}}</a></span>
+      </div>
+      <div>
+         <span>Created on Transaction</span>
+         <span><a [routerLink]="['../../','contract-transaction', transaction.contractCreateTransactionId]">{{transaction.contractCreateTransactionId | slice:0:20}}</a></span>
+      </div>
+
+      <div *ngIf="transaction.error">
+         <span>Error</span>
+         <span>{{transaction.error}}</span>
+      </div>
+
+   </div>
+</div>
+
+<div class="box">
+
+   <h3>Tokens</h3>
+
+   <app-progress class="centered" *ngIf="!transactions">Loading transactions...</app-progress>
+
+   <div *ngIf="errorTransactions">
+      <span class="muted">Error: </span> <span class="negative">{{errorTransactions.title}}</span><br><br>
+      {{errorTransactions.errors | json}}
+   </div>
+
+   <div *ngIf="transactions">
+
+      <div  class="scrollable " style="max-height:500px" appDetectScroll [bottomOffset]="400" [topOffset]="500">
+         <div class="grid-list-contract-nft" *ngFor="let item of transactions">
+
+            <span class="left">Token Id: {{item.id}}</span>
+            <span class="left">Burned: {{item.isBurned | yes }}</span>
+            <span class="left"><a [routerLink]="['../../','address', item.owner]">{{item.owner }}</a></span>
+            <span class="left">{{item.uri}}</span>
+
+            <div class="box left">
+               <h3>Sales History</h3>
+               <span><pre style="max-width: 1270px; overflow: auto;">{{item.salesHistory | json}}</pre></span>
+
+            </div>
+
+         </div>
+
+         <br>
+         <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+      </div>
+   </div>
+
+</div>
+
+
