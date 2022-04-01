@@ -1,3 +1,16 @@
+## <small>0.2.24 (2022-04-01)</small>
+
+* Add ui for NFT (#52) ([fcbf4ca](https://github.com/block-core/blockcore-explorer/commit/fcbf4ca)), closes [#52](https://github.com/block-core/blockcore-explorer/issues/52)
+* change  dao folder (#47) ([5ec5473](https://github.com/block-core/blockcore-explorer/commit/5ec5473)), closes [#47](https://github.com/block-core/blockcore-explorer/issues/47)
+* Display dao contract details in UI (#46) ([e7569b7](https://github.com/block-core/blockcore-explorer/commit/e7569b7)), closes [#46](https://github.com/block-core/blockcore-explorer/issues/46)
+* Fix a couple of typos reported by Wajenzi ([3fe3d2b](https://github.com/block-core/blockcore-explorer/commit/3fe3d2b))
+* Hide errors if issues with the API results ([3e644e6](https://github.com/block-core/blockcore-explorer/commit/3e644e6))
+* List of contract types (#50) ([be5b765](https://github.com/block-core/blockcore-explorer/commit/be5b765)), closes [#50](https://github.com/block-core/blockcore-explorer/issues/50) [#51](https://github.com/block-core/blockcore-explorer/issues/51)
+* Standard token (#49) ([c5a75b0](https://github.com/block-core/blockcore-explorer/commit/c5a75b0)), closes [#49](https://github.com/block-core/blockcore-explorer/issues/49)
+* Update version and changelog ([73db70b](https://github.com/block-core/blockcore-explorer/commit/73db70b))
+
+
+
 ## <small>0.2.23 (2022-03-04)</small>
 
 * Add block reorg view ([b8eb0b7](https://github.com/block-core/blockcore-explorer/commit/b8eb0b7))
