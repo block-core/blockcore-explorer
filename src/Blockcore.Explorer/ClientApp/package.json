@@ -22,7 +22,7 @@
     "@angular/platform-server": "13.1.2",
     "@angular/router": "13.1.2",
     "core-js": "^3.20.2",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "rxjs": "^7.5.2",
     "satcomma": "1.1.0",
     "tippy.js": "^6.3.7",
