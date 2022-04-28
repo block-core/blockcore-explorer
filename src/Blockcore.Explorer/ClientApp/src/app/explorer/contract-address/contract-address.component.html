@@ -53,6 +53,10 @@
          <span>{{transaction.amount | amount}}</span>
       </div>
       <div>
+         <span>Contract Balance</span>
+         <span>{{transaction.contractBalance | amount}}</span>
+      </div>
+      <div>
          <span>From Address</span>
          <span>{{transaction.fromAddress}}</span>
       </div>
@@ -114,6 +118,7 @@
             <span class="left"> <a class="number" [routerLink]="[navPath, 'block', item.blockIndex]">{{item.blockIndex}}</a></span>
             <span class="address left" tippy tippyType="address">{{item.fromAddress}}</span>
             <span class="number left">{{item.amount | amount}} {{setup.Chain.Symbol}}</span>
+            <span class="number left">{{item.contractBalance | amount}} {{setup.Chain.Symbol}}</span>
          </div>
          <br>
          <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
