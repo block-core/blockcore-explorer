@@ -78,16 +78,7 @@ export class ApiService {
       } else {
          setup = await this.download('https://chains.blockcore.net/chains/' + chain.toUpperCase() + '.json');
       }
-
-      var storageUrl = localStorage.getItem(chain +"-url");
-
-      if(storageUrl != null)
-      {
-         this.baseUrl = storageUrl;
-         console.log('storage baseUrl', this.baseUrl);
-         return setup;
-      }
-
+    
       this.baseUrl = setup.Explorer.Indexer.ApiUrl;
 
       // Remove the trailing / as we expect all URLs we build up expect it.
@@ -101,6 +92,15 @@ export class ApiService {
 
       this.resetUrl = this.baseUrl;
 
+      var storageUrl = localStorage.getItem(chain +"-url");
+
+      if(storageUrl != null)
+      {
+         this.baseUrl = storageUrl;
+         console.log('storage baseUrl', this.baseUrl);
+         return setup;
+      }
+
       return setup;
    }
 
@@ -113,9 +113,9 @@ export class ApiService {
       localStorage.setItem(chain +"-url", url);
    }
 
-   async resetBaseUrl(chain: string) {
+   async resetBaseUrl(chain: string, url: string) {
+      this.baseUrl = url;
       localStorage.removeItem(chain +"-url");
-      this.baseUrl = this.resetUrl;
    }
 
 
