@@ -15,6 +15,7 @@ export class ApiComponent {
   endpoints: any;
   dnsendpoints: any;
   inputUrl: any;
+  docUrl: any;
   errorMessage: any;
 
   constructor(
@@ -23,12 +24,24 @@ export class ApiComponent {
      private api: ApiService,
      ) {
     this.route.data.subscribe(data => console.log('Data :', data));
-    this.inputUrl = setup.Explorer.Indexer.ApiUrl
- 
+
+    this.load();
+  }
+
+  async load(){
+    this.inputUrl = await this.api.getBaseUrl();
+
+    if(this.inputUrl == this.setup.Explorer.Indexer.ApiUrl){
+      this.docUrl =  this.setup.Explorer.Indexer.DocUrl;
+    }
+    else {
+      this.docUrl =  this.inputUrl.replace("api","docs");
+    }
   }
 
   async save() {
-    console.log('api save called');
+    await this.api.setBaseUrl(this.setup.current, this.inputUrl );
+    await this.load();
   }
 
 
@@ -63,18 +76,16 @@ export class ApiComponent {
     }
   }
 
-
   async savedomain(event, item){
-    console.log('api save domain');
-
     var domain = item.domain;
     domain = "https://" + domain + "/api";   
     this.inputUrl = domain;
+    await this.save();
   }
 
   async reset(){
-    this.inputUrl = this.setup.Explorer.Indexer.ApiUrl
-
+    await this.api.resetBaseUrl(this.setup.current);
+    await this.load();
   }
 
 }

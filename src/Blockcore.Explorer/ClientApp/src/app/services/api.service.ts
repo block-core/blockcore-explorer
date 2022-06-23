@@ -30,6 +30,7 @@ export class ApiService {
 
    setup: any;
    baseUrl: string;
+   resetUrl: string;
 
    constructor(
       private http: HttpClient
@@ -78,6 +79,15 @@ export class ApiService {
          setup = await this.download('https://chains.blockcore.net/chains/' + chain.toUpperCase() + '.json');
       }
 
+      var storageUrl = localStorage.getItem(chain +"-url");
+
+      if(storageUrl != null)
+      {
+         this.baseUrl = storageUrl;
+         console.log('storage baseUrl', this.baseUrl);
+         return setup;
+      }
+
       this.baseUrl = setup.Explorer.Indexer.ApiUrl;
 
       // Remove the trailing / as we expect all URLs we build up expect it.
@@ -89,8 +99,25 @@ export class ApiService {
          this.baseUrl = 'http://localhost:9910/api';
       }
 
+      this.resetUrl = this.baseUrl;
+
       return setup;
    }
+
+   async getBaseUrl() {
+      return this.baseUrl;
+   }
+
+   async setBaseUrl(chain: string, url: string) {
+      this.baseUrl = url;
+      localStorage.setItem(chain +"-url", url);
+   }
+
+   async resetBaseUrl(chain: string) {
+      localStorage.removeItem(chain +"-url");
+      this.baseUrl = this.resetUrl;
+   }
+
 
    async loadSetups(chain: string) {
       return this.download(`https://chains.blockcore.net/CHAINS-${chain}.json`);
