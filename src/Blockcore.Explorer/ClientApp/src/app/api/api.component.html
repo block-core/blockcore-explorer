@@ -15,33 +15,35 @@
 
 <h2>Configure API</h2>
 <p>
-  For better privacy and resiliency you can specify a different api url for the indexer in the box bellow.
-  Or alternatively discover an indexer from the list of supported blockcore DNS servers
+  For better privacy or in case the default api is offline you can specify a different api url for the indexer.
+  <Br>
+  Or alternatively discover an indexer from the list of supported blockcore DNS servers.
 </p>
 
-<input class="input-search box" type="text" (keyup.enter)="save()"  placeholder="api endpoint." value="{{setup.Explorer.Indexer.ApiUrl}}">
-<a class="link" (click)="save()">Save</a>
-
-
+<input id="input-api-link" class="input-search box" type="text" (keyup.enter)="save()"  placeholder="api endpoint." [(ngModel)]="inputUrl">
+<p>
+  <a class="link" (click)="discover()">Discover</a>
+  <a class="link" (click)="reset()" style="margin: 0 20px 0 20px">Reset</a>
+  <a class="link" (click)="save()">Save</a>
+</p>
 <br>
 
-<h3>Discover endpoints</h3>
-<a class="link" (click)="discover()">Discover</a>
+<div *ngIf="errorMessage">
+  <span class="muted">Error: </span> <span class="negative">{{errorMessage.title}}</span><br><br>
+  {{errorMessage.errors | json}}
+</div>
 
 <div *ngIf="endpoints">
-
-  <div class="scrollable address-transactions-scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
-     <div class="grid-list-contract-address" *ngFor="let item of endpoints">
-
-
-        <span class="left"><a class=" number" [routerLink]="[navPath,'contract-transaction', item.transactionId]">{{item.transactionId | slice:0:20}}</a></span>
-        <span class="left">{{item.success | success}}</span>
-        <span class="left">{{item.methodName}}</span>
-        <span class="left"> <a class="number" [routerLink]="[navPath, 'block', item.blockIndex]">{{item.blockIndex}}</a></span>
-        <span class="address left" tippy tippyType="address">{{item.fromAddress}}</span>
-        <span class="number left">{{item.amount | amount}} {{setup.Chain.Symbol}}</span>
+  <h4>Discovered Indexers</h4>
+  <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+     <div class="grid-list-configure-api" *ngFor="let items of endpoints">
+      <span class=""><strong>{{items.Source}}</strong></span>
+      <div class="grid-list-configure-api-inner" *ngFor="let item of items">
+        <span class=""><a class="link" (click)="savedomain($event, item)" >{{item.domain}}</a></span>
+        <span *ngIf="item.online == true" class="">online</span>
+        <span *ngIf="item.online != true" class="">offline</span>     
+      </div>
      </div>
-     <br>
-     <app-progress class="centered" *ngIf="loading">Loading more transactions...</app-progress>
+     <app-progress class="centered" *ngIf="loading">Loading more domains...</app-progress>
   </div>
 </div>

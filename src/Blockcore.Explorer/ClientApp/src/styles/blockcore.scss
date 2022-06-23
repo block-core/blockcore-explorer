@@ -901,6 +901,23 @@ footer {
    grid-template-columns: 450px 250px auto auto;
 }
 
+.grid-list-configure-api {
+   font-size: 0.95em;
+   margin: 0.9em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: auto;
+}
+
+.grid-list-configure-api-inner {
+   font-size: 0.85em;
+   margin: 0.9em;
+   display: grid;
+   gap: 0.3em;
+   grid-template-columns: auto auto;
+}
+
+
 // .grid-list-transactions span {
 //   border: 1px solid red;
 // }

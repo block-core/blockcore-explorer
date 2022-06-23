@@ -14,6 +14,8 @@ export class ApiComponent {
 
   endpoints: any;
   dnsendpoints: any;
+  inputUrl: any;
+  errorMessage: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,12 +23,12 @@ export class ApiComponent {
      private api: ApiService,
      ) {
     this.route.data.subscribe(data => console.log('Data :', data));
-
+    this.inputUrl = setup.Explorer.Indexer.ApiUrl
  
   }
 
   async save() {
-    console.log('appi csave alled');
+    console.log('api save called');
   }
 
 
@@ -37,19 +39,42 @@ export class ApiComponent {
       this.dnsendpoints =  await this.api.download('https://chains.blockcore.net/services/BLOCKCORE-DNS.json');
     }
   
-    console.log(this.dnsendpoints);
-
-
     this.endpoints = [];
     let chain = this.setup.current;
 
     for (let index = 0; index < this.dnsendpoints.length; index++) {
       const element = this.dnsendpoints[index];
-      let res = await this.api.download(element["dns-server"] + "/api/dns/services/symbol/"+ chain.toUpperCase() + "/service/Indexer");
-      console.log(res);
-    }
 
+      try {
+        let res = await this.api.download(element["dns-server"] + "/api/dns/services/symbol/"+ chain.toUpperCase() + "/service/Indexer");
+        
+        res.Source = element["dns-server"];
+        res.Source = res.Source.replace("https://", "")
+        this.endpoints.push(res);
+     
+      } catch (err) {
+        if (err.message[0] === '{') {
+          this.errorMessage = JSON.parse(err.message);
+        } else {
+          this.errorMessage = err;
+        }
+        console.log(err);        
+      }
+    }
   }
 
+
+  async savedomain(event, item){
+    console.log('api save domain');
+
+    var domain = item.domain;
+    domain = "https://" + domain + "/api";   
+    this.inputUrl = domain;
+  }
+
+  async reset(){
+    this.inputUrl = this.setup.Explorer.Indexer.ApiUrl
+
+  }
 
 }
