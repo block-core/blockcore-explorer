@@ -113,9 +113,9 @@ export class ApiService {
       localStorage.setItem(chain +"-url", url);
    }
 
-   async resetBaseUrl(chain: string, url: string) {
-      this.baseUrl = url;
+   async resetBaseUrl(chain: string) {
       localStorage.removeItem(chain +"-url");
+      this.baseUrl = this.resetUrl;
    }
 
 
