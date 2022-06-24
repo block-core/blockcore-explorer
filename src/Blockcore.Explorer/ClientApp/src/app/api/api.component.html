@@ -5,6 +5,45 @@
 <p>
   If you'd like to call this API directly, you can read the documentation for here:
 </p>
-<p *ngIf="setup.Explorer?.Indexer?.DocUrl">
-  <a class="link" [href]="setup.Explorer.Indexer.DocUrl">{{setup.Explorer.Indexer.DocUrl}}</a>
+<p *ngIf="docUrl">
+  <a class="link" [href]="docUrl">{{docUrl}}</a>
 </p>
+
+<br>
+<br>
+<br>
+
+<h2>Configure API</h2>
+<p>
+  For better privacy or in case the default api is offline you can specify a different api url for the indexer.
+  <Br>
+  Or alternatively discover an indexer from the list of supported blockcore DNS servers.
+</p>
+
+<input id="input-api-link" class="input-search box" type="text" (keyup.enter)="save()"  placeholder="api endpoint." [(ngModel)]="inputUrl">
+<p>
+  <a class="link" (click)="discover()">Discover</a>
+  <a class="link" (click)="reset()" style="margin: 0 20px 0 20px">Reset</a>
+  <a class="link" (click)="save()">Save</a>
+</p>
+<br>
+
+<div *ngIf="errorMessage">
+  <span class="muted">Error: </span> <span class="negative">{{errorMessage.title}}</span><br><br>
+  {{errorMessage.errors | json}}
+</div>
+
+<div *ngIf="endpoints">
+  <h4>Discovered Indexers</h4>
+  <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+     <div class="grid-list-configure-api" *ngFor="let items of endpoints">
+      <span class=""><strong>{{items.Source}}</strong></span>
+      <div class="grid-list-configure-api-inner" *ngFor="let item of items">
+        <span class=""><a class="link" (click)="savedomain($event, item)" >{{item.domain}}</a></span>
+        <span *ngIf="item.online == true" class="">online</span>
+        <span *ngIf="item.online != true" class="">offline</span>     
+      </div>
+     </div>
+     <app-progress class="centered" *ngIf="loading">Loading more domains...</app-progress>
+  </div>
+</div>
