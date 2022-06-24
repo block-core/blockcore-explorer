@@ -1010,7 +1010,7 @@ pre {
    background-color: blue !important;
 }
 
-.grid-item::nth-of-type(odd) {
+.grid-item:nth-of-type(odd) {
    border: 4px solid green !important;
    background-color: yellow !important;
 }
