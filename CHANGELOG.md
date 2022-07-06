@@ -1,3 +1,11 @@
+## <small>0.2.26 (2022-07-06)</small>
+
+* Run configuration production, remove deprecated --prod flag ([9c6541b](https://github.com/block-core/blockcore-explorer/commit/9c6541b))
+* Update Node.js version used for build pipeline ([8c19289](https://github.com/block-core/blockcore-explorer/commit/8c19289))
+* Update version and changelog ([ce4f131](https://github.com/block-core/blockcore-explorer/commit/ce4f131))
+
+
+
 ## <small>0.2.25 (2022-07-06)</small>
 
 * Add launch and tasks for VS Code ([972410e](https://github.com/block-core/blockcore-explorer/commit/972410e))
