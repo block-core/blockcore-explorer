@@ -1,3 +1,19 @@
+## <small>0.2.25 (2022-07-06)</small>
+
+* Add launch and tasks for VS Code ([972410e](https://github.com/block-core/blockcore-explorer/commit/972410e))
+* enable source map ([5cbcf90](https://github.com/block-core/blockcore-explorer/commit/5cbcf90))
+* Fix Angular configuration ([48c63bf](https://github.com/block-core/blockcore-explorer/commit/48c63bf))
+* Fix minor null issue binding to ticker information ([aa62dc4](https://github.com/block-core/blockcore-explorer/commit/aa62dc4))
+* Selecting indexers from the dns servers (#58) ([4f8499a](https://github.com/block-core/blockcore-explorer/commit/4f8499a)), closes [#58](https://github.com/block-core/blockcore-explorer/issues/58)
+* Smart Contract balance (#54) ([daaeeff](https://github.com/block-core/blockcore-explorer/commit/daaeeff)), closes [#54](https://github.com/block-core/blockcore-explorer/issues/54)
+* Update NuGet packages ([3de2af6](https://github.com/block-core/blockcore-explorer/commit/3de2af6))
+* Update packages & Remove warning messages (#59) ([ad814d6](https://github.com/block-core/blockcore-explorer/commit/ad814d6)), closes [#59](https://github.com/block-core/blockcore-explorer/issues/59)
+* Update version and changelog ([3051308](https://github.com/block-core/blockcore-explorer/commit/3051308))
+* Upgrade to Angular 14 ([b61d40d](https://github.com/block-core/blockcore-explorer/commit/b61d40d))
+* Upgrade UI packages ([eed5444](https://github.com/block-core/blockcore-explorer/commit/eed5444))
+
+
+
 ## <small>0.2.24 (2022-04-01)</small>
 
 * Add ui for NFT (#52) ([fcbf4ca](https://github.com/block-core/blockcore-explorer/commit/fcbf4ca)), closes [#52](https://github.com/block-core/blockcore-explorer/issues/52)
