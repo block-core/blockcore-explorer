@@ -105,5 +105,5 @@ jobs:
         files: "${{env.RELEASE_PATH}}"
         draft: true
         prerelease: false
-        name: "Blockcore Explorer (Release ${{env.VERSION}})"
+        name: "Blockcore Explorer (${{env.VERSION}})"
         tag: ${{env.VERSION}}
