@@ -33,17 +33,18 @@
   {{errorMessage.errors | json}}
 </div>
 
-<div *ngIf="endpoints">
+<div *ngIf="indexers">
   <h4>Discovered Indexers</h4>
   <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
-     <div class="grid-list-configure-api" *ngFor="let items of endpoints">
-      <span class=""><strong>{{items.Source}}</strong></span>
-      <div class="grid-list-configure-api-inner" *ngFor="let item of items">
-        <span class=""><a class="link" (click)="savedomain($event, item)" >{{item.domain}}</a></span>
-        <span *ngIf="item.online == true" class="">online</span>
-        <span *ngIf="item.online != true" class="">offline</span>     
+     <!-- <div class="grid-list-configure-api" *ngFor="let items of endpoints"> -->
+      <!-- <span class=""><strong>{{items.Source}}</strong></span> -->
+      <div class="grid-list-configure-api-inner" *ngFor="let indexer of indexers">
+        <span class=""><a class="link" (click)="saveDomain($event, indexer)" >{{indexer.domain}}</a></span>
+        <span *ngIf="indexer.online == true" class="">online</span>
+        <span *ngIf="indexer.online != true" class="">offline</span>
       </div>
-     </div>
+     <!-- </div> -->
      <app-progress class="centered" *ngIf="loading">Loading more domains...</app-progress>
+     <div class="dimmed-notification">Clicking on the indexer will automatically change and save.</div>
   </div>
 </div>

@@ -917,6 +917,11 @@ footer {
    grid-template-columns: auto auto;
 }
 
+.dimmed-notification {
+   font-size: 0.75em;
+   color: rgba(255, 255, 255, 0.5);
+   margin-top: 1em;
+}
 
 // .grid-list-transactions span {
 //   border: 1px solid red;
