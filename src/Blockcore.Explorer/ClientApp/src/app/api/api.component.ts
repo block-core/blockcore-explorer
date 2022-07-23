@@ -47,60 +47,26 @@ export class ApiComponent {
    }
 
    async discover() {
-      // this.dnsendpoints = await BlockcoreDns.getDnsServers();
-      let chain = this.setup.current;
+      try {
+         let chain = this.setup.current;
 
-      this.dns = new BlockcoreDns();
-      await this.dns.load();
+         this.dns = new BlockcoreDns();
+         await this.dns.load();
 
-      this.indexers = this.dns.getOnlineServicesByNetwork(chain.toUpperCase());
-
-      // this.indexerProvider = new IndexerProvider();
-      // await this.indexerProvider.load();
-
-      // this.indexerProvider.setNetwork(chain.toUpperCase());
-
-      // // console.log(this.indexerProvider);
-      // // this.endpoints = 
-      // // let chain = this.setup.current;
-
-      // this.indexers = await this.indexerProvider..getIndexersByNetwork(
-      //    chain.toUpperCase()
-      // );
-
-      console.log(this.indexers);
-
-      // this.dns = new BlockcoreDns("");
-      // this.dns.setActiveServer();
-
-      // this.endpoints = [];
-
-      // for (let index = 0; index < this.dnsendpoints.length; index++) {
-      //    const element = this.dnsendpoints[index];
-
-      //    try {
-      //       let res = await this.api.download(
-      //          element["dns-server"] +
-      //             "/api/dns/services/symbol/" +
-      //             chain.toUpperCase() +
-      //             "/service/Indexer"
-      //       );
-
-      //       res.Source = element["dns-server"];
-      //       res.Source = res.Source.replace("https://", "");
-      //       this.endpoints.push(res);
-      //    } catch (err) {
-      //       if (err.message[0] === "{") {
-      //          this.errorMessage = JSON.parse(err.message);
-      //       } else {
-      //          this.errorMessage = err;
-      //       }
-      //       console.log(err);
-      //    }
-      // }
+         this.indexers = this.dns.getOnlineServicesByNetwork(
+            chain.toUpperCase()
+         );
+      } catch (err) {
+         if (err.message[0] === "{") {
+            this.errorMessage = JSON.parse(err.message);
+         } else {
+            this.errorMessage = err;
+         }
+         console.log(err);
+      }
    }
 
-   async saveDomain(event, item) {
+   async saveDomain(item) {
       var domain = item.domain;
       domain = "https://" + domain + "/api";
       this.inputUrl = domain;

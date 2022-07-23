@@ -35,11 +35,11 @@
 
 <div *ngIf="indexers">
   <h4>Discovered Indexers</h4>
-  <div class="scrollable" appDetectScroll (onScroll)="onScroll($event)" [bottomOffset]="400" [topOffset]="400">
+  <div>
      <!-- <div class="grid-list-configure-api" *ngFor="let items of endpoints"> -->
       <!-- <span class=""><strong>{{items.Source}}</strong></span> -->
       <div class="grid-list-configure-api-inner" *ngFor="let indexer of indexers">
-        <span class=""><a class="link" (click)="saveDomain($event, indexer)" >{{indexer.domain}}</a></span>
+        <span class=""><a class="link" (click)="saveDomain(indexer)" >{{indexer.domain}}</a></span>
         <span *ngIf="indexer.online == true" class="">online</span>
         <span *ngIf="indexer.online != true" class="">offline</span>
       </div>
