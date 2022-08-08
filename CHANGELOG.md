@@ -1,3 +1,12 @@
+## <small>0.2.27 (2022-08-08)</small>
+
+* Code cleanup ([be7b9d7](https://github.com/block-core/blockcore-explorer/commit/be7b9d7))
+* Remove "Release" from release titles ([5066bc6](https://github.com/block-core/blockcore-explorer/commit/5066bc6))
+* Update version and changelog ([e7156d0](https://github.com/block-core/blockcore-explorer/commit/e7156d0))
+* Use Blockcore npm packages for querying dynamic nameservers ([13b81cb](https://github.com/block-core/blockcore-explorer/commit/13b81cb))
+
+
+
 ## <small>0.2.26 (2022-07-06)</small>
 
 * Run configuration production, remove deprecated --prod flag ([9c6541b](https://github.com/block-core/blockcore-explorer/commit/9c6541b))
