@@ -58,6 +58,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
                this.transaction.hasContract = true;
          }
 
+
         this.error = null;
       } catch (e) {
         this.error = e;
@@ -67,6 +68,7 @@ export class TransactionComponent implements OnInit, OnDestroy {
     });
   }
 
+  
   async ngOnInit() {
 
   }
@@ -78,5 +80,17 @@ export class TransactionComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
 
   }
+
+  parseOpreturn(data) {
+    const buffer =  Uint8Array.from(data).buffer;
+    return this.buf2hex(buffer);
+}
+
+ buf2hex(buffer) { // buffer is an ArrayBuffer
+  return [...new Uint8Array(buffer)]
+      .map(x => x.toString(16).padStart(2, '0'))
+      .join('');
+}
+
 }
 

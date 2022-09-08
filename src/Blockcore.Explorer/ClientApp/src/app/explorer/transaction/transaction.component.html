@@ -191,7 +191,7 @@
                </div>
                <div *ngIf="item.outputType == 'TX_NULL_DATA'">
                   <span>Data</span>
-                  <span class="breakable">{{Buffer.from(item.scriptPubKey, 'hex')}}</span>
+                  <span class="breakable">{{parseOpreturn(item.scriptPubKey)}}</span>
                </div>
                <div>
                   <span>Spending TX</span>
