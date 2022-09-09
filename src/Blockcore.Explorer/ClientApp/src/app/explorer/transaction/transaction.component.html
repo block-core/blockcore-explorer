@@ -189,13 +189,18 @@
                   <span>ScriptPubKey (HEX)</span>
                   <span class="breakable">{{item.scriptPubKey}}</span>
                </div>
+               <div *ngIf="item.outputType == 'TX_NULL_DATA'">
+                  <span>Data</span>
+                  <span class="breakable">{{parseOpreturn(item.scriptPubKey)}}</span>
+               </div>
                <div>
                   <span>Spending TX</span>
                   <span class="breakable">
                      <div *ngIf="item.spentInTransaction == null">Unspent</div>
-                     <div *ngIf="item.spentInTransaction != null">Spent by <a
-                           [routerLink]="['../../transaction', item.spentInTransaction]"
-                           title="Spent">{{item.spentInTransaction}}</a></div>
+                     <div *ngIf="item.spentInTransaction != null">
+                        Spent by <a [routerLink]="['../../transaction', item.spentInTransaction]"
+                                    title="Spent">{{item.spentInTransaction}}</a>
+                     </div>
                   </span>
                </div>
             </div>
