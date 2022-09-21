@@ -1,3 +1,14 @@
+## <small>0.2.28 (2022-09-21)</small>
+
+* display opreturn as text (#65) ([5a435ac](https://github.com/block-core/blockcore-explorer/commit/5a435ac)), closes [#65](https://github.com/block-core/blockcore-explorer/issues/65)
+* parse opreturn data correctly ([bce16fb](https://github.com/block-core/blockcore-explorer/commit/bce16fb))
+* Update package.json ([99ba509](https://github.com/block-core/blockcore-explorer/commit/99ba509))
+* Update packages ([a2232fb](https://github.com/block-core/blockcore-explorer/commit/a2232fb))
+* Update packages ([f0dfd57](https://github.com/block-core/blockcore-explorer/commit/f0dfd57))
+* Update version and changelog ([974cf36](https://github.com/block-core/blockcore-explorer/commit/974cf36))
+
+
+
 ## <small>0.2.27 (2022-08-08)</small>
 
 * Code cleanup ([be7b9d7](https://github.com/block-core/blockcore-explorer/commit/be7b9d7))
