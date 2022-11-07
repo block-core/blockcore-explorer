@@ -76,13 +76,17 @@
          <span>Transaction fee</span>
          <span>{{transaction.fee | amount}}</span>
       </div>
-      <div *ngIf="detailsVisible">
+      <!-- <div *ngIf="detailsVisible">
          <span>Size</span>
-         <span>{{transaction.size | size}}</span>
-      </div>
+         <span>{{transaction.size}} bytes</span>
+      </div> -->
       <div *ngIf="detailsVisible">
          <span>Virtual size</span>
-         <span>{{transaction.virtualSize | size}}</span>
+         <span>{{transaction.virtualSize}} bytes</span>
+      </div>
+      <div *ngIf="detailsVisible">
+         <span>Weight</span>
+         <span>{{transaction.weight}} bytes</span>
       </div>
       <div *ngIf="detailsVisible">
          <span>HasWitness</span>
