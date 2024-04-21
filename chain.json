@@ -1,0 +1,68 @@
+{
+   "Chain": {
+      "Name": "Cirrus",
+      "Symbol": "CRS",
+      "Description": "Cirrus - a Stratis sidechain scaling protocol",
+      "Url": "https://stratisplatform.com/",
+      "Logo": "https://chainz.cryptoid.info/logo/cirrus.png",
+      "Icon": "https://chainz.cryptoid.info/logo/fav/?cirrus.png",
+      "Color": "#3bb0ba"
+   },
+   "Network": {
+      "NetworkConsensusFactoryType": "Cirrus.SmartContractConsensusFactory, Cirrus",
+      "NetworkPubkeyAddressPrefix": 28,
+      "NetworkScriptAddressPrefix": 88,
+      "NetworkWitnessPrefix": "CRS",
+      "P2PPort": 16179,
+      "RPCPort": 16175,
+      "APIPort": 37223
+   },
+   "Indexer": {
+      "StoreRawTransactions": true
+   },
+   "Explorer": {
+      "Indexer": {
+         "ApiUrl": "http://localhost:9910/api",
+         "DocUrl": "http://localhost:9910/docs"
+      },
+      "Currency": {
+         "ApiUrl": "https://api.coincap.io/v2/rates",
+         "AutoConvert": false
+      },
+      "Ticker": {
+         "WebUrl": "https://www.coingecko.com/en/coins/cirrus",
+         "ApiUrl": "https://api.coingecko.com/api/v3/coins/cirrus/tickers",
+         "PricePath": "tickers.0.last",
+         "PricePathBTC": "tickers.0.last",
+         "PricePathUSD": "tickers.0.converted_last.usd",
+         "PercentagePath": "",
+         "IsBitcoinPrice": true
+      },
+      "Setup": {
+         "Title": "Cirrus Explorer",
+         "Footer": "Stratis Sidechain Network",
+         "Links": [
+            {
+               "icon": "fas fa-link",
+               "url": "https://stratisplatform.com/"
+            },
+            {
+               "icon": "fab fa-github",
+               "url": "https://github.com/stratisproject"
+            },
+            {
+               "icon": "fab fa-discord",
+               "url": "https://discordapp.com/invite/9tDyfZs"
+            }
+         ]
+      },
+      "Features": {
+         "POSWeight": false
+      },
+      "About": {
+         "Title": "About Blockcore Explorer",
+         "Description": "Blockcore Explorer is a cross-chain compatible Block Explorer provided by Blockcore.",
+         "Link": "https://www.blockcore.net"
+      }
+   }
+}
