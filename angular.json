@@ -33,6 +33,7 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/404.html",
+              "src/CNAME",
               "src/assets",
               "src/chain.json",
               "src/manifest.json",
