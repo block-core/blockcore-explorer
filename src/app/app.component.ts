@@ -1,28 +1,32 @@
-import { Component, OnInit, Renderer2 } from '@angular/core';
-import { ApiService } from './services/api.service';
-import { SetupService } from './services/setup.service';
-import { Router, ActivatedRoute } from '@angular/router';
-import { ThemeService } from './services/theme.service';
+import { Component, OnInit, Renderer2 } from "@angular/core";
+import { ApiService } from "./services/api.service";
+import { SetupService } from "./services/setup.service";
+import { Router, ActivatedRoute } from "@angular/router";
+import { ThemeService } from "./services/theme.service";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html'
+   selector: "app-root",
+   templateUrl: "./app.component.html",
 })
 export class AppComponent implements OnInit {
-  title = 'app';
+   title = "app";
 
-  constructor(
-    private api: ApiService,
-    private setup: SetupService,
-    private theme: ThemeService,
-    private router: Router,
-    private renderer: Renderer2,
-    private activatedRoute: ActivatedRoute) {
+   constructor(
+      private api: ApiService,
+      private setup: SetupService,
+      private theme: ThemeService,
+      private router: Router,
+      private renderer: Renderer2,
+      private activatedRoute: ActivatedRoute
+   ) {
+      let path = localStorage.getItem("path");
+      if (path) {
+         localStorage.removeItem("path");
+         this.router.navigate([path]);
+      }
 
-    this.theme.init(renderer);
-  }
+      this.theme.init(renderer);
+   }
 
-  async ngOnInit() {
-
-  }
+   async ngOnInit() {}
 }
