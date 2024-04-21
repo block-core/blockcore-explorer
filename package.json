@@ -18,8 +18,7 @@
   "scripts": {
     "ng": "ng",
     "start": "echo Starting... && ng serve",
-    "build": "ng build",
-    "build:ssr": "ng run Blockcore.Explorer:server:dev",
+    "build": "ng build --configuration=production",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
