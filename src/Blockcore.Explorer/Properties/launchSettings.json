@@ -17,6 +17,15 @@
             "ASPNETCORE_ENVIRONMENT": "Development"
          }
       },
+      "TBTC": {
+         "commandName": "Project",
+         "commandLineArgs": "--chain=TBTC",
+         "launchBrowser": true,
+         "applicationUrl": "http://localhost:9911",
+         "environmentVariables": {
+            "ASPNETCORE_ENVIRONMENT": "Development"
+         }
+      },
       "CITY": {
          "commandName": "Project",
          "commandLineArgs": "--chain=CITY",
