@@ -13,28 +13,31 @@
 </header>
 
 <nav class="menu" *ngIf="chain">
-  <ul *ngIf="!setup.isCurrentRootChain">
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"
-        [routerLink]="[setup.current]">Ticker</a>
-    </li>
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Explorer)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="[setup.current, 'explorer']">Explorer</a>
-    </li>
-    <li class="nav-item" *ngIf="!setup.featureEnabled(setup.Explorer?.Features?.SmartContract)">
-       <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer', 'contract-list']">Contracts</a>
-    </li>
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Insight)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'insight']">Insight</a>
-    </li>
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Network)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'network']">Network</a>
-    </li>
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.API)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'api']">API</a>
-    </li>
-    <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.About)">
-      <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'about']">About</a>
-    </li>
-  </ul>
+   <ul *ngIf="!setup.isCurrentRootChain">
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Ticker)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="[setup.current]">Ticker</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Explorer)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLinkActiveOptions]="{exact:true}" [routerLink]="[setup.current, 'explorer']">Explorer</a>
+      </li>
+      <li class="nav-item" *ngIf="!setup.featureEnabled(setup.Explorer?.Features?.SmartContract)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer', 'contract-list']">Contracts</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.isBitcoin()">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'explorer', 'angor-projects']">Angor</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Insight)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'insight']">Insight</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.Network)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'network']">Network</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.API)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'api']">API</a>
+      </li>
+      <li class="nav-item" *ngIf="setup.featureEnabled(setup.Explorer?.Features?.About)">
+         <a class="nav-link" [routerLinkActive]="['link-active']" [routerLink]="[setup.current, 'about']">About</a>
+      </li>
+   </ul>
 </nav>

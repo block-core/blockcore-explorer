@@ -1,0 +1,45 @@
+<app-search></app-search>
+
+<div class="box">
+   <h3>Project Details</h3>
+   <app-progress class="centered" *ngIf="loading">Loading project details...</app-progress>
+
+   <div *ngIf="error">
+      <span class="muted">Error: </span> <span class="negative">{{error.message}}</span><br><br>
+      {{error | json}}
+   </div>
+
+   <div *ngIf="!loading && !error && project">
+      <p><strong>Project Identifier:</strong> {{ project.projectIdentifier }}</p>
+      <p><strong>Founder Key:</strong> {{ project.founderKey }}</p>
+      <p><strong>Nostr Pub Key:</strong> {{ project.nostrPubKey }}</p>
+      <p><strong>Created On Block:</strong> {{ project.createdOnBlock }}</p>
+      <p>
+         <strong>Transaction id:</strong>
+         <a [routerLink]="['../../transaction', project.trxId]">{{ project.trxId | slice:0:30 }}</a>
+      </p>
+      <p><strong>Total Investments Count:</strong> {{ project.totalInvestmentsCount }}</p>
+
+      <h4>Investments</h4>
+      <table>
+         <thead>
+            <tr>
+               <!--<th>Investor Public Key</th>-->
+               <th>Transaction id</th>
+               <th>Total Amount</th>
+               <!--<th>Hash Of Secret</th>-->
+               <!--<th>Is Seeder</th>-->
+            </tr>
+         </thead>
+         <tbody>
+            <tr *ngFor="let investment of investments">
+               <!--<td>{{ investment.investorPublicKey }}</td>-->
+               <td><a [routerLink]="['../../transaction', investment.transactionId ]">{{ investment.transactionId  | slice:0:30 }}</a></td>
+               <td>{{ investment.totalAmount | amount }}</td>
+               <!--<td>{{ investment.hashOfSecret }}</td>-->
+               <!--<td>{{ investment.isSeeder }}</td>-->
+            </tr>
+         </tbody>
+      </table>
+   </div>
+</div>

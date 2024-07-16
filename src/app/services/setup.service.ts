@@ -111,6 +111,10 @@ export class SetupService {
       return null;
    }
 
+   isBitcoin() {
+      return this.Chain.Symbol.includes('BTC');
+   }
+
    featureEnabled(feature) {
       // If feature is something and it is explicit set to false, hide.
       if (feature === false) {

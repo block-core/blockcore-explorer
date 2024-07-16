@@ -43,6 +43,9 @@ import { ContractListComponent } from './explorer/contract-list/contract-list.co
 import { ContractListByTypeComponent } from './explorer/contract-listbytype/contract-listbytype.component';
 import { ContractNonFungibleTokenComponent } from './explorer/contract-nonfungibletoken/contract-nonfungibletoken.component';
 
+import { AngorProjects } from './explorer/angor-projects/angor-projects.component';
+import { AngorProject } from './explorer/angor-project/angor-project.component';
+
 const routes: Routes = [
   {
     path: '', component: HomeComponent, pathMatch: 'full', resolve: {
@@ -159,6 +162,17 @@ const routes: Routes = [
          chain: LoadingResolverService
       }
    },
+
+   {
+      path: ':chain/explorer/angor-projects', component: AngorProjects, resolve: {
+         chain: LoadingResolverService
+      }
+   },
+   {
+      path: ':chain/explorer/angor-project/:projectid', component: AngorProject, resolve: {
+         chain: LoadingResolverService
+      }
+   },
 ];
 
 @NgModule({
@@ -201,7 +215,9 @@ const routes: Routes = [
     ContractStandardTokenComponent,
     ContractListComponent,
     ContractListByTypeComponent,
-    ContractNonFungibleTokenComponent
+    ContractNonFungibleTokenComponent,
+    AngorProjects,
+    AngorProject,
   ],
   imports: [
     BrowserModule,
